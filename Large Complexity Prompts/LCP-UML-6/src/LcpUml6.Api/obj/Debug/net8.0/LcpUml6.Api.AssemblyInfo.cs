@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LcpUml6.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29b04123396f92f1d619f8b0b763143d9e2f963d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eea16643f5eb210738bcb0a36acb76c36cb1948d")]
 [assembly: System.Reflection.AssemblyProductAttribute("LcpUml6.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LcpUml6.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

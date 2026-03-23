@@ -68,3 +68,4 @@ A secondary script is utilized to crawl all generated project folders (`LCP-Vibe
 * **Build Status:** A binary **PASS/FAIL** metric for syntactic integrity and dependency resolution.
 * **Class Count:** Verification of the **30-class requirement** to measure structural recall.
 * **Anomaly Detection:** Logging specific instances of **Ghost Writes** or **Transactional Failures** identified during the audit.
+readme.md

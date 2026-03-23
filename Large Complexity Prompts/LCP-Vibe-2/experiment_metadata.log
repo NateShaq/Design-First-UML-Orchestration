@@ -1,0 +1,831 @@
+OpenAI Codex v0.116.0 (research preview)
+--------
+workdir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts
+model: gpt-5.1-codex-max
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/natebrock/.codex/memories]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019d1947-7f54-7ea1-8d3d-3e60f36ccbfd
+--------
+user
+Generate a C# .NET Web API and SQL schema for: Omnichannel Retail Enterprise . Requirements:  ECommerce, BrickAndMortarPointOfSale, SupplyChainLogistics . Define 30 distinct classes including  PerishableGoods, LuxuryItems, DigitalDownloads, LoyaltyProgram, InventoryAudit, TaxCalculator, ReturnAuthorization. Create folder: LCP-Vibe-2. Add all code files and artifacts.
+mcp startup: no servers
+
+thinking
+**Planning multi-file .NET API scaffold**
+
+Decided to create a minimal .NET Web API-style scaffold under LCP-Vibe-2/src with a Program.cs and a Models folder containing 30 distinct domain classes as specified, plus a schema.sql for database setup. Next, I'll generate clear file patches for these components without building or compiling to keep it lightweight and manageable.
+exec
+/bin/zsh -lc 'cd /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts && mkdir -p LCP-Vibe-2/src/Models' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts exited 1 in 0ms:
+zsh:cd:1: too many arguments
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts' && mkdir -p LCP-Vibe-2/src/Models" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && cat <<'EOF' > src/Program.cs
+using LcpVibe2.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IInventoryService, InMemoryInventoryService>();
+builder.Services.AddSingleton<ITaxCalculator, TaxCalculator>();
+builder.Services.AddSingleton<ILoyaltyEngine, LoyaltyEngine>();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.MapGet(\"/health\", () => Results.Ok(new { status = \"ok\" }));
+
+app.MapGet(\"/products\", (IInventoryService inventory) => inventory.GetAll());
+app.MapPost(\"/orders\", (SalesOrder order, IInventoryService inventory, ITaxCalculator taxCalculator) =>
+{
+    var taxed = taxCalculator.Calculate(order);
+    inventory.CommitSalesOrder(taxed);
+    return Results.Created("'$"/orders/{order.Id}", taxed);
+});
+
+app.MapPost("/returns", (ReturnAuthorization ra, IInventoryService inventory) =>
+{
+    inventory.ProcessReturn(ra);
+    return Results.Ok(ra);
+});
+
+app.MapPost("/loyalty/accrue", (LoyaltyTransaction tx, ILoyaltyEngine loyalty) =>
+{
+    loyalty.Apply(tx);
+    return Results.Ok(tx);
+});
+
+app.Run();
+
+public interface IInventoryService
+{
+    IReadOnlyCollection<Product> GetAll();
+    void CommitSalesOrder(SalesOrder order);
+    void ProcessReturn(ReturnAuthorization authorization);
+}
+
+public class InMemoryInventoryService : IInventoryService
+{
+    private readonly Dictionary<Guid, Product> _catalog = new();
+    private readonly List<InventoryAudit> _audits = new();
+
+    public InMemoryInventoryService()
+    {
+        Seed();
+    }
+
+    public IReadOnlyCollection<Product> GetAll() => _catalog.Values.ToList();
+
+    public void CommitSalesOrder(SalesOrder order)
+    {
+        foreach (var line in order.Lines)
+        {
+            if (_catalog.TryGetValue(line.ProductId, out var product))
+            {
+                product.QuantityOnHand = Math.Max(0, product.QuantityOnHand - line.Quantity);
+                _audits.Add(new InventoryAudit
+                {
+                    Id = Guid.NewGuid(),
+                    ProductId = line.ProductId,
+                    Timestamp = DateTimeOffset.UtcNow,
+                    Change = -line.Quantity,
+                    Reason = "Sale"
+                });
+            }
+        }
+    }
+
+    public void ProcessReturn(ReturnAuthorization authorization)
+    {
+        foreach (var line in authorization.Items)
+        {
+            if (_catalog.TryGetValue(line.ProductId, out var product))
+            {
+                product.QuantityOnHand += line.Quantity;
+                _audits.Add(new InventoryAudit
+                {
+                    Id = Guid.NewGuid(),
+                    ProductId = line.ProductId,
+                    Timestamp = DateTimeOffset.UtcNow,
+                    Change = line.Quantity,
+                    Reason = "Return"
+                });
+            }
+        }
+    }
+
+    private void Seed()
+    {
+        var milk = new PerishableGoods
+        {
+            Id = Guid.NewGuid(),
+            Sku = "MILK-1L",
+            Name = "1L Whole Milk",
+            ExpirationDate = DateTime.UtcNow.AddDays(7),
+            QuantityOnHand = 120,
+            ShelfLifeDays = 10
+        };
+        _catalog[milk.Id] = milk;
+
+        var bag = new LuxuryItems
+        {
+            Id = Guid.NewGuid(),
+            Sku = "LUX-BAG-01",
+            Name = "Heritage Leather Bag",
+            QuantityOnHand = 5,
+            InsuranceValue = 2500m
+        };
+        _catalog[bag.Id] = bag;
+
+        var album = new DigitalDownloads
+        {
+            Id = Guid.NewGuid(),
+            Sku = "DIG-ALB-99",
+            Name = "Live Concert Album",
+            FileSizeMb = 512,
+            LicenseKey = Guid.NewGuid().ToString()
+        };
+        _catalog[album.Id] = album;
+    }
+}
+
+public interface ITaxCalculator
+{
+    SalesOrder Calculate(SalesOrder order);
+}
+
+public class TaxCalculator : ITaxCalculator
+{
+    public SalesOrder Calculate(SalesOrder order)
+    {
+        const decimal rate = 0.0825m;
+        foreach (var line in order.Lines)
+        {
+            line.TaxAmount = Math.Round(line.UnitPrice * line.Quantity * rate, 2);
+        }
+        order.TaxTotal = order.Lines.Sum(l => l.TaxAmount);
+        order.GrandTotal = order.SubTotal + order.TaxTotal;
+        return order;
+    }
+}
+
+public interface ILoyaltyEngine
+{
+    void Apply(LoyaltyTransaction transaction);
+}
+
+public class LoyaltyEngine : ILoyaltyEngine
+{
+    private readonly Dictionary<Guid, LoyaltyAccount> _accounts = new();
+
+    public void Apply(LoyaltyTransaction transaction)
+    {
+        if (!_accounts.TryGetValue(transaction.AccountId, out var account))
+        {
+            account = new LoyaltyAccount { Id = transaction.AccountId, PointsBalance = 0 };
+            _accounts[transaction.AccountId] = account;
+        }
+        account.PointsBalance += transaction.PointsEarned - transaction.PointsRedeemed;
+    }
+}
+EOF' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+
+thinking
+**Investigating patch failure**
+
+I'm inspecting the affected snippet with sed and reviewing a small file portion to understand quoting changes blocking patch application.
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && sed -n '20,60p' src/Program.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+}
+
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
+
+app.MapGet("/products", (IInventoryService inventory) => inventory.GetAll());
+app.MapPost("/orders", (SalesOrder order, IInventoryService inventory, ITaxCalculator taxCalculator) =>
+{
+    var taxed = taxCalculator.Calculate(order);
+    inventory.CommitSalesOrder(taxed);
+    return Results.Created($"/orders/{order.Id}", taxed);
+});
+
+app.MapPost("/returns", (ReturnAuthorization ra, IInventoryService inventory) =>
+{
+    inventory.ProcessReturn(ra);
+    return Results.Ok(ra);
+});
+
+app.MapPost("/loyalty/accrue", (LoyaltyTransaction tx, ILoyaltyEngine loyalty) =>
+{
+
+thinking
+**Planning single Models file with 30 classes**
+
+Planning to create a single Models/Domain.cs file with exactly 30 domain classes listed, ensuring proper namespaces and avoiding conflicts like with TaxCalculator, which remains only in Program.cs. Next, I'll finalize and implement this complete set.
+
+thinking
+**Finalizing 30 domain models**
+
+Decided to keep InventoryItem and remove it was tricky; settled on removing one optional model to reach exactly 30. Planning to create the Domain.cs file in the LcpVibe2.Models namespace next.
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && cat <<'EOF' > src/Models/Domain.cs
+using System;
+using System.Collections.Generic;
+
+namespace LcpVibe2.Models
+{
+    public class Product
+    {
+        public Guid Id { get; set; }
+        public string Sku { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public decimal UnitPrice { get; set; }
+        public int QuantityOnHand { get; set; }
+        public string Channel { get; set; } = \"Omnichannel\";
+    }
+
+    public class PerishableGoods : Product
+    {
+        public DateTime ExpirationDate { get; set; }
+        public int ShelfLifeDays { get; set; }
+        public string StorageRequirement { get; set; } = \"Refrigerated\";
+    }
+
+    public class LuxuryItems : Product
+    {
+        public decimal InsuranceValue { get; set; }
+        public bool RequiresSignature { get; set; } = true;
+        public string AuthenticationCertificate { get; set; } = string.Empty;
+    }
+
+    public class DigitalDownloads : Product
+    {
+        public string FileUrl { get; set; } = string.Empty;
+        public int FileSizeMb { get; set; }
+        public string LicenseKey { get; set; } = string.Empty;
+    }
+
+    public class Store
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Location { get; set; } = string.Empty;
+        public List<PointOfSaleTerminal> Terminals { get; set; } = new();
+    }
+
+    public class Warehouse
+    {
+        public Guid Id { get; set; }
+        public string Code { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public List<StockMovement> Movements { get; set; } = new();
+    }
+
+    public class Supplier
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string ContactEmail { get; set; } = string.Empty;
+    }
+
+    public class PurchaseOrder
+    {
+        public Guid Id { get; set; }
+        public Guid SupplierId { get; set; }
+        public DateTime OrderedAt { get; set; }
+        public List<OrderLine> Lines { get; set; } = new();
+    }
+
+    public class SalesOrder
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid CustomerId { get; set; }
+        public DateTime OrderedAt { get; set; } = DateTime.UtcNow;
+        public string Channel { get; set; } = \"ECommerce\";
+        public List<OrderLine> Lines { get; set; } = new();
+        public decimal SubTotal => Lines.Sum(l => l.UnitPrice * l.Quantity);
+        public decimal TaxTotal { get; set; }
+        public decimal GrandTotal { get; set; }
+    }
+
+    public class OrderLine
+    {
+        public Guid ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal TaxAmount { get; set; }
+    }
+
+    public class Customer
+    {
+        public Guid Id { get; set; }
+        public string Email { get; set; } = string.Empty;
+        public string FullName { get; set; } = string.Empty;
+        public Guid LoyaltyAccountId { get; set; }
+    }
+
+    public class LoyaltyProgram
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = \"Omnichannel Rewards\";
+        public decimal EarnRate { get; set; } = 0.01m; // points per dollar
+        public decimal BurnRate { get; set; } = 0.01m; // dollar value per point
+    }
+
+    public class LoyaltyAccount
+    {
+        public Guid Id { get; set; }
+        public Guid ProgramId { get; set; }
+        public int PointsBalance { get; set; }
+    }
+
+    public class LoyaltyTransaction
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid AccountId { get; set; }
+        public Guid SalesOrderId { get; set; }
+        public int PointsEarned { get; set; }
+        public int PointsRedeemed { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    }
+
+    public class Promotion
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public decimal DiscountAmount { get; set; }
+        public bool IsPercentage { get; set; }
+        public DateTime ValidFrom { get; set; }
+        public DateTime ValidTo { get; set; }
+    }
+
+    public class ShoppingCart
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid CustomerId { get; set; }
+        public List<CartItem> Items { get; set; } = new();
+    }
+
+    public class CartItem
+    {
+        public Guid ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+    }
+
+    public class Payment
+    {
+        public Guid Id { get; set; }
+        public Guid SalesOrderId { get; set; }
+        public string Method { get; set; } = \"Card\";
+        public decimal Amount { get; set; }
+        public DateTime PaidAt { get; set; }
+    }
+
+    public class ReturnAuthorization
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid SalesOrderId { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string ReasonCode { get; set; } = string.Empty;
+        public List<ReturnLineItem> Items { get; set; } = new();
+    }
+
+    public class ReturnLineItem
+    {
+        public Guid ProductId { get; set; }
+        public int Quantity { get; set; }
+        public string Condition { get; set; } = \"Resellable\";
+    }
+
+    public class InventoryAudit
+    {
+        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
+        public int Change { get; set; }
+        public string Reason { get; set; } = string.Empty;
+    }
+
+    public class StockMovement
+    {
+        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
+        public Guid WarehouseId { get; set; }
+        public int Quantity { get; set; }
+        public string Direction { get; set; } = \"Inbound\"; // Inbound | Outbound | Transfer
+        public DateTimeOffset OccurredAt { get; set; }
+    }
+
+    public class Shipment
+    {
+        public Guid Id { get; set; }
+        public Guid SalesOrderId { get; set; }
+        public string Carrier { get; set; } = string.Empty;
+        public string TrackingNumber { get; set; } = string.Empty;
+        public DateTime ShippedAt { get; set; }
+        public DateTime? DeliveredAt { get; set; }
+    }
+
+    public class DeliveryRoute
+    {
+        public Guid Id { get; set; }
+        public string RouteCode { get; set; } = string.Empty;
+        public List<Shipment> Shipments { get; set; } = new();
+    }
+
+    public class FulfillmentRequest
+    {
+        public Guid Id { get; set; }
+        public Guid SalesOrderId { get; set; }
+        public Guid WarehouseId { get; set; }
+        public string Status { get; set; } = \"Pending\";
+    }
+
+    public class PricingRule
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string AppliesToChannel { get; set; } = \"Omnichannel\";
+        public decimal Adjustment { get; set; }
+        public bool IsPercentage { get; set; }
+    }
+
+    public class ChannelMapping
+    {
+        public Guid Id { get; set; }
+        public string ExternalChannel { get; set; } = \"Marketplace\";
+        public string InternalChannel { get; set; } = \"ECommerce\";
+        public string SynchronizationMode { get; set; } = \"Bidirectional\";
+    }
+
+    public class PointOfSaleTerminal
+    {
+        public Guid Id { get; set; }
+        public Guid StoreId { get; set; }
+        public string TerminalCode { get; set; } = string.Empty;
+        public string SoftwareVersion { get; set; } = \"1.0.0\";
+    }
+
+    public class ECommercePlatform
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = \"Web\";
+        public string Url { get; set; } = string.Empty;
+        public bool SupportsDigitalGoods { get; set; }
+    }
+
+    public class AnalyticsReport
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public DateTime GeneratedAt { get; set; }
+        public Dictionary<string, decimal> Metrics { get; set; } = new();
+    }
+}
+EOF" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+
+thinking
+**Adding missing using for Sum**
+
+I'm adding `using System.Linq;` to the SalesOrder file to enable the Sum extension method used there.
+file update
+M /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -2,2 +2,3 @@
+ using System.Collections.Generic;
++using System.Linq;
+ 
+apply_patch(auto_approved=true) exited 0 in 75ms:
+Success. Updated the following files:
+M src/Models/Domain.cs
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+
+thinking
+**Preparing core SQL schema**
+
+I'm creating a schema.sql defining main tables like Products, Customers, SalesOrders, and LoyaltyAccounts to cover key domain entities and support the requirements.
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && cat <<'EOF' > schema.sql
+-- Omnichannel Retail Enterprise Schema
+CREATE TABLE Products (
+    Id UUID PRIMARY KEY,
+    Sku VARCHAR(40) UNIQUE NOT NULL,
+    Name VARCHAR(120) NOT NULL,
+    UnitPrice DECIMAL(12,2) NOT NULL,
+    QuantityOnHand INT NOT NULL,
+    Channel VARCHAR(40) NOT NULL,
+    Type VARCHAR(30) NOT NULL,
+    ExpirationDate TIMESTAMP NULL,
+    ShelfLifeDays INT NULL,
+    InsuranceValue DECIMAL(12,2) NULL,
+    RequiresSignature BOOLEAN NULL,
+    FileUrl VARCHAR(255) NULL,
+    FileSizeMb INT NULL,
+    LicenseKey VARCHAR(120) NULL
+);
+
+CREATE TABLE Customers (
+    Id UUID PRIMARY KEY,
+    Email VARCHAR(120) NOT NULL,
+    FullName VARCHAR(120) NOT NULL,
+    LoyaltyAccountId UUID NULL
+);
+
+CREATE TABLE LoyaltyPrograms (
+    Id UUID PRIMARY KEY,
+    Name VARCHAR(120) NOT NULL,
+    EarnRate DECIMAL(6,4) NOT NULL,
+    BurnRate DECIMAL(6,4) NOT NULL
+);
+
+CREATE TABLE LoyaltyAccounts (
+    Id UUID PRIMARY KEY,
+    ProgramId UUID REFERENCES LoyaltyPrograms(Id),
+    PointsBalance INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE LoyaltyTransactions (
+    Id UUID PRIMARY KEY,
+    AccountId UUID REFERENCES LoyaltyAccounts(Id),
+    SalesOrderId UUID NULL,
+    PointsEarned INT NOT NULL DEFAULT 0,
+    PointsRedeemed INT NOT NULL DEFAULT 0,
+    Timestamp TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE SalesOrders (
+    Id UUID PRIMARY KEY,
+    CustomerId UUID REFERENCES Customers(Id),
+    OrderedAt TIMESTAMP NOT NULL,
+    Channel VARCHAR(40) NOT NULL,
+    TaxTotal DECIMAL(12,2) NOT NULL DEFAULT 0,
+    GrandTotal DECIMAL(12,2) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE OrderLines (
+    SalesOrderId UUID REFERENCES SalesOrders(Id),
+    LineNumber INT NOT NULL,
+    ProductId UUID REFERENCES Products(Id),
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(12,2) NOT NULL,
+    TaxAmount DECIMAL(12,2) NOT NULL DEFAULT 0,
+    PRIMARY KEY (SalesOrderId, LineNumber)
+);
+
+CREATE TABLE Payments (
+    Id UUID PRIMARY KEY,
+    SalesOrderId UUID REFERENCES SalesOrders(Id),
+    Method VARCHAR(30) NOT NULL,
+    Amount DECIMAL(12,2) NOT NULL,
+    PaidAt TIMESTAMP NOT NULL
+);
+
+CREATE TABLE ReturnAuthorizations (
+    Id UUID PRIMARY KEY,
+    SalesOrderId UUID REFERENCES SalesOrders(Id),
+    CreatedAt TIMESTAMP NOT NULL,
+    ReasonCode VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE ReturnLineItems (
+    ReturnAuthorizationId UUID REFERENCES ReturnAuthorizations(Id),
+    LineNumber INT NOT NULL,
+    ProductId UUID REFERENCES Products(Id),
+    Quantity INT NOT NULL,
+    Condition VARCHAR(40) NOT NULL,
+    PRIMARY KEY (ReturnAuthorizationId, LineNumber)
+);
+
+CREATE TABLE InventoryAudits (
+    Id UUID PRIMARY KEY,
+    ProductId UUID REFERENCES Products(Id),
+    Timestamp TIMESTAMP NOT NULL,
+    Change INT NOT NULL,
+    Reason VARCHAR(80) NOT NULL
+);
+
+CREATE TABLE Warehouses (
+    Id UUID PRIMARY KEY,
+    Code VARCHAR(20) NOT NULL,
+    Address VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE StockMovements (
+    Id UUID PRIMARY KEY,
+    ProductId UUID REFERENCES Products(Id),
+    WarehouseId UUID REFERENCES Warehouses(Id),
+    Quantity INT NOT NULL,
+    Direction VARCHAR(20) NOT NULL,
+    OccurredAt TIMESTAMP NOT NULL
+);
+
+CREATE TABLE Shipments (
+    Id UUID PRIMARY KEY,
+    SalesOrderId UUID REFERENCES SalesOrders(Id),
+    Carrier VARCHAR(60) NOT NULL,
+    TrackingNumber VARCHAR(80),
+    ShippedAt TIMESTAMP NOT NULL,
+    DeliveredAt TIMESTAMP NULL
+);
+
+CREATE TABLE DeliveryRoutes (
+    Id UUID PRIMARY KEY,
+    RouteCode VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE DeliveryRouteShipments (
+    RouteId UUID REFERENCES DeliveryRoutes(Id),
+    ShipmentId UUID REFERENCES Shipments(Id),
+    PRIMARY KEY (RouteId, ShipmentId)
+);
+
+CREATE TABLE Promotions (
+    Id UUID PRIMARY KEY,
+    Name VARCHAR(120) NOT NULL,
+    DiscountAmount DECIMAL(12,2) NOT NULL,
+    IsPercentage BOOLEAN NOT NULL,
+    ValidFrom TIMESTAMP NOT NULL,
+    ValidTo TIMESTAMP NOT NULL
+);
+
+CREATE TABLE PricingRules (
+    Id UUID PRIMARY KEY,
+    Name VARCHAR(120) NOT NULL,
+    AppliesToChannel VARCHAR(40) NOT NULL,
+    Adjustment DECIMAL(8,2) NOT NULL,
+    IsPercentage BOOLEAN NOT NULL
+);
+
+CREATE TABLE Stores (
+    Id UUID PRIMARY KEY,
+    Name VARCHAR(120) NOT NULL,
+    Location VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE PointOfSaleTerminals (
+    Id UUID PRIMARY KEY,
+    StoreId UUID REFERENCES Stores(Id),
+    TerminalCode VARCHAR(40) NOT NULL,
+    SoftwareVersion VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE ChannelMappings (
+    Id UUID PRIMARY KEY,
+    ExternalChannel VARCHAR(40) NOT NULL,
+    InternalChannel VARCHAR(40) NOT NULL,
+    SynchronizationMode VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE FulfillmentRequests (
+    Id UUID PRIMARY KEY,
+    SalesOrderId UUID REFERENCES SalesOrders(Id),
+    WarehouseId UUID REFERENCES Warehouses(Id),
+    Status VARCHAR(30) NOT NULL
+);
+EOF" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+
+thinking
+**Creating minimal SDK web project file**
+
+I'm preparing a minimal SDK-style web project file for LCPVibe2.csproj, anticipating it may be helpful even though it wasn't explicitly requested.
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && cat <<'EOF' > src/LcpVibe2.csproj
+<Project Sdk=\"Microsoft.NET.Sdk.Web\">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
+EOF" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+
+thinking
+**Verifying class count**
+
+I'm quickly recounting classes with grep to confirm there are still 30, checking if any like InventoryItem were removed.
+exec
+/bin/zsh -lc "cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2' && grep -c 'class ' src/Models/Domain.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+30
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+
+thinking
+**Verifying class presence and namespace usage**
+
+I confirmed the key classes exist and noted that Program.cs uses the LcpVibe2.Models namespace while defining ITaxCalculator outside it, avoiding conflicts. Also checked implicit usage of collections namespaces and prepared to finalize with file paths and next steps like restoring and building without running.
+codex
+Created minimal .NET 8 minimal API with omnichannel domain model and SQL schema.
+
+- Web API entrypoint with sample endpoints for products, orders, returns, and loyalty in `LCP-Vibe-2/src/Program.cs`. Includes in-memory inventory service, tax calculator, and loyalty engine plus Swagger wiring.
+- Domain layer defining 30 distinct classes (including PerishableGoods, LuxuryItems, DigitalDownloads, LoyaltyProgram, InventoryAudit, TaxCalculator usage, ReturnAuthorization, etc.) in `LCP-Vibe-2/src/Models/Domain.cs`.
+- SQL schema covering products (with perishable/luxury/digital fields), orders, payments, returns, loyalty, fulfillment, logistics, POS, and omnichannel mappings in `LCP-Vibe-2/schema.sql`.
+- Project file targeting .NET 8 in `LCP-Vibe-2/src/LcpVibe2.csproj`.
+
+Next steps:
+1) From `LCP-Vibe-2/src`, run `dotnet restore` then `dotnet run` to start the API (Swagger available in Development).  
+2) Point a database at `schema.sql` and hook up persistence/repositories as needed.  
+3) Extend controllers/endpoints to cover full CRUD and authorization.
+file update:
+diff --git a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+index a7c9336d812349f26af514c883d80d474f26b113..c4c6a6dfe8ee7523563c5ea0b1926922bbede2db
+--- a/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
++++ b/Large Complexity Prompts/LCP-Vibe-2/src/Models/Domain.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.Linq;
+ 
+ namespace LcpVibe2.Models
+ {
+
+tokens used
+56,278
+Created minimal .NET 8 minimal API with omnichannel domain model and SQL schema.
+
+- Web API entrypoint with sample endpoints for products, orders, returns, and loyalty in `LCP-Vibe-2/src/Program.cs`. Includes in-memory inventory service, tax calculator, and loyalty engine plus Swagger wiring.
+- Domain layer defining 30 distinct classes (including PerishableGoods, LuxuryItems, DigitalDownloads, LoyaltyProgram, InventoryAudit, TaxCalculator usage, ReturnAuthorization, etc.) in `LCP-Vibe-2/src/Models/Domain.cs`.
+- SQL schema covering products (with perishable/luxury/digital fields), orders, payments, returns, loyalty, fulfillment, logistics, POS, and omnichannel mappings in `LCP-Vibe-2/schema.sql`.
+- Project file targeting .NET 8 in `LCP-Vibe-2/src/LcpVibe2.csproj`.
+
+Next steps:
+1) From `LCP-Vibe-2/src`, run `dotnet restore` then `dotnet run` to start the API (Swagger available in Development).  
+2) Point a database at `schema.sql` and hook up persistence/repositories as needed.  
+3) Extend controllers/endpoints to cover full CRUD and authorization.

@@ -1,0 +1,213 @@
+@startuml LCP-UML-9
+' Government Digital Identity & Public Services
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+class IdentityRegistry {
+  +registryId: UUID
+  +status: String
+}
+class TaxCollection {
+  +agencyCode: String
+  +fiscalYear: int
+}
+class SocialSecurityBenefits {
+  +programId: String
+  +benefitType: String
+}
+class PassportService {
+  +passportOffice: String
+  +issuanceFee: Decimal
+  +rowVersion: long
+}
+class DriversLicense {
+  +licenseClass: String
+  +issuedState: String
+  +rowVersion: long
+}
+class VotingRegistry {
+  +district: String
+  +eligibilityRule: String
+  +rowVersion: long
+}
+class BiometricData {
+  +fingerprintHash: String
+  +faceTemplate: String
+  +rowVersion: long
+}
+class AuditTrail {
+  +eventId: UUID
+  +timestamp: DateTime
+  +txId: UUID
+  +isolationLevel: String
+  +commitState: String
+  +rowVersion: long
+}
+class Jurisdiction {
+  +name: String
+  +level: String
+  +rowVersion: long
+}
+class PublicRecord {
+  +recordId: UUID
+  +recordType: String
+  +rowVersion: long
+}
+class Person {
+  +personId: UUID
+  +fullName: String
+}
+class Citizen {
+  +citizenshipStatus: String
+}
+class Resident {
+  +residencyPermit: String
+}
+class ForeignNational {
+  +visaType: String
+}
+class IdentityProvider {
+  +providerName: String
+  +assuranceLevel: String
+}
+class AuthenticationService {
+  +method: String
+  +tokenTTL: int
+}
+class AuthorizationService {
+  +policyEngine: String
+  +decision: String
+}
+class DigitalWallet {
+  +walletId: UUID
+  +deviceBinding: String
+}
+class Credential {
+  +credentialId: UUID
+  +type: String
+}
+class VerificationRequest {
+  +requestId: UUID
+  +purpose: String
+}
+class VerificationResponse {
+  +responseId: UUID
+  +result: String
+}
+class Agency {
+  +agencyName: String
+  +contactPoint: String
+}
+class HealthServices {
+  +providerNetwork: String
+  +coverageScope: String
+}
+class EducationServices {
+  +educationLevel: String
+  +institutionType: String
+}
+class MunicipalService {
+  +city: String
+  +serviceTier: String
+}
+class NationalService {
+  +country: String
+  +oversightBody: String
+}
+class DataRetentionPolicy {
+  +retentionYears: int
+  +archivalMethod: String
+}
+class ConsentRecord {
+  +consentId: UUID
+  +scope: String
+}
+class ServicePortal {
+  +portalUrl: String
+  +channel: String
+}
+class NotificationService {
+  +channelType: String
+  +retryPolicy: String
+}
+
+' Inheritance
+Person <|-- Citizen
+Person <|-- Resident
+Person <|-- ForeignNational
+Agency <|-- MunicipalService
+Agency <|-- NationalService
+NationalService <|-- TaxCollection
+NationalService <|-- SocialSecurityBenefits
+NationalService <|-- HealthServices
+NationalService <|-- EducationServices
+MunicipalService <|-- DriversLicense
+MunicipalService <|-- VotingRegistry
+NationalService <|-- PassportService
+IdentityProvider <|-- AuthenticationService
+AuthenticationService <|-- AuthorizationService
+
+' Composition / Aggregation
+IdentityRegistry *-- Person
+IdentityRegistry *-- BiometricData
+IdentityRegistry *-- PublicRecord
+IdentityRegistry *-- AuditTrail
+IdentityRegistry o-- Jurisdiction
+IdentityRegistry o-- IdentityProvider
+AuditTrail *-- DataRetentionPolicy
+BiometricData o-- ConsentRecord
+DigitalWallet *-- Credential
+ServicePortal o-- DigitalWallet
+ServicePortal *-- AuthenticationService
+ServicePortal *-- AuthorizationService
+ServicePortal o-- NotificationService
+PassportService *-- Credential
+DriversLicense *-- Credential
+VotingRegistry o-- PublicRecord
+SocialSecurityBenefits o-- PublicRecord
+TaxCollection o-- PublicRecord
+AuthorizationService --> ConsentRecord
+AuthenticationService --> IdentityProvider
+VerificationRequest --> IdentityRegistry
+VerificationRequest --> IdentityProvider
+VerificationResponse --> VerificationRequest
+PublicRecord --> Jurisdiction
+
+note top of AuditTrail
+  ACID workflows: every service call carries txId; 
+  atomicity via single commitState, consistency enforced by constraints; 
+  isolationLevel recorded for rollback; durability ensured by AuditTrail persistence.
+end note
+
+note bottom of IdentityRegistry
+  Storage model normalized to 3NF: 
+  all non-key attributes depend on primary keys only; 
+  no repeating groups or transitive dependencies across entities.
+end note
+
+note right of PassportService
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+note right of DriversLicense
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+note right of VotingRegistry
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+note right of BiometricData
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+note right of Jurisdiction
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+note right of PublicRecord
+  Optimistic concurrency: rowVersion checked on update to prevent ghost writes.
+end note
+
+@enduml

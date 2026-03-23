@@ -1,0 +1,228 @@
+-- LCP-UML-3 SQL Server schema (3NF) derived from LCP-UML-3.puml
+-- Ghost-write protection via rowversion on versioned aggregates.
+
+CREATE TABLE Hospitals (
+    HospitalId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    Location NVARCHAR(200) NULL
+);
+
+CREATE TABLE Departments (
+    DepartmentId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Code NVARCHAR(50) NOT NULL,
+    Specialty NVARCHAR(200) NULL,
+    HospitalId UNIQUEIDENTIFIER NOT NULL
+        REFERENCES Hospitals(HospitalId) ON DELETE CASCADE
+);
+
+CREATE TABLE EmrSystems (
+    SystemId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Version NVARCHAR(50) NULL,
+    TxIsolation NVARCHAR(50) NULL,
+    AuditTrailEnabled BIT NOT NULL DEFAULT 0,
+    HospitalId UNIQUEIDENTIFIER NOT NULL
+        REFERENCES Hospitals(HospitalId) ON DELETE CASCADE
+);
+
+CREATE TABLE Patients (
+    PatientId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    Dob DATE NOT NULL
+);
+
+CREATE TABLE PatientRecords (
+    RecordId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Status NVARCHAR(50) NOT NULL,
+    PatientId NVARCHAR(64) NOT NULL
+        REFERENCES Patients(PatientId) ON DELETE CASCADE,
+    EmrSystemId UNIQUEIDENTIFIER NOT NULL
+        REFERENCES EmrSystems(SystemId) ON DELETE CASCADE
+);
+
+CREATE TABLE Wards (
+    WardCode NVARCHAR(50) NOT NULL PRIMARY KEY,
+    DepartmentId UNIQUEIDENTIFIER NOT NULL
+        REFERENCES Departments(DepartmentId) ON DELETE CASCADE
+);
+
+CREATE TABLE Beds (
+    BedNumber NVARCHAR(50) NOT NULL PRIMARY KEY,
+    Status NVARCHAR(50) NULL,
+    WardCode NVARCHAR(50) NOT NULL
+        REFERENCES Wards(WardCode) ON DELETE CASCADE
+);
+
+CREATE TABLE Inpatients (
+    RecordId NVARCHAR(64) NOT NULL PRIMARY KEY
+        REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    AdmitDate DATE NOT NULL,
+    DischargeDate DATE NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL,
+    WardCode NVARCHAR(50) NULL REFERENCES Wards(WardCode),
+    BedNumber NVARCHAR(50) NULL REFERENCES Beds(BedNumber)
+);
+
+CREATE TABLE Outpatients (
+    RecordId NVARCHAR(64) NOT NULL PRIMARY KEY
+        REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    VisitDate DATE NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL
+);
+
+CREATE TABLE EmergencyCases (
+    RecordId NVARCHAR(64) NOT NULL PRIMARY KEY
+        REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    TriageLevel NVARCHAR(50) NOT NULL,
+    ArrivalTime DATETIME2 NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL
+);
+
+CREATE TABLE Physicians (
+    ProviderId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Specialty NVARCHAR(100) NULL
+);
+
+CREATE TABLE Surgeons (
+    ProviderId NVARCHAR(64) NOT NULL PRIMARY KEY
+        REFERENCES Physicians(ProviderId) ON DELETE CASCADE,
+    BoardCertified BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Nurses (
+    License NVARCHAR(64) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE OperatingRooms (
+    OrNumber NVARCHAR(50) NOT NULL PRIMARY KEY,
+    Status NVARCHAR(50) NULL
+);
+
+CREATE TABLE Procedures (
+    ProcCode NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Description NVARCHAR(200) NULL
+);
+
+CREATE TABLE SurgicalSchedules (
+    ScheduleId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Date DATE NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    ProcedureCode NVARCHAR(64) NULL REFERENCES Procedures(ProcCode),
+    OperatingRoomNumber NVARCHAR(50) NULL REFERENCES OperatingRooms(OrNumber),
+    SurgeonId NVARCHAR(64) NULL REFERENCES Surgeons(ProviderId)
+);
+
+CREATE TABLE Encounters (
+    EncounterId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Type NVARCHAR(50) NOT NULL,
+    Timestamp DATETIME2 NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL
+        REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    PhysicianId NVARCHAR(64) NULL REFERENCES Physicians(ProviderId),
+    NurseLicense NVARCHAR(64) NULL REFERENCES Nurses(License)
+);
+
+CREATE TABLE Appointments (
+    ApptId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    ScheduledTime DATETIME2 NOT NULL,
+    Status NVARCHAR(50) NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    PatientId NVARCHAR(64) NULL REFERENCES Patients(PatientId),
+    PhysicianId NVARCHAR(64) NULL REFERENCES Physicians(ProviderId)
+);
+
+CREATE TABLE LabOrders (
+    OrderId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Priority NVARCHAR(50) NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    EncounterId NVARCHAR(64) NOT NULL REFERENCES Encounters(EncounterId) ON DELETE CASCADE
+);
+
+CREATE TABLE LabResults (
+    ResultId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Value NVARCHAR(200) NOT NULL,
+    Units NVARCHAR(50) NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL,
+    LabOrderId NVARCHAR(64) NOT NULL REFERENCES LabOrders(OrderId) ON DELETE CASCADE
+);
+
+CREATE TABLE RadiologyOrders (
+    OrderId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Modality NVARCHAR(50) NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    EncounterId NVARCHAR(64) NOT NULL REFERENCES Encounters(EncounterId) ON DELETE CASCADE
+);
+
+CREATE TABLE RadiologyImages (
+    ImageId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Uri NVARCHAR(200) NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL,
+    RadiologyOrderId NVARCHAR(64) NOT NULL REFERENCES RadiologyOrders(OrderId) ON DELETE CASCADE
+);
+
+CREATE TABLE PharmacyInventories (
+    InventoryId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    LastAudit DATE NOT NULL,
+    EmrSystemId UNIQUEIDENTIFIER NOT NULL REFERENCES EmrSystems(SystemId) ON DELETE CASCADE
+);
+
+CREATE TABLE Medications (
+    Ndc NVARCHAR(50) NOT NULL PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    Stock INT NOT NULL,
+    PharmacyInventoryId UNIQUEIDENTIFIER NOT NULL REFERENCES PharmacyInventories(InventoryId) ON DELETE CASCADE
+);
+
+CREATE TABLE Prescriptions (
+    RxNumber NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Sig NVARCHAR(200) NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    MedicationNdc NVARCHAR(50) NULL REFERENCES Medications(Ndc)
+);
+
+CREATE TABLE Allergies (
+    AllergyId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Substance NVARCHAR(200) NOT NULL,
+    Severity NVARCHAR(50) NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE
+);
+
+CREATE TABLE Diagnoses (
+    DiagnosisId UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    Icd10 NVARCHAR(20) NOT NULL,
+    Description NVARCHAR(200) NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE
+);
+
+CREATE TABLE InsurancePolicies (
+    PolicyNumber NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Payer NVARCHAR(100) NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE
+);
+
+CREATE TABLE InsuranceClaims (
+    ClaimId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Status NVARCHAR(50) NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    PolicyNumber NVARCHAR(64) NOT NULL REFERENCES InsurancePolicies(PolicyNumber) ON DELETE CASCADE
+);
+
+CREATE TABLE BillingInvoices (
+    InvoiceId NVARCHAR(64) NOT NULL PRIMARY KEY,
+    Amount DECIMAL(18,2) NOT NULL,
+    DueDate DATE NOT NULL,
+    Version INT NOT NULL,
+    RowVersion ROWVERSION NOT NULL,
+    TransactionId UNIQUEIDENTIFIER NOT NULL,
+    PatientRecordId NVARCHAR(64) NOT NULL REFERENCES PatientRecords(RecordId) ON DELETE CASCADE,
+    PatientId NVARCHAR(64) NULL REFERENCES Patients(PatientId),
+    ProcedureCode NVARCHAR(64) NULL REFERENCES Procedures(ProcCode)
+);

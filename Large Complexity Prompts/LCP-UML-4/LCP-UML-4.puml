@@ -1,0 +1,187 @@
+@startuml LCP-UML-4
+title Autonomous Vehicle Fleet Network (LCP-UML-4)
+
+' Core vehicle hierarchy
+abstract class Vehicle {
+  +id: String
+  +vin: String
+  +status: String
+  +location: String
+  +updateStatus()
+}
+
+abstract class AutonomousVehicle
+class GroundVehicle
+class AerialVehicle
+class SedanAV {
+  +version: long
+  +lockToken: String
+  +updateState(cmd, expectedVersion)
+}
+class VanAV {
+  +version: long
+  +lockToken: String
+  +updateState(cmd, expectedVersion)
+}
+class DeliveryDrone {
+  +version: long
+  +lockToken: String
+  +updateState(cmd, expectedVersion)
+}
+
+AutonomousVehicle --|> Vehicle
+GroundVehicle --|> AutonomousVehicle
+AerialVehicle --|> AutonomousVehicle
+SedanAV --|> GroundVehicle
+VanAV --|> GroundVehicle
+DeliveryDrone --|> AerialVehicle
+
+' Power and sensing
+class Powertrain
+class BatteryPack
+class SensorSuite
+class LiDARProcessor {
+  +version: long
+  +lockToken: String
+  +refreshPointCloud(expectedVersion)
+}
+class CameraModule
+class RadarModule
+class GPSModule
+
+Vehicle *-- Powertrain
+Vehicle *-- BatteryPack
+Vehicle *-- SensorSuite
+SensorSuite *-- LiDARProcessor
+SensorSuite *-- CameraModule
+SensorSuite *-- RadarModule
+SensorSuite *-- GPSModule
+
+' Connectivity and telematics
+class ConnectivityModule
+class V2XGateway
+class VehicleTelematics {
+  +collect()
+  +compress()
+  +send()
+}
+class TelemetryPacket
+
+Vehicle *-- ConnectivityModule
+ConnectivityModule *-- V2XGateway
+Vehicle *-- VehicleTelematics
+VehicleTelematics *-- TelemetryPacket
+V2XGateway --> VehicleTelematics : forwards
+
+' Routing and operations
+class RoutePlanner {
+  +version: long
+  +lockToken: String
+  +computeRoute()
+  +commitIfVersion(expectedVersion)
+}
+class MapService
+class TrafficService
+class ChargingStation {
+  +version: long
+  +lockToken: String
+  +reserveSlot(expectedVersion)
+}
+class MaintenanceSchedule {
+  +beginTx()
+  +commitTx()
+  +rollbackTx()
+}
+class IncidentReport {
+  +version: long
+  +lockToken: String
+  +appendEvidence(expectedVersion)
+  +beginTx()
+  +commitTx()
+  +rollbackTx()
+}
+class RemoteOperatorSupport {
+  +takeover()
+  +chat()
+}
+
+RoutePlanner --> MapService
+RoutePlanner --> TrafficService
+AutonomousVehicle --> RoutePlanner : requests plan
+AutonomousVehicle --> ChargingStation : schedules charge
+AutonomousVehicle --> MaintenanceSchedule : sync
+AutonomousVehicle --> IncidentReport : files
+RemoteOperatorSupport ..> AutonomousVehicle : live control
+RemoteOperatorSupport ..> IncidentReport : review
+
+' Passenger booking domain
+class PassengerBooking {
+  +createBooking()
+  +cancel()
+  +beginTx()
+  +commitTx()
+  +rollbackTx()
+}
+class RideRequest
+class PassengerProfile
+class PaymentAccount
+class TripAssignment {
+  +assign()
+  +beginTx()
+  +commitTx()
+  +rollbackTx()
+}
+
+PassengerBooking *-- RideRequest
+PassengerBooking o-- PassengerProfile
+PassengerBooking o-- PaymentAccount
+TripAssignment --> PassengerBooking
+TripAssignment --> AutonomousVehicle
+PassengerBooking --> RoutePlanner : quote ETA
+
+' Data flows to telematics
+VehicleTelematics --> IncidentReport : attach evidence
+VehicleTelematics --> MaintenanceSchedule : alerts
+TelemetryPacket --> RemoteOperatorSupport : live feed
+
+' Additional ground/air relations
+BatteryPack --> ChargingStation : charge session
+DeliveryDrone --> MapService : geo-fence
+
+' Concurrency and data integrity notes
+note right of SedanAV
+  Optimistic locking via version + lockToken prevents ghost writes
+end note
+note right of RoutePlanner
+  Route computations commit only when expectedVersion matches; avoids stale overwrites
+end note
+note right of ChargingStation
+  Slot reservations use the same version+token guard to eliminate ghost writes
+end note
+note right of IncidentReport
+  Evidence appends require matching version to prevent duplicate/phantom updates
+end note
+
+' ACID & normalization
+note as ACID
+  Booking, assignment, maintenance and incident workflows run in explicit transactions
+  Methods beginTx/commitTx/rollbackTx enforce ACID guarantees
+end note
+PassengerBooking .. ACID
+TripAssignment .. ACID
+IncidentReport .. ACID
+MaintenanceSchedule .. ACID
+
+note as ThirdNF
+  Persistent data model kept in 3NF:
+  - Vehicle(id, vin, status, location)
+  - RoutePlan(id, vehicle_id, map_ref, traffic_ref)
+  - Booking(id, passenger_id, payment_id)
+  - TripAssignment(id, booking_id, vehicle_id)
+  All non-key attributes depend on the key alone; no transitive dependencies.
+end note
+Vehicle .. ThirdNF
+PassengerBooking .. ThirdNF
+TripAssignment .. ThirdNF
+
+@enduml

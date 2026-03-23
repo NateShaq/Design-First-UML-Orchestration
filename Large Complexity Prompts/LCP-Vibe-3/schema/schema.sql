@@ -1,0 +1,138 @@
+-- Core patients
+CREATE TABLE Patients (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    FirstName NVARCHAR(100) NOT NULL,
+    LastName NVARCHAR(100) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    Gender NVARCHAR(20)
+);
+
+CREATE TABLE PatientRecords (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientId UNIQUEIDENTIFIER NOT NULL REFERENCES Patients(Id),
+    RecordNumber NVARCHAR(50) NOT NULL,
+    EncounterDate DATE NOT NULL,
+    Status NVARCHAR(30) NOT NULL,
+    Notes NVARCHAR(MAX)
+);
+
+CREATE TABLE VitalSigns (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientRecordId UNIQUEIDENTIFIER NOT NULL REFERENCES PatientRecords(Id),
+    Type NVARCHAR(40) NOT NULL,
+    Value DECIMAL(10,2) NOT NULL,
+    Unit NVARCHAR(20) NOT NULL,
+    RecordedAt DATETIME2 NOT NULL
+);
+
+CREATE TABLE LabResults (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientRecordId UNIQUEIDENTIFIER NOT NULL REFERENCES PatientRecords(Id),
+    TestCode NVARCHAR(50) NOT NULL,
+    ResultValue NVARCHAR(100) NOT NULL,
+    Unit NVARCHAR(20),
+    ResultedAt DATETIME2 NOT NULL
+);
+
+CREATE TABLE RadiologyImages (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientRecordId UNIQUEIDENTIFIER NOT NULL REFERENCES PatientRecords(Id),
+    Modality NVARCHAR(50) NOT NULL,
+    ImageUri NVARCHAR(200) NOT NULL,
+    CapturedAt DATETIME2 NOT NULL
+);
+
+-- Pharmacy Inventory
+CREATE TABLE PharmacyItems (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    MedicationCode NVARCHAR(50) NOT NULL,
+    Name NVARCHAR(150) NOT NULL,
+    QuantityOnHand INT NOT NULL,
+    ExpirationDate DATE NOT NULL
+);
+
+CREATE TABLE Prescriptions (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientId UNIQUEIDENTIFIER NOT NULL REFERENCES Patients(Id),
+    MedicationCode NVARCHAR(50) NOT NULL,
+    Sig NVARCHAR(200) NOT NULL,
+    DispenseQuantity INT NOT NULL
+);
+
+CREATE TABLE DispenseEvents (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PharmacyItemId UNIQUEIDENTIFIER NOT NULL REFERENCES PharmacyItems(Id),
+    PatientId UNIQUEIDENTIFIER NOT NULL REFERENCES Patients(Id),
+    Quantity INT NOT NULL,
+    DispensedAt DATETIME2 NOT NULL
+);
+
+-- Surgical Scheduling
+CREATE TABLE OperatingRooms (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    RoomNumber NVARCHAR(20) NOT NULL,
+    Wing NVARCHAR(50)
+);
+
+CREATE TABLE SurgicalCases (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientId UNIQUEIDENTIFIER NOT NULL REFERENCES Patients(Id),
+    ProcedureCode NVARCHAR(50) NOT NULL,
+    OperatingRoomId UNIQUEIDENTIFIER NOT NULL REFERENCES OperatingRooms(Id),
+    ScheduledStart DATETIME2 NOT NULL,
+    Status NVARCHAR(30) NOT NULL
+);
+
+CREATE TABLE AnesthesiaRecords (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    SurgicalCaseId UNIQUEIDENTIFIER NOT NULL REFERENCES SurgicalCases(Id),
+    Anesthesiologist NVARCHAR(150) NOT NULL,
+    Technique NVARCHAR(100),
+    Airway NVARCHAR(50)
+);
+
+CREATE TABLE PreOpAssessments (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    SurgicalCaseId UNIQUEIDENTIFIER NOT NULL REFERENCES SurgicalCases(Id),
+    AsaClass NVARCHAR(10),
+    Findings NVARCHAR(MAX)
+);
+
+CREATE TABLE PostOpNotes (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    SurgicalCaseId UNIQUEIDENTIFIER NOT NULL REFERENCES SurgicalCases(Id),
+    Outcome NVARCHAR(200),
+    Disposition NVARCHAR(200)
+);
+
+-- Billing / Claims
+CREATE TABLE InsurancePayers (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    Name NVARCHAR(150) NOT NULL,
+    PlanType NVARCHAR(50)
+);
+
+CREATE TABLE InsuranceClaims (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientRecordId UNIQUEIDENTIFIER NOT NULL REFERENCES PatientRecords(Id),
+    PayerId UNIQUEIDENTIFIER NOT NULL REFERENCES InsurancePayers(Id),
+    ClaimNumber NVARCHAR(50) NOT NULL,
+    Amount DECIMAL(12,2) NOT NULL,
+    Status NVARCHAR(30) NOT NULL
+);
+
+CREATE TABLE BillingInvoices (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    PatientId UNIQUEIDENTIFIER NOT NULL REFERENCES Patients(Id),
+    TotalAmount DECIMAL(12,2) NOT NULL,
+    InvoiceDate DATE NOT NULL,
+    Paid BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Payments (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    InvoiceId UNIQUEIDENTIFIER NOT NULL REFERENCES BillingInvoices(Id),
+    Amount DECIMAL(12,2) NOT NULL,
+    PaidAt DATETIME2 NOT NULL,
+    Method NVARCHAR(30) NOT NULL
+);

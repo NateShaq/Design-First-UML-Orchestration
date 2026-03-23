@@ -1,0 +1,206 @@
+@startuml LCP-UML-3
+' Comprehensive Hospital Management & EMR
+
+' Core entities
+class Hospital {
+  hospitalId: UUID
+  name: String
+  location: String
+}
+class Department {
+  departmentId: UUID
+  code: String
+  specialty: String
+}
+class EMRSystem {
+  systemId: UUID
+  version: String
+  txIsolation: String
+  auditTrailEnabled: Boolean
+}
+class Patient {
+  patientId: String
+  name: String
+  dob: Date
+}
+class PatientRecord {
+  recordId: String
+  status: String
+}
+class Inpatient {
+  admitDate: Date
+  dischargeDate: Date
+  version: Integer
+}
+class Outpatient {
+  visitDate: Date
+  version: Integer
+}
+class EmergencyCase {
+  triageLevel: String
+  arrivalTime: DateTime
+  version: Integer
+}
+class Encounter {
+  encounterId: String
+  type: String
+  timestamp: DateTime
+  transactionId: UUID
+}
+class Appointment {
+  apptId: String
+  scheduledTime: DateTime
+  status: String
+  transactionId: UUID
+}
+class Physician {
+  providerId: String
+  specialty: String
+}
+class Surgeon {
+  boardCertified: Boolean
+}
+class Nurse {
+  license: String
+}
+class Ward {
+  wardCode: String
+}
+class Bed {
+  bedNumber: String
+  status: String
+}
+class SurgicalSchedule {
+  scheduleId: String
+  date: Date
+  transactionId: UUID
+}
+class OperatingRoom {
+  orNumber: String
+  status: String
+}
+class Procedure {
+  procCode: String
+  description: String
+}
+class LabOrder {
+  orderId: String
+  priority: String
+  transactionId: UUID
+}
+class LabResult {
+  resultId: String
+  value: String
+  units: String
+  version: Integer
+}
+class RadiologyOrder {
+  orderId: String
+  modality: String
+  transactionId: UUID
+}
+class RadiologyImage {
+  imageId: String
+  uri: String
+  version: Integer
+}
+class PharmacyInventory {
+  inventoryId: UUID
+  lastAudit: Date
+}
+class Medication {
+  ndc: String
+  name: String
+  stock: Integer
+}
+class Prescription {
+  rxNumber: String
+  sig: String
+}
+class Allergy {
+  allergyId: UUID
+  substance: String
+  severity: String
+}
+class Diagnosis {
+  diagnosisId: UUID
+  icd10: String
+  description: String
+}
+class InsurancePolicy {
+  policyNumber: String
+  payer: String
+}
+class InsuranceClaim {
+  claimId: String
+  status: String
+  version: Integer
+  transactionId: UUID
+}
+class BillingInvoice {
+  invoiceId: String
+  amount: Decimal
+  dueDate: Date
+  version: Integer
+  transactionId: UUID
+}
+
+note right of EMRSystem
+  ACID workflows: admission → encounter → orders → billing → claims execute within a shared transactionId; commit/rollback with audit trail and configurable isolation to prevent partial writes.
+end note
+
+note "3NF assured: every class has a single key (UUID/code/id) and only atomic attributes; no transitive dependencies between patient, clinical, and financial data." as N3NF
+N3NF .. PatientRecord
+
+note "Optimistic locking via version prevents ghost writes on Inpatient, Outpatient, EmergencyCase, LabResult, RadiologyImage, InsuranceClaim, BillingInvoice." as NLock
+NLock .. Inpatient
+NLock .. Outpatient
+NLock .. EmergencyCase
+NLock .. LabResult
+NLock .. RadiologyImage
+NLock .. InsuranceClaim
+NLock .. BillingInvoice
+
+' Inheritance
+Inpatient --|> PatientRecord
+Outpatient --|> PatientRecord
+EmergencyCase --|> PatientRecord
+Surgeon --|> Physician
+
+' Composition and aggregation
+Hospital *-- Department
+Hospital *-- EMRSystem
+Department *-- Ward
+Ward *-- Bed
+EMRSystem *-- PatientRecord
+EMRSystem *-- PharmacyInventory
+PatientRecord o-- Patient
+PatientRecord *-- Encounter
+PatientRecord *-- Appointment
+PatientRecord *-- Diagnosis
+PatientRecord *-- Allergy
+PatientRecord *-- Prescription
+PatientRecord *-- InsurancePolicy
+PatientRecord *-- BillingInvoice
+InsurancePolicy *-- InsuranceClaim
+PharmacyInventory *-- Medication
+Prescription *-- Medication
+SurgicalSchedule *-- Procedure
+SurgicalSchedule *-- OperatingRoom
+SurgicalSchedule *-- Surgeon
+Appointment o-- Physician
+Appointment o-- Patient
+Encounter o-- Physician
+Encounter o-- Nurse
+Encounter *-- LabOrder
+Encounter *-- RadiologyOrder
+LabOrder *-- LabResult
+RadiologyOrder *-- RadiologyImage
+BillingInvoice o-- Procedure
+BillingInvoice o-- Patient
+
+' Associations for patient placement
+Inpatient o-- Ward
+Inpatient o-- Bed
+
+@enduml

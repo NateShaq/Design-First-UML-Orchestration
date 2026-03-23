@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3g/BrcdSECRpziATjEp2sCUJycDR7KGkoq3Ro+VSr8k=",
+  "Source": "AutonomousFleet.Api",
+  "BasePath": "_content/AutonomousFleet.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

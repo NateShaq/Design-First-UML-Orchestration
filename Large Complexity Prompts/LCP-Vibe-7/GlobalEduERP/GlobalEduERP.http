@@ -1,0 +1,6 @@
+@GlobalEduERP_HostAddress = http://localhost:0
+
+GET {{GlobalEduERP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

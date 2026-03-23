@@ -1,0 +1,218 @@
+@startuml LCP-UML-1
+' Smart City Traffic & Infrastructure Grid with concurrency & ACID safeguards
+
+'================ Traffic Flow ================
+package "TrafficFlow" {
+  class CityControlCenter
+  class TrafficFlowManager
+  class TrafficSensor
+  class SignalController
+  class Intersection
+  class RoadSegment
+  class DynamicMessageSign
+  class PedestrianCrossing
+  class BicycleLane
+  class CCTVCamera
+  class WeatherStation
+  class AirQualitySensor
+  class DataAnalyticsPlatform
+}
+
+CityControlCenter *-- TrafficFlowManager
+CityControlCenter *-- EmergencyResponseCenter
+CityControlCenter *-- DataAnalyticsPlatform
+TrafficFlowManager *-- Intersection
+TrafficFlowManager *-- DynamicMessageSign
+TrafficFlowManager o-- RoadSegment
+Intersection *-- SignalController
+Intersection *-- TrafficSensor
+Intersection *-- PedestrianCrossing
+Intersection *-- CCTVCamera
+RoadSegment o-- BicycleLane
+TrafficSensor ..> DataAnalyticsPlatform : sendTelemetry()
+WeatherStation ..> DataAnalyticsPlatform
+AirQualitySensor ..> DataAnalyticsPlatform
+SignalController ..> TrafficFlowManager : reportState()
+DynamicMessageSign ..> TrafficFlowManager : publishAdvisory()
+
+'================ Public Transit ================
+package "PublicTransit" {
+  class PublicTransitHub
+  class TransitRoute
+  class TicketingSystem
+  class FareValidator
+  class Passenger
+  abstract class Vehicle
+  class ElectricBus
+  class LightRail
+  class AutonomousShuttle
+  class ChargingStation
+  class MaintenanceSchedule
+  class MaintenanceCrew
+}
+
+PublicTransitHub *-- TransitRoute
+PublicTransitHub *-- TicketingSystem
+TicketingSystem *-- FareValidator
+TransitRoute o-- Vehicle
+Vehicle <|-- ElectricBus
+Vehicle <|-- LightRail
+Vehicle <|-- AutonomousShuttle
+ElectricBus *-- ChargingStation
+ChargingStation *-- GridPowerMonitor
+GridPowerMonitor *-- EnergyStorageUnit
+GridPowerMonitor o-- SolarArray
+MaintenanceSchedule *-- MaintenanceCrew
+Vehicle ..> MaintenanceSchedule
+Passenger --> TransitRoute : rides
+FareValidator --> Passenger : validates
+AutonomousShuttle ..> TrafficSensor : V2I feed
+
+'================ Emergency Response ================
+package "EmergencyResponse" {
+  class EmergencyResponseCenter
+  class IncidentReport
+  class PriorityCorridor
+  abstract class EmergencyVehicle
+  class Ambulance
+  class FireTruck
+  class PoliceCar
+}
+
+EmergencyResponseCenter *-- IncidentReport
+EmergencyResponseCenter *-- PriorityCorridor
+EmergencyResponseCenter o-- EmergencyVehicle
+EmergencyVehicle <|-- Ambulance
+EmergencyVehicle <|-- FireTruck
+EmergencyVehicle <|-- PoliceCar
+PriorityCorridor ..> SignalController : requestPreemption()
+IncidentReport ..> DataAnalyticsPlatform : analytics()
+EmergencyVehicle ..> TrafficFlowManager : routeETA()
+
+'================ Energy & Infra ================
+class GridPowerMonitor
+class EnergyStorageUnit
+class SolarArray
+
+LightRail ..> GridPowerMonitor : powerDraw()
+ElectricBus ..> GridPowerMonitor : chargePlan()
+
+'================ Platform Services (ACID & Concurrency) ================
+package "Platform" {
+  interface VersionedResource {
+    +version: long
+    +lastWriteAt: DateTime
+    +acquireLock()
+    +commitWithCAS()
+  }
+  class GhostWriteGuard {
+    +validate(version)
+    +rejectOnStaleWrite()
+  }
+  class TransactionManager {
+    +begin()
+    +commit()
+    +rollback()
+  }
+  class UnitOfWork {
+    +aggregateChanges()
+    +flush()
+  }
+  class WriteAheadLog {
+    +append(entry)
+    +fsync()
+  }
+  class OutboxRelay {
+    +publish(domainEvent)
+  }
+  class ACIDWorkflow {
+    +isolationLevel: IsolationLevel
+    +durability: WAL+fsync
+  }
+}
+
+TransactionManager *-- UnitOfWork
+TransactionManager *-- WriteAheadLog
+WriteAheadLog ..> OutboxRelay : forwardEvents()
+TransactionManager ..> ACIDWorkflow : enforces
+TicketingSystem ..> TransactionManager : begin/commit
+MaintenanceSchedule ..> TransactionManager : transactional updates
+IncidentReport ..> TransactionManager
+DataAnalyticsPlatform ..> OutboxRelay : publishes events
+
+'----- Concurrency protection for ghost-write prone aggregates -----
+ElectricBus ..|> VersionedResource
+LightRail ..|> VersionedResource
+AutonomousShuttle ..|> VersionedResource
+TrafficSensor ..|> VersionedResource
+SignalController ..|> VersionedResource
+GridPowerMonitor ..|> VersionedResource
+MaintenanceSchedule ..|> VersionedResource
+
+ElectricBus *-- GhostWriteGuard
+LightRail *-- GhostWriteGuard
+AutonomousShuttle *-- GhostWriteGuard
+TrafficSensor *-- GhostWriteGuard
+SignalController *-- GhostWriteGuard
+GridPowerMonitor *-- GhostWriteGuard
+MaintenanceSchedule *-- GhostWriteGuard
+
+note right of GhostWriteGuard
+Prevents ghost writes via optimistic lock (version + CAS)
+and per-aggregate mutex around write paths.
+end note
+
+'================ 3NF Normalized Data Model ================
+package "DataModel (3NF)" {
+  class VehicleDim {
+    +vehicle_id PK
+    +vehicle_type
+  }
+  class RouteDim {
+    +route_id PK
+    +mode
+  }
+  class SensorDim {
+    +sensor_id PK
+    +location_id
+  }
+  class SignalEventFact {
+    +event_id PK
+    +signal_controller_id FK
+    +timestamp
+    +state
+  }
+  class PowerEventFact {
+    +event_id PK
+    +power_monitor_id FK
+    +timestamp
+    +load_kw
+  }
+  class MaintenanceFact {
+    +maintenance_id PK
+    +vehicle_id FK
+    +schedule_id FK
+    +status
+  }
+  class CalendarDim {
+    +date_id PK
+    +ymd
+  }
+}
+
+SignalEventFact --> SignalController : signal_controller_id
+SignalEventFact --> CalendarDim : date_id
+PowerEventFact --> GridPowerMonitor : power_monitor_id
+PowerEventFact --> CalendarDim
+MaintenanceFact --> VehicleDim : vehicle_id
+MaintenanceFact --> MaintenanceSchedule : schedule_id
+MaintenanceFact --> CalendarDim
+VehicleDim --> RouteDim : optional current route
+SensorDim --> Intersection
+
+note bottom of "DataModel (3NF)"
+Facts reference only keys from dimensions; no transitive
+non-key dependencies -> 3NF satisfied for operational store.
+end note
+
+@enduml

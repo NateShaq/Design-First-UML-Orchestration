@@ -1,0 +1,5 @@
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-1/obj/Debug/net8.0/LCP.Vibe.Api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-1/obj/Debug/net8.0/LCP.Vibe.Api.AssemblyInfoInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-1/obj/Debug/net8.0/LCP.Vibe.Api.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-1/obj/Debug/net8.0/LCP.Vibe.Api.csproj.CoreCompileInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-1/obj/Debug/net8.0/LCP.Vibe.Api.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,207 @@
+@startuml LCP-UML-6
+skinparam classAttributeIconSize 0
+skinparam dpi 150
+
+' Core domains
+abstract class PowerGeneration
+abstract class RenewableGenerator extends PowerGeneration
+class GridStability
+class CustomerMetering
+
+' Generation assets
+class SolarFarm <<ThreadSafe>> extends RenewableGenerator {
+  +assetId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+class WindTurbine <<ThreadSafe>> extends RenewableGenerator {
+  +assetId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+class HydroPlant <<ThreadSafe>> extends RenewableGenerator {
+  +assetId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+class Inverter
+
+class BatteryStorage <<ThreadSafe>> {
+  +assetId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+class GridConnection
+class WeatherStation
+class ForecastService
+class MaintenanceSchedule
+class EnergyMarketInterface
+
+' Grid operations
+class SubstationMonitor <<ThreadSafe>> {
+  +monitorId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+class SCADANode
+class ControlCenter extends SCADANode
+class Operator
+class Alert
+class FrequencyRegulator
+class VoltageRegulator
+class LoadBalancer <<ThreadSafe>> {
+  +balancerId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class DemandResponseProgram
+class MicrogridController
+
+' Customer side
+class SmartMeter extends CustomerMetering {
+  +meterId:UUID
+  +customerId:UUID
+}
+
+class MeterDataCollector
+class CustomerPortal
+
+class TariffPlan {
+  +tariffPlanId:UUID
+  +name:string
+  +rateStructure:string
+}
+
+class UsageBilling <<ThreadSafe>> {
+  +billingId:UUID
+  +meterId:UUID
+  +tariffPlanId:UUID
+  +settlementId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+
+class SettlementEngine {
+  +settlementId:UUID
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+
+' Relationships: inheritance is explicit above; below adds composition/aggregation/associations
+
+' Generation monitoring and control
+SolarFarm *-- Inverter : houses
+SolarFarm *-- BatteryStorage : buffers
+SolarFarm o-- WeatherStation : reads data
+SolarFarm o-- MaintenanceSchedule
+WindTurbine *-- Inverter : power electronics
+WindTurbine o-- MaintenanceSchedule
+HydroPlant o-- MaintenanceSchedule
+RenewableGenerator --> ForecastService : production forecast
+ForecastService --> WeatherStation : uses data
+
+note right of SolarFarm
+  Thread-safe aggregate with optimistic locking to prevent ghost writes
+  across asset telemetry updates.
+end note
+
+note right of WindTurbine
+  Uses revision token in begin/commit/rollback to guard concurrent
+  curtailment commands from control center.
+end note
+
+note right of HydroPlant
+  Water gate and turbine set-points require optimistic concurrency to
+  avoid stale writes from delayed instructions.
+end note
+
+' Grid connections and stability
+RenewableGenerator --> GridConnection
+GridConnection *-- SubstationMonitor
+GridStability *-- FrequencyRegulator
+GridStability *-- VoltageRegulator
+GridStability *-- LoadBalancer
+GridStability --> Alert : raises
+LoadBalancer o-- DemandResponseProgram
+LoadBalancer --> MicrogridController
+MicrogridController *-- BatteryStorage
+MicrogridController *-- GridConnection
+SCADANode --> SubstationMonitor : polls
+ControlCenter *-- Operator
+ControlCenter --> Alert : issues
+Operator --> SCADANode : commands
+
+note right of BatteryStorage
+  Charge/discharge commands use optimistic locking revision to avoid
+  ghost writes during frequency and voltage support.
+end note
+
+note right of SubstationMonitor
+  Samples and writes breaker states under a revision token to block
+  duplicate or stale SCADA writes.
+end note
+
+note right of LoadBalancer
+  Dispatch decisions are guarded by begin/commit/rollback so concurrent
+  grid services cannot overwrite each other (ghost-write protection).
+end note
+
+' Customer metering and billing
+CustomerMetering *-- SmartMeter
+SmartMeter --> GridConnection : reports usage
+MeterDataCollector *-- SmartMeter : collects
+MeterDataCollector --> ControlCenter : sends data
+CustomerPortal --> SmartMeter : displays usage
+CustomerPortal --> TariffPlan
+UsageBilling *-- TariffPlan
+UsageBilling *-- SettlementEngine
+UsageBilling --> EnergyMarketInterface : price signals
+SettlementEngine --> Operator : reports
+
+note right of SmartMeter
+  Normalized identifiers: meter_id (PK) and customer_id (FK) without
+  embedding tariff or billing details, keeping metering tables in 3NF.
+end note
+
+note right of SettlementEngine
+  Executes commit/rollback hooks to guarantee isolation and durability
+  for settlement postings and market exports.
+end note
+
+note right of UsageBilling
+  ACID workflow boundary: begin/commit/rollback enforce atomic and
+  durable billing + settlement updates; version field blocks ghost
+  writes on invoices.
+  3NF storage: billing_id (PK), meter_id (FK to SmartMeter),
+  tariff_plan_id (FK), settlement_id (FK) with no derived totals kept.
+end note
+
+note right of TariffPlan
+  Tariff definitions normalized (tariff_plan_id PK); ratedetails kept
+  separate from customer or billing rows to maintain 3NF.
+end note
+
+@enduml

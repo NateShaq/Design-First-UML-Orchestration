@@ -1,0 +1,261 @@
+@startuml OmnichannelRetailEnterprise
+title Omnichannel Retail Enterprise UML - LCP-UML-2
+
+class EcommercePlatform {
+  +id: UUID
+  +name: String
+  +supportedChannels: List<String>
+  +routeOrder(order: Order)
+  +beginTransaction(): UUID
+  +commitTransaction(txId: UUID)
+  +rollbackTransaction(txId: UUID)
+}
+
+class POSSystem {
+  +terminalId: String
+  +processSale(order: Order)
+}
+
+class SupplyChainLogistics {
+  +planShipment(order: Order)
+  +optimizeRoutes()
+}
+
+class Order {
+  +orderNumber: String
+  +status: String
+  +total: Money
+  +calculateTotal()
+  +transactionId: UUID
+  +isolationLevel: String
+}
+
+class ShoppingCart {
+  +cartId: UUID
+  +addItem(item: Product, qty: int)
+  +removeItem(item: Product)
+}
+
+class PaymentGateway {
+  +provider: String
+  +authorize(amount: Money)
+  +capture(amount: Money)
+  +beginPaymentTxn(orderId: String): UUID
+  +commitPayment(txId: UUID)
+  +rollbackPayment(txId: UUID)
+}
+
+class Customer {
+  +customerId: UUID
+  +name: String
+  +email: String
+  +segment: String
+}
+
+class LoyaltyProgram {
+  +programName: String
+  +enroll(customer: Customer)
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class LoyaltyAccount {
+  +accountId: UUID
+  +pointsBalance: int
+  +accrue(points: int)
+}
+
+class MembershipTier {
+  +name: String
+  +threshold: int
+  +benefits: String
+}
+
+class Product {
+  +sku: String
+  +name: String
+  +price: Money
+  +weight: double
+}
+
+class PerishableGoods {
+  +expirationDate: Date
+  +temperatureRange: String
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class LuxuryItems {
+  +authCertificate: String
+  +insuranceValue: Money
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class DigitalDownloads {
+  +fileSizeMB: double
+  +downloadURL: String
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class Inventory {
+  +inventoryId: UUID
+  +reorderPoint: int
+  +evaluateLevels()
+}
+
+class InventoryItem {
+  +quantityOnHand: int
+  +reserved: int
+}
+
+class StockLocation {
+  +locationId: UUID
+  +address: String
+}
+
+class Warehouse {
+  +capacity: int
+  +automationLevel: String
+}
+
+class Store {
+  +storeNumber: String
+  +posCount: int
+}
+
+class Supplier {
+  +supplierId: UUID
+  +leadTimeDays: int
+  +rating: String
+}
+
+class Shipment {
+  +shipmentId: UUID
+  +carrier: String
+  +trackingNumber: String
+}
+
+class DeliverySchedule {
+  +windowStart: DateTime
+  +windowEnd: DateTime
+  +priority: String
+}
+
+class InventoryAudit {
+  +auditId: UUID
+  +scheduledDate: Date
+  +varianceDetected: boolean
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class TaxCalculator {
+  +jurisdiction: String
+  +calculate(order: Order)
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class PromotionEngine {
+  +name: String
+  +apply(order: Order)
+}
+
+class DiscountRule {
+  +ruleId: UUID
+  +description: String
+  +percentage: double
+}
+
+class ReturnAuthorization {
+  +rmaNumber: String
+  +reason: String
+  +status: String
+  +version: long
+  +lockToken: UUID
+  +acquireLock(txId: UUID)
+  +releaseLock(token: UUID)
+  +checkVersion(expected: long): boolean
+}
+
+class RefundProcessor {
+  +refundId: UUID
+  +method: String
+  +issue(amount: Money)
+  +transactionId: UUID
+}
+
+class AnalyticsService {
+  +captureEvent(event: String)
+  +generateReport()
+}
+
+class NotificationService {
+  +channel: String
+  +send(message: String)
+}
+
+' Inheritance hierarchy
+PerishableGoods --|> Product
+LuxuryItems --|> Product
+DigitalDownloads --|> Product
+Warehouse --|> StockLocation
+Store --|> StockLocation
+LoyaltyAccount --|> LoyaltyProgram
+MembershipTier --|> LoyaltyProgram
+
+' Composition and aggregation relationships
+EcommercePlatform *-- ShoppingCart
+EcommercePlatform *-- PaymentGateway
+EcommercePlatform *-- PromotionEngine
+EcommercePlatform *-- NotificationService
+POSSystem *-- PaymentGateway
+POSSystem *-- TaxCalculator
+ShoppingCart *-- Order
+Order *-- InventoryItem
+Order *-- ReturnAuthorization
+Order o-- Customer
+Order o-- Shipment
+Order o-- PaymentGateway
+Customer *-- LoyaltyAccount
+LoyaltyProgram *-- MembershipTier
+LoyaltyProgram *-- LoyaltyAccount
+PromotionEngine *-- DiscountRule
+Inventory *-- InventoryItem
+InventoryItem o-- Product
+StockLocation *-- Inventory
+SupplyChainLogistics *-- Warehouse
+SupplyChainLogistics *-- Shipment
+SupplyChainLogistics *-- DeliverySchedule
+Warehouse o-- Supplier
+Shipment o-- DeliverySchedule
+InventoryAudit *-- Inventory
+ReturnAuthorization o-- RefundProcessor
+RefundProcessor o-- PaymentGateway
+AnalyticsService o-- EcommercePlatform
+NotificationService o-- Customer
+
+note \"ACID & 3NF\" as ACID3NF
+ACID3NF : All workflow-orchestrating services (EcommercePlatform, PaymentGateway, RefundProcessor) expose begin/commit/rollback hooks to keep multi-step operations atomic and isolated.\nACID3NF : Persistence mappings use surrogate UUID keys; non-key attributes depend only on the key (no partial or transitive dependencies), maintaining 3NF.
+
+@enduml

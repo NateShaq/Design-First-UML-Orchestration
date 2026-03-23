@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "CEzq2vuGpuA=",
+  "success": false,
+  "projectFilePath": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-3/src/LcpUml3.Api/LcpUml3.Api.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.AspNetCore.OpenApi"
+    }
+  ]
+}

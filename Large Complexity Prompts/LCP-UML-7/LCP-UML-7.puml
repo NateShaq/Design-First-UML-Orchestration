@@ -1,0 +1,214 @@
+@startuml LCP-UML-7
+skinparam classAttributeIconSize 0
+skinparam dpi 150
+title LCP-UML-7: Global Higher Education ERP
+
+' Person hierarchy
+abstract class Student <<ThreadSafe>> {
+  +studentId:UUID
+  +legalName:string
+  +email:string
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class Undergraduate extends Student
+class Postgraduate extends Student
+abstract class AcademicStaff {
+  +staffId:UUID
+  +facultyRank:string
+}
+class Faculty extends AcademicStaff {
+  +departmentCode:string
+}
+class ResearchFellow <<ThreadSafe>> extends AcademicStaff {
+  +fellowshipId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class AdmissionsOfficer {
+  +officerId:UUID
+}
+class Registrar {
+  +registrarId:UUID
+}
+class Alumni {
+  +alumniId:UUID
+  +graduationYear:int
+}
+
+' Academics
+class CourseCurriculum <<ThreadSafe>> {
+  +curriculumId:UUID
+  +programCode:string
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class CourseModule {
+  +moduleId:UUID
+  +title:string
+  +creditHours:int
+}
+class CourseOffering <<Transactional>> {
+  +offeringId:UUID
+  +term:string
+  +capacity:int
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+class Enrollment <<Transactional>> {
+  +enrollmentId:UUID
+  +studentId:UUID
+  +offeringId:UUID
+  +status:string
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+class Transcript <<ThreadSafe>> {
+  +transcriptId:UUID
+  +studentId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class GradeEntry {
+  +gradeEntryId:UUID
+  +enrollmentId:UUID
+  +letterGrade:string
+}
+class LearningManagementSystem {
+  +lmsId:UUID
+  +name:string
+}
+class OnlineCourse {
+  +onlineCourseId:UUID
+  +platformUrl:string
+}
+class Assignment {
+  +assignmentId:UUID
+  +dueDate:date
+}
+class Submission {
+  +submissionId:UUID
+  +timestamp:datetime
+}
+
+' Finance & aid
+class FinancialAidPackage <<ThreadSafe>> {
+  +aidPackageId:UUID
+  +studentId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+class Scholarship {
+  +scholarshipId:UUID
+  +amount:decimal
+}
+class LoanAid {
+  +loanId:UUID
+  +principal:decimal
+}
+class PaymentPlan {
+  +planId:UUID
+  +installments:int
+}
+class BillingAccount <<Transactional>> {
+  +billingAccountId:UUID
+  +studentId:UUID
+  +balance:decimal
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+class TuitionInvoice <<Transactional>> {
+  +invoiceId:UUID
+  +billingAccountId:UUID
+  +amount:decimal
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+class PaymentTransaction <<Transactional>> {
+  +paymentId:UUID
+  +invoiceId:UUID
+  +amount:decimal
+  +beginTransaction():string
+  +commitTransaction(txId:string):void
+  +rollbackTransaction(txId:string):void
+}
+
+' Research & grants
+class ResearchProject {
+  +projectId:UUID
+  +title:string
+}
+class FacultyGrant <<ThreadSafe>> {
+  +grantId:UUID
+  +facultyId:UUID
+  +revision:int
+  +beginUpdate(txId:string):string
+  +commitUpdate(token:string):void
+  +rollbackUpdate(token:string):void
+}
+
+' Alumni relations
+class AlumniRelations {
+  +relationsId:UUID
+  +strategy:string
+}
+class Event {
+  +eventId:UUID
+  +date:date
+}
+
+' Generalization (inheritance)
+Student <|-- Undergraduate
+Student <|-- Postgraduate
+AcademicStaff <|-- Faculty
+AcademicStaff <|-- ResearchFellow
+FinancialAidPackage <|-- Scholarship
+FinancialAidPackage <|-- LoanAid
+
+' Compositions / aggregations
+CourseCurriculum *-- CourseModule
+CourseOffering o-- CourseModule
+CourseOffering *-- Enrollment
+Enrollment *-- GradeEntry
+Transcript *-- GradeEntry
+Student *-- Transcript
+Student *-- FinancialAidPackage
+FinancialAidPackage o-- PaymentPlan
+BillingAccount *-- TuitionInvoice
+TuitionInvoice *-- PaymentTransaction
+LearningManagementSystem *-- OnlineCourse
+OnlineCourse *-- Assignment
+Assignment *-- Submission
+FacultyGrant *-- ResearchProject
+AlumniRelations *-- Event
+AlumniRelations o-- Alumni
+
+' Associations
+AdmissionsOfficer -- Enrollment
+Registrar -- Transcript
+Student -- BillingAccount
+Student -- CourseOffering
+Faculty -- CourseOffering
+ResearchFellow -- ResearchProject
+Faculty -- FacultyGrant
+ResearchProject -- CourseOffering
+Alumni -- Event
+
+note "Optimistic locking on Undergraduate, Postgraduate, ResearchFellow, CourseCurriculum, FinancialAidPackage, Transcript, FacultyGrant prevents ghost writes via revision + begin/commit/rollback." as N1
+note "Workflow ACID semantics: CourseOffering/Enrollment/BillingAccount/TuitionInvoice/PaymentTransaction expose begin/commit/rollback transactions; 3NF maintained with surrogate keys and junction entities (Enrollment, GradeEntry, PaymentTransaction)." as N2
+
+@enduml

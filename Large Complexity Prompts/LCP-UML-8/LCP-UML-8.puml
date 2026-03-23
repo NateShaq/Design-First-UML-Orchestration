@@ -1,0 +1,142 @@
+@startuml LCP-UML-8
+' Multi-National Manufacturing PLM with concurrency + ACID + 3NF
+
+title LCP-UML-8: Multi-National Manufacturing PLM
+
+' Governance markers
+'   <<OptimisticLocked>> : version column & compare-and-swap to prevent ghost writes
+'   <<Transactional>>    : begin/commit/rollback ensure ACID workflow steps
+
+' Core product taxonomy (inherits optimistic lock via Product.version)
+class Product <<OptimisticLocked>> {
+  +id: String
+  +name: String
+  +sku: String
+  +version: Long
+}
+class RawMaterial
+class SubAssembly
+class FinishedProduct
+
+Product <|-- RawMaterial
+Product <|-- SubAssembly
+Product <|-- FinishedProduct
+
+' Structures and governance
+class BillOfMaterials <<OptimisticLocked>> {
+  +id: String
+  +version: Long
+  +effectiveFrom: Date
+}
+class ChangeOrder <<OptimisticLocked>> {
+  +id: String
+  +version: Long
+  +status: String
+  +priority: String
+}
+class ComplianceCert <<OptimisticLocked>> {
+  +id: String
+  +version: Long
+  +certType: String
+  +expiry: Date
+}
+class SupplierContract <<OptimisticLocked>> {
+  +id: String
+  +version: Long
+  +terms: String
+  +incoterms: String
+}
+
+BillOfMaterials *-- Product : contains >>
+ChangeOrder --> Product : affects
+ComplianceCert --> Product
+SupplierContract --> RawMaterial
+
+' Engineering design domain
+class EngineeringDesign <<Transactional>> {
+  +id: String
+  +lifecycleState: String
+  +beginTx(): TxId
+  +commitTx(txId): void
+  +rollbackTx(txId): void
+}
+class CADModel { +id: String; +filePath: String }
+class Drawing { +id: String; +pdfPath: String }
+class Revision { +id: String; +revCode: String }
+class Engineer { +id: String; +role: String }
+
+EngineeringDesign *-- CADModel
+EngineeringDesign *-- Drawing
+EngineeringDesign *-- Revision
+Engineer --> EngineeringDesign : owns
+ChangeOrder --> EngineeringDesign : updates
+
+' Manufacturing execution
+class ManufacturingProcess { +id: String; +name: String }
+class WorkCenter { +id: String; +code: String }
+class Machine { +id: String; +assetTag: String }
+class Operator { +id: String; +badge: String }
+class WorkOrder <<Transactional>> {
+  +id: String
+  +scheduleDate: Date
+  +beginTx(): TxId
+  +commitTx(txId): void
+  +rollbackTx(txId): void
+}
+class Operation { +id: String; +seq: int }
+class ShopFloorExecution <<Transactional>> {
+  +id: String
+  +beginTx(): TxId
+  +commitTx(txId): void
+  +rollbackTx(txId): void
+}
+
+ManufacturingProcess *-- Operation
+WorkOrder *-- Operation
+WorkOrder --> Product : builds
+ShopFloorExecution *-- WorkOrder
+WorkCenter *-- Machine
+Operation --> WorkCenter : performed at
+Operator --> Operation : executes
+ChangeOrder --> WorkOrder : re-plans
+
+' Quality assurance
+class QualityAssurance <<Transactional>> {
+  +id: String
+  +beginTx(): TxId
+  +commitTx(txId): void
+  +rollbackTx(txId): void
+}
+class InspectionPlan { +id: String; +method: String }
+class InspectionResult { +id: String; +status: String }
+class NonConformance { +id: String; +severity: String }
+class CorrectiveAction { +id: String; +action: String }
+
+QualityAssurance *-- InspectionPlan
+InspectionPlan *-- InspectionResult
+InspectionResult --> NonConformance : triggers
+NonConformance --> CorrectiveAction : resolved by
+QualityAssurance --> Product : controls
+ChangeOrder --> InspectionPlan : updates tests
+
+' Logistics and traceability
+class InventoryLot { +id: String; +lotNo: String; +expiry: Date }
+class Warehouse { +id: String; +location: String }
+class CustomerOrder { +id: String; +orderNo: String }
+class Shipment { +id: String; +tracking: String }
+class TraceabilityRecord { +id: String; +event: String; +timestamp: Date }
+
+InventoryLot --> RawMaterial
+InventoryLot --> SubAssembly
+Warehouse *-- InventoryLot
+CustomerOrder --> FinishedProduct
+Shipment --> CustomerOrder
+TraceabilityRecord *-- InventoryLot
+TraceabilityRecord --> WorkOrder
+TraceabilityRecord --> InspectionResult
+TraceabilityRecord --> Shipment
+
+note "3NF enforced: atomic attributes; surrogate keys; non-key attributes depend on full key; no transitive dependencies. ACID steps exposed via Transactional stereotypes." as N1
+N1 .. QualityAssurance
+
+@enduml

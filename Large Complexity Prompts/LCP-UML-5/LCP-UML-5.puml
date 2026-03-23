@@ -1,0 +1,257 @@
+@startuml LCP-UML-5
+title Digital Banking & Wealth Management Engine (LCP-UML-5)
+
+' Core actors and engine
+class BankEngine {
+  +id: String
+  +name: String
+  +version: String
+  +startUnitOfWork()
+  +commitUnitOfWork()
+  +rollbackUnitOfWork()
+  +startup()
+  +shutdown()
+}
+class User {
+  +userId: String
+  +role: String
+  +authenticate()
+}
+class CustomerProfile <<3NFEntity>> {
+  +customerId: String
+  +segment: String
+  +riskLevel: String
+  +updateProfile()
+}
+class AuthenticationService {
+  +provider: String
+  +issueToken()
+  +revokeToken()
+}
+
+' Account hierarchy (RetailBanking)
+abstract class Account <<3NFEntity>> {
+  +accountNumber: String
+  +balance: Decimal
+  +currency: String
+  +credit(): Decimal
+  +debit(): Decimal
+}
+class SavingsAccount <<VersionedEntity>> <<3NFEntity>> {
+  +interestRate: Decimal
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +compoundInterest()
+}
+class CheckingAccount {
+  +overdraftLimit: Decimal
+  +authorizeCheck()
+}
+class LoanAccount {
+  +principal: Decimal
+  +amortize()
+}
+class CreditCardAccount {
+  +limit: Decimal
+  +authorizePayment()
+}
+class CryptoWallet <<VersionedEntity>> <<3NFEntity>> {
+  +chain: String
+  +publicAddress: String
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +signTransaction()
+}
+
+' Investment portfolio hierarchy (InvestmentPortfolios)
+abstract class Portfolio {
+  +portfolioId: String
+  +strategy: String
+  +currentNAV(): Decimal
+}
+class StockPortfolio <<VersionedEntity>> <<3NFEntity>> {
+  +equities: List
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +rebalance()
+}
+class BondPortfolio {
+  +duration: Decimal
+  +ladder()
+}
+class RetirementAccount {
+  +taxAdvantaged: Boolean
+  +withdrawalRules()
+}
+
+' Ledgers and payments
+class TransactionLedger <<ACIDBoundary>> <<VersionedEntity>> {
+  +ledgerId: String
+  +version: Long
+  +idempotencyKey: String
+  +beginTransaction()
+  +commit()
+  +rollback()
+  +ensureDurability()
+  +recordEntry()
+  +getBalance()
+}
+class PaymentGateway <<ACIDParticipant>> {
+  +provider: String
+  +prepare()
+  +commitPayment()
+  +rollbackPayment()
+  +processPayment()
+}
+class OrderExecution <<ACIDParticipant>> {
+  +venue: String
+  +prepareOrder()
+  +commitOrder()
+  +rollbackOrder()
+  +routeOrder()
+}
+class PortfolioRebalancer {
+  +policy: String
+  +computeTargets()
+}
+
+' Risk, compliance, and monitoring (ComplianceMonitoring)
+class RiskAssessment <<VersionedEntity>> <<3NFEntity>> {
+  +score: Decimal
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +calculate()
+}
+class KYCVerification <<VersionedEntity>> <<3NFEntity>> {
+  +status: String
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +verifyIdentity()
+}
+class FraudDetection {
+  +modelVersion: String
+  +detect()
+}
+class ComplianceMonitoring {
+  +jurisdiction: String
+  +monitor()
+}
+class AuditTrail {
+  +entries: List
+  +append()
+}
+class RegulatoryReport {
+  +reportType: String
+  +submit()
+}
+class TaxDocument <<VersionedEntity>> <<3NFEntity>> {
+  +taxYear: int
+  +version: Long
+  +idempotencyKey: String
+  +acquireLock()
+  +validateVersion()
+  +releaseLock()
+  +generate()
+}
+
+' Data, analytics, communication
+class DataWarehouse <<3NFEntity>> {
+  +schemaVersion: String
+  +normalized3NF: Boolean
+  +ingest()
+}
+class MarketDataFeed {
+  +source: String
+  +streamQuotes()
+}
+class ReportingService {
+  +reportId: String
+  +render()
+}
+class AlertService {
+  +channel: String
+  +triggerAlert()
+}
+class NotificationService {
+  +send()
+}
+
+' Inheritance relationships
+SavingsAccount --|> Account
+CheckingAccount --|> Account
+LoanAccount --|> Account
+CreditCardAccount --|> Account
+CryptoWallet --|> Account
+StockPortfolio --|> Portfolio
+BondPortfolio --|> Portfolio
+RetirementAccount --|> Portfolio
+
+' Compositions and aggregations
+BankEngine *-- CustomerProfile
+BankEngine *-- TransactionLedger
+BankEngine *-- PaymentGateway
+BankEngine *-- DataWarehouse
+
+CustomerProfile *-- Account
+CustomerProfile *-- Portfolio
+CustomerProfile *-- KYCVerification
+CustomerProfile o-- User
+
+TransactionLedger *-- AuditTrail
+TransactionLedger *-- RiskAssessment
+TransactionLedger o-- FraudDetection
+
+ComplianceMonitoring *-- RegulatoryReport
+ComplianceMonitoring o-- RiskAssessment
+ComplianceMonitoring o-- FraudDetection
+
+ReportingService *-- TaxDocument
+ReportingService o-- RegulatoryReport
+ReportingService o-- DataWarehouse
+
+PortfolioRebalancer *-- Portfolio
+PortfolioRebalancer o-- MarketDataFeed
+PortfolioRebalancer o-- RiskAssessment
+
+OrderExecution *-- Portfolio
+OrderExecution o-- MarketDataFeed
+OrderExecution o-- PaymentGateway
+
+AlertService o-- NotificationService
+AlertService o-- FraudDetection
+AlertService o-- ComplianceMonitoring
+
+MarketDataFeed --> Portfolio : quotes
+RiskAssessment --> Portfolio : assess
+FraudDetection --> TransactionLedger : scan
+PaymentGateway --> TransactionLedger : settle
+DataWarehouse --> ReportingService : datasets
+KYCVerification --> ComplianceMonitoring : status
+
+note right of TransactionLedger
+  ACID boundary: begin/commit/rollback coordinates PaymentGateway and OrderExecution (2PC style).
+  Versioned entries + idempotency keys prevent ghost/phantom writes.
+end note
+
+note right of CustomerProfile
+  Core domain tables are modeled in 3NF (CustomerProfile, Account, SavingsAccount,
+  CryptoWallet, StockPortfolio, TransactionLedger, KYCVerification, RiskAssessment, TaxDocument):
+  non-key attributes depend only on primary keys; no partial or transitive dependencies.
+end note
+
+@enduml

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "gXVrlU35Cs6x3YyjMUeSeCzuQd5/8KPyPNTouWMRTIo=",
+  "Source": "SmartGrid.Api",
+  "BasePath": "_content/SmartGrid.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

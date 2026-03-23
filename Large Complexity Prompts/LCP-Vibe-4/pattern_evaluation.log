@@ -1,0 +1,30 @@
+# Pattern Evaluation – AutonomousFleet.Api (LCP-Vibe-4)
+
+| Component / File | Abstraction Type (Interface/Abstract/Concrete) | Pattern Observed | Notes |
+| --- | --- | --- | --- |
+| Domain entities (`Domain/Entities/*.cs`) | Concrete records | Data Transfer Object (DTO) style | 30 record types are pure data holders; no interfaces or behavior; tightly coupled to API layer if reused. |
+| Minimal API endpoints (`Program.cs`) | Concrete startup + handlers | No explicit pattern beyond Minimal API | Endpoints defined inline without controllers or services; business logic co-located with hosting concerns. |
+| In-memory stores (`Program.cs` lists: `telematicsFeed`, `bookings`, `operatorSessions`) | Concrete collections | Ad-hoc Repository (in-memory, not abstracted) | Behave like repositories but lack interface/contracts, so swapping persistence or mocking requires code changes. |
+| Route planning (`RoutePlanner.Strategy` field) | Concrete record | Strategy implied but not realized | Strategy is a string flag; no strategy interface or implementations, so polymorphic behavior is missing. |
+| Remote operator sessions | Concrete record + inline handlers | Observer/Event not used | Session state changes are manual; no pub/sub or notifications to interested parties. |
+
+**Findings**
+- No interfaces or abstract base classes are present; all types are concrete records.
+- No explicit classical patterns (Strategy, Factory, Repository, Observer, etc.) are implemented beyond DTO-style data carriers and an ad-hoc in-memory repository approach.
+- Application logic is tightly coupled to the web host; swapping storage, validation, or orchestration would require editing `Program.cs` directly.
+- Dependency Inversion and Single Responsibility principles are largely unmet; Open/Closed not supported because behaviors would require modifying existing types.
+
+**Grade (Decoupling & SOLID): D**
+- Strengths: clear, small surface area; immutable-by-default records reduce incidental mutation.
+- Gaps: no abstractions for persistence or domain services; no dependency injection of behaviors; anemic domain model; controllers/services missing; tests would need to hit the app end-to-end.
+
+**Pattern Density**
+- Patterns found (classical, realized): 0
+- Total classes/records: 30
+- Pattern Density = 0 / 30 = 0.00
+
+**Recommendations**
+1) Introduce repository interfaces (`ITelematicsRepository`, `IBookingRepository`, `IOperatorSessionRepository`) and inject implementations to decouple storage. 
+2) Extract domain services (e.g., `IRoutePlanningStrategy`) and concrete strategies instead of string flags. 
+3) Move endpoint handlers into thin controllers or handler classes to separate transport from domain logic and improve testability. 
+4) Add an event/observer mechanism for session state changes or telematics alerts if downstream consumers are expected. 

@@ -1,0 +1,26 @@
+Pattern Evaluation — 2026-03-23
+
+Total classes/records counted: 44
+Patterns identified: 4
+Pattern density: 0.09 (4 / 44)
+Grade (Decoupling & SOLID): C-
+
+| Area | Types / Examples | Abstract vs Concrete | Pattern & Notes |
+| --- | --- | --- | --- |
+| ASP.NET Controllers (MVC) | OrdersController, ProductsController, InventoryController, PaymentsController, RefundsController, ReturnsController | All concrete controllers deriving from ControllerBase | Uses built-in MVC routing; logic is transaction scripts inside controllers, no service layer; coupling to EF Core.
+| DTOs | OrderLineDto, CreateOrderDto, PaymentRequestDto, RefundRequestDto | Records; contract-only types | DTO pattern separates request payloads from entities; still no validation/service orchestration layer to enforce invariants.
+| EF Core Unit of Work | RetailDbContext + `Database.BeginTransactionAsync` usage in payments/refunds/orders | Concrete DbContext only; no repository interfaces | Relies on EF Core's Unit of Work/transaction pattern; tight coupling to ORM, no abstraction for persistence.
+| Inheritance (TPH) | Product → {PerishableGoods, LuxuryItems, DigitalDownloads}; StockLocation → {Warehouse, Store} | Base classes are concrete, not abstract | Single-table inheritance via discriminator; no polymorphic behavior/strategy; primarily a structural mapping pattern.
+| Missing patterns | – | – | No Strategy/Factory/Repository/Observer; no interfaces/abstract classes for domain or services; controllers directly manipulate entities.
+
+Key SOLID / Decoupling Observations
+- Single Responsibility: Controllers mix HTTP handling with domain orchestration and persistence concerns.
+- Open/Closed & Liskov: Inheritance hierarchies are structural but not behaviorally substitutable; base classes are concrete, risking misuse.
+- Interface Segregation & DIP: Zero interfaces or abstractions for repositories/services; dependencies are concrete DbContext instances.
+- Encapsulation: Anemic domain entities expose settable properties with no invariants; business rules live in controllers.
+
+Recommendations (for improving grade)
+1) Introduce interfaces and application services to separate orchestration from controllers; inject via DI.
+2) Add repository interfaces (or queries via CQRS) to decouple persistence from domain logic.
+3) Make base types abstract where appropriate and add polymorphic behavior or validation methods to enforce invariants.
+4) Add domain events/observers for cross-cutting behaviors (inventory reservation, loyalty updates) instead of direct mutations in controllers.

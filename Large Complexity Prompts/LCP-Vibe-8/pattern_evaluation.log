@@ -1,0 +1,10 @@
+# Pattern Evaluation
+
+| Scope | Abstraction | Patterns | Decoupling / SOLID Notes | Grade |
+| --- | --- | --- | --- | --- |
+| Domain record models (30) | Concrete `record` DTOs; no interfaces or abstracts | DTO / Anemic Model | Each type only holds state; SRP mostly fine but no encapsulation or behavior; fine for transport yet offers no invariants | C |
+| PlmRepository | Concrete class; no interface; exposed mutable lists | Repository (in-memory), Data Seeding | Callers coupled to concrete storage; exposes collections directly (violates encapsulation); no DIP/OCP extension point | D |
+| Program.cs minimal API | Top-level host; DI registers singleton repo | Dependency Injection / Service Locator | Endpoints depend on concrete repo; no abstraction for endpoints or validation; thin composition root is OK for demo scale | C- |
+| Overall | Codebase level | Repository, Dependency Injection (2 total) | Limited abstractions; DIP not applied; SOLID mostly unmet beyond simple SRP; easy to change models but infrastructure is tightly bound | D+ |
+
+**Pattern Density**: 2 patterns / 31 classes = 0.065 (≈6.5%).

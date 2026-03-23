@@ -1,0 +1,6 @@
+| Item | Findings | Evidence | Impact |
+| --- | --- | --- | --- |
+| Design Patterns | Data Transfer Object (DTO) style models only; no Strategy/Factory/Repository/Observer/etc. | 42 simple POCO classes in `Models/*.cs` with only auto-properties; endpoints return these directly. | Minimal pattern reuse; little behavioral abstraction or extensibility. |
+| Abstract vs. Concrete Types | 0 interfaces/abstract classes; 1 enum (`TransitMode`); 42 concrete POCO classes. | `rg "^public interface|^public abstract"` returned none; `rg "^public class"` found 42 classes. | Tight coupling to concrete data shapes; limits mocking and evolution without breaking changes. |
+| SOLID / Decoupling Grade | D (Weak). Single Responsibility partially met for DTOs, but endpoints defined inline in `Program.cs` mix transport concerns with data; no dependency inversion or segregation; no composition root abstractions; no validation or domain services. | `Program.cs` defines routes and instantiates models directly without services or DI abstractions. | Hard to extend behaviors, swap data sources, or test in isolation; changes ripple through endpoints. |
+| Pattern Density | 1 pattern type detected (DTO) / 42 classes = **0.024**. | Counted distinct applied pattern types vs total classes. | Low density indicates absence of architectural patterns to manage complexity. |

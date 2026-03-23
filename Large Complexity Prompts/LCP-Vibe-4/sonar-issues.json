@@ -1,0 +1,211 @@
+{
+  "total": 4,
+  "issues": [
+    {
+      "key": "0e7d9e41-7f2e-4e1e-a95f-f74b59a5d78c",
+      "rule": "csharpsquid:S101",
+      "severity": "MINOR",
+      "component": "lcp-vibe-4:src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs",
+      "project": "lcp-vibe-4",
+      "line": 62,
+      "hash": "46f01ea65e1bf3f0cd81d2346ee5abb4",
+      "textRange": {
+        "startLine": 62,
+        "endLine": 62,
+        "startOffset": 14,
+        "endOffset": 28
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Rename record 'LiDARProcessor' to match pascal case naming rules, consider using 'LiDarProcessor'.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:43:20+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "IDENTIFIABLE",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "835bab44-667a-4907-b02a-7193b8efb14a",
+      "rule": "csharpsquid:S101",
+      "severity": "MINOR",
+      "component": "lcp-vibe-4:src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs",
+      "project": "lcp-vibe-4",
+      "line": 80,
+      "hash": "80e4727f4dffbf8a4d0d6ee40793a780",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 14,
+        "endOffset": 23
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Rename record 'GPSSensor' to match pascal case naming rules, consider using 'GpsSensor'.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:43:20+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "IDENTIFIABLE",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "7bb1b45c-8831-4851-9655-4dd031f9f4bf",
+      "rule": "external_roslyn:CA1861",
+      "severity": "INFO",
+      "component": "lcp-vibe-4:src/AutonomousFleet.Api/Program.cs",
+      "project": "lcp-vibe-4",
+      "line": 75,
+      "hash": "1670b62f623431b07658976843b3dbef",
+      "textRange": {
+        "startLine": 75,
+        "endLine": 75,
+        "startOffset": 14,
+        "endOffset": 88
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+      "effort": "0min",
+      "debt": "0min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:43:20+0000",
+      "type": "CODE_SMELL",
+      "externalRuleEngine": "roslyn",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "INFO"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "1e57feb8-1f8f-4eb2-9401-74dee3b34e55",
+      "rule": "csharpsquid:S6966",
+      "severity": "MAJOR",
+      "component": "lcp-vibe-4:src/AutonomousFleet.Api/Program.cs",
+      "project": "lcp-vibe-4",
+      "line": 79,
+      "hash": "2c00f42b764b8134043380893434076b",
+      "textRange": {
+        "startLine": 79,
+        "endLine": 79,
+        "startOffset": 0,
+        "endOffset": 9
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Await RunAsync instead.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "async-await"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:43:20+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 4
+  },
+  "components": [
+    {
+      "key": "lcp-vibe-4",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "LCP-Vibe-4",
+      "longName": "LCP-Vibe-4"
+    },
+    {
+      "key": "lcp-vibe-4:src/AutonomousFleet.Api/Program.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Program.cs",
+      "longName": "src/AutonomousFleet.Api/Program.cs",
+      "path": "src/AutonomousFleet.Api/Program.cs"
+    },
+    {
+      "key": "lcp-vibe-4:src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Vehicles.cs",
+      "longName": "src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs",
+      "path": "src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs"
+    }
+  ],
+  "facets": []
+}

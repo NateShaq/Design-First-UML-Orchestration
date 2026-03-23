@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24510.3 (cfe3bd0a)",
+        "semanticVersion": "4.11.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'IServiceCollection' does not contain a definition for 'AddSwaggerGen' and no accessible extension method 'AddSwaggerGen' accepting a first argument of type 'IServiceCollection' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-1/Program.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 18,
+                  "endLine": 5,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'WebApplication' does not contain a definition for 'UseSwagger' and no accessible extension method 'UseSwagger' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-1/Program.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 9,
+                  "endLine": 11,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'WebApplication' does not contain a definition for 'UseSwaggerUI' and no accessible extension method 'UseSwaggerUI' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-1/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 9,
+                  "endLine": 12,
+                  "endColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'ResponseTimeKPI' to match pascal case naming rules, consider using 'ResponseTimeKpi'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-1/Models/EmergencyResponseModels.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 14,
+                  "endLine": 20,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await RunAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-1/Program.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 1,
+                  "endLine": 49,
+                  "endColumn": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS1061": {
+          "id": "CS1061",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1061)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        },
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1774287760000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "lcp-uml-5"
+    },
+    {
+      "key": "sonar.projectName",
+      "value": "LCP-UML-5"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.projectKey",
+      "value": "lcp-uml-5:EA5381A5-12CE-4ECD-B5DB-E3043AB7E869"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.projectName",
+      "value": "LcpUml5.Api"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.sources",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Contracts/Requests/AccountRequests.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Controllers/AccountsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Controllers/CustomersController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Controllers/LedgersController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Controllers/RiskController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Controllers/TaxDocumentsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/Account.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/BaseEntity.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/CryptoWallet.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/CustomerProfile.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/KycVerification.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/LedgerEntry.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/Portfolio.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/RiskAssessment.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/SavingsAccount.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/StockHolding.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/StockPortfolio.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/TaxDocument.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Domain/Entities/TransactionLedger.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Infrastructure/BankingDbContext.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Program.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/LcpUml5.Api.GlobalUsings.g.cs,\"/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/LcpUml5.Api.AssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/LcpUml5.Api.MvcApplicationPartsAssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/appsettings.Development.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/LcpUml5.Api.http,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/Properties/launchSettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/apphost,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/project.assets.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/LcpUml5.Api.csproj.nuget.dgspec.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/staticwebassets.build.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/obj/Debug/net8.0/LcpUml5.Api.sourcelink.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/bin/Debug/net8.0/LcpUml5.Api.runtimeconfig.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/bin/Debug/net8.0/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/bin/Debug/net8.0/LcpUml5.Api.deps.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/bin/Debug/net8.0/appsettings.Development.json"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "EA5381A5-12CE-4ECD-B5DB-E3043AB7E869.sonar.cs.scanner.telemetry",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.scanner.metadataFilePath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/sonar-report-task.txt"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

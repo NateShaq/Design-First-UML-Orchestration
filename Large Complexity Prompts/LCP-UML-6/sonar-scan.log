@@ -1,0 +1,213 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-uml-6 /n:LCP-UML-6 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:42:47.533  Updating build integration targets...
+12:42:47.559  Using SonarQube v26.3.0.120487.
+12:42:47.621  Fetching analysis configuration settings...
+12:42:47.763  Provisioning analyzer assemblies for cs...
+12:42:47.764  Installing required Roslyn analyzers...
+12:42:47.764  Processing plugin: csharp version 10.19.0.132793
+12:42:47.829  Provisioning analyzer assemblies for vbnet...
+12:42:47.829  Installing required Roslyn analyzers...
+12:42:47.829  Processing plugin: vbnet version 10.19.0.132793
+12:42:47.832  Incremental PR analysis: Base branch parameter was not provided.
+12:42:47.832  Cache data is empty. A full analysis will be performed.
+12:42:47.849  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.sln' --no-incremental
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateMaintenanceScheduleRequest.cs(6,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSmartMeterRequest.cs(6,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateForecastServiceRequest.cs(7,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateBatteryStorageRequest.cs(6,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Program.cs(36,5): warning S6966: Await EnsureCreatedAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Program.cs(39,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(6,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(7,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(8,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(9,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(10,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(11,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/UsageBillingsController.cs(106,26): warning S6968: Annotate this method with ProducesResponseType containing the return type for successful responses. (https://rules.sonarsource.com/csharp/RSPEC-6968) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+  LcpUml6.Api -> /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/bin/Debug/net8.0/LcpUml6.Api.dll
+  Sonar: (LcpUml6.Api.csproj) Project processed successfully
+
+Build succeeded.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateMaintenanceScheduleRequest.cs(6,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSmartMeterRequest.cs(6,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateForecastServiceRequest.cs(7,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateBatteryStorageRequest.cs(6,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Program.cs(36,5): warning S6966: Await EnsureCreatedAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Program.cs(39,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(6,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(7,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(8,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(9,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(10,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs(11,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/UsageBillingsController.cs(106,26): warning S6968: Annotate this method with ProducesResponseType containing the return type for successful responses. (https://rules.sonarsource.com/csharp/RSPEC-6968) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.csproj]
+    13 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.75
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:42:48.783  Starting with Scanner for .NET v8 the way the `sonar.projectBaseDir` property is automatically detected has changed and this has an impact on the files that are analyzed and other properties that are resolved relative to it like `sonar.exclusions` and `sonar.test.exclusions`. If you would like to customize the behavior, please set the `sonar.projectBaseDir` property to point to a directory that contains all the source code you want to analyze. The path may be relative (to the directory from which the analysis was started) or absolute.
+12:42:48.822  Using Java found in Analysis Config: /Users/natebrock/.sonar/cache/1f7f6506b598e85d7d8ff8b36563d98657d2d81b16bfca3cd242d7906cfbd11b/OpenJDK21U-jre_aarch64_mac_hotspot_21.0.9_10.tar.gz_extracted/jdk-21.0.9+10-jre/Contents/Home/bin/java
+12:42:48.957  INFO: Starting SonarScanner Engine...
+12:42:48.957  INFO: Java 21.0.9 Eclipse Adoptium (64-bit)
+12:42:49.315  INFO: Load global settings
+12:42:49.355  INFO: Load global settings (done) | time=40ms
+12:42:49.356  INFO: Server id: 147B411E-AZ0bxA18m5poxwSeY8qC
+12:42:49.36  INFO: Loading required plugins
+12:42:49.36  INFO: Load plugins index
+12:42:49.366  INFO: Load plugins index (done) | time=6ms
+12:42:49.366  INFO: Load/download plugins
+12:42:49.376  INFO: Load/download plugins (done) | time=9ms
+12:42:49.466  INFO: Process project properties
+12:42:49.473  INFO: Process project properties (done) | time=6ms
+12:42:49.478  INFO: Project key: lcp-uml-6
+12:42:49.478  INFO: Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6
+12:42:49.478  INFO: Working dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/.sonar
+12:42:49.482  INFO: Load project settings for component key: 'lcp-uml-6'
+12:42:49.488  INFO: Load project settings for component key: 'lcp-uml-6' (done) | time=6ms
+12:42:49.499  INFO: Load quality profiles
+12:42:49.518  INFO: Load quality profiles (done) | time=18ms
+12:42:49.534  INFO: Load active rules
+12:42:49.651  INFO: Load active rules (done) | time=117ms
+12:42:49.653  INFO: Load analysis cache
+12:42:49.657  INFO: Load analysis cache (404) | time=3ms
+12:42:49.739  INFO: Preprocessing files...
+12:42:49.815  INFO: 2 languages detected in 58 preprocessed files (done) | time=76ms
+12:42:49.815  INFO: 13 files ignored because of inclusion/exclusion patterns
+12:42:49.815  INFO: 0 files ignored because of scm ignore settings
+12:42:49.816  INFO: Loading plugins for detected languages
+12:42:49.816  INFO: Load/download plugins
+12:42:49.817  INFO: Load/download plugins (done) | time=1ms
+12:42:49.844  INFO: Executing phase 2 project builders
+12:42:49.852  INFO: Executing phase 2 project builders (done) | time=8ms
+12:42:49.854  INFO: Load project repositories
+12:42:49.89  INFO: Load project repositories (done) | time=36ms
+12:42:49.897  INFO: Indexing files...
+12:42:49.897  INFO: Project configuration:
+12:42:49.897  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:49.897  INFO: Indexing files of module 'LcpUml6.Api'
+12:42:49.897  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api
+12:42:49.898  INFO:   Source paths: Contracts/Requests/CommitTransactionRequest.cs, Contracts/Req...
+12:42:49.898  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:49.915  INFO: Indexing files of module 'LCP-UML-6'
+12:42:49.915  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6
+12:42:49.915  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:49.915  INFO: 58 files indexed (done) | time=18ms
+12:42:49.916  INFO: Quality profile for cs: Sonar way
+12:42:49.916  INFO: Quality profile for json: Sonar way
+12:42:49.916  INFO: ------------- Run sensors on module LcpUml6.Api
+12:42:49.926  INFO: Load metrics repository
+12:42:49.939  INFO: Load metrics repository (done) | time=13ms
+12:42:50.033  INFO: Sensor IaC CloudFormation Sensor [iac]
+12:42:50.036  INFO: There are no files to be analyzed for the CloudFormation language
+12:42:50.036  INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=4ms
+12:42:50.036  INFO: Sensor IaC cfn-lint report Sensor [iac]
+12:42:50.036  INFO: Sensor IaC cfn-lint report Sensor [iac] (done) | time=0ms
+12:42:50.036  INFO: Sensor IaC hadolint report Sensor [iac]
+12:42:50.036  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:42:50.036  INFO: Sensor IaC Azure Resource Manager Sensor [iac]
+12:42:50.037  INFO: There are no files to be analyzed for the Azure Resource Manager language
+12:42:50.037  INFO: Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=1ms
+12:42:50.037  INFO: Sensor Java Config Sensor [iac]
+12:42:50.038  INFO: There are no files to be analyzed for the Java language
+12:42:50.038  INFO: Sensor Java Config Sensor [iac] (done) | time=1ms
+12:42:50.038  INFO: Sensor IaC Docker Sensor [iac]
+12:42:50.039  INFO: There are no files to be analyzed for the Docker language
+12:42:50.039  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:42:50.039  INFO: Sensor C# Project Type Information [csharp]
+12:42:50.039  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:42:50.039  INFO: Sensor C# Analysis Log [csharp]
+12:42:50.041  INFO: Roslyn version: 4.11.0.0
+12:42:50.041  INFO: Language version: CSharp12
+12:42:50.041  INFO: Concurrent execution: enabled
+12:42:50.041  INFO: Sensor C# Analysis Log [csharp] (done) | time=2ms
+12:42:50.041  INFO: Sensor C# Method Declarations [csharp]
+12:42:50.041  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:42:50.041  INFO: Sensor C# Telemetry [csharp]
+12:42:50.042  INFO: Sensor C# Telemetry [csharp] (done) | time=1ms
+12:42:50.042  INFO: Sensor C# Telemetry Json [csharp]
+12:42:50.047  INFO: Sensor C# Telemetry Json [csharp] (done) | time=5ms
+12:42:50.047  INFO: Sensor C# Properties [csharp]
+12:42:50.047  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:42:50.048  INFO: ------------- Run sensors on module LCP-UML-6
+12:42:50.059  INFO: Sensor IaC hadolint report Sensor [iac]
+12:42:50.059  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:42:50.059  INFO: Sensor Java Config Sensor [iac]
+12:42:50.059  INFO: There are no files to be analyzed for the Java language
+12:42:50.059  INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+12:42:50.059  INFO: Sensor IaC Docker Sensor [iac]
+12:42:50.059  INFO: There are no files to be analyzed for the Docker language
+12:42:50.059  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:42:50.059  INFO: Sensor C# Project Type Information [csharp]
+12:42:50.059  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:42:50.059  INFO: Sensor C# Analysis Log [csharp]
+12:42:50.059  INFO: Sensor C# Analysis Log [csharp] (done) | time=0ms
+12:42:50.06  INFO: Sensor C# Method Declarations [csharp]
+12:42:50.06  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:42:50.06  INFO: Sensor C# Properties [csharp]
+12:42:50.06  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:42:50.06  INFO: Sensor TextAndSecretsSensor [text]
+12:42:50.064  INFO: Available processors: 16
+12:42:50.064  INFO: Using 16 threads for analysis.
+12:42:50.147  INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+12:42:50.156  INFO: Start fetching files for the text and secrets analysis
+12:42:50.168  INFO: Using Git CLI to retrieve dirty files
+12:42:50.199  INFO: Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+12:42:50.199  INFO: Starting the text and secrets analysis
+12:42:50.2  INFO: 57 source files to be analyzed for the text and secrets analysis
+12:42:50.216  INFO: 57/57 source files have been analyzed for the text and secrets analysis
+12:42:50.217  INFO: Sensor TextAndSecretsSensor [text] (done) | time=157ms
+12:42:50.217  INFO: ------------- Run sensors on project
+12:42:50.266  INFO: Sensor C# Telemetry processor [csharp]
+12:42:50.267  INFO: Sensor C# Telemetry processor [csharp] (done) | time=1ms
+12:42:50.267  INFO: Sensor C# Telemetry Json processor [csharp]
+12:42:50.269  INFO: Sensor C# Telemetry Json processor [csharp] (done) | time=2ms
+12:42:50.269  INFO: Sensor C# [csharp]
+12:42:50.271  INFO: Importing results from 8 proto files in '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/0/output-cs'
+12:42:50.364  INFO: Importing 1 Roslyn report
+12:42:50.374  INFO: Found 1 MSBuild C# project: 1 MAIN project.
+12:42:50.374  INFO: Sensor C# [csharp] (done) | time=105ms
+12:42:50.374  INFO: Sensor Analysis Warnings import [csharp]
+12:42:50.375  INFO: Sensor Analysis Warnings import [csharp] (done) | time=1ms
+12:42:50.375  INFO: Sensor C# File Caching Sensor [csharp]
+12:42:50.379  INFO: Sensor C# File Caching Sensor [csharp] (done) | time=4ms
+12:42:50.379  INFO: Sensor Zero Coverage Sensor
+12:42:50.385  INFO: Sensor Zero Coverage Sensor (done) | time=6ms
+12:42:50.385  INFO: ------------- Gather SCA dependencies on project
+12:42:50.386  INFO: Dependency analysis skipped
+12:42:50.387  INFO: SCM Publisher SCM provider for this project is: git
+12:42:50.387  INFO: SCM Publisher 54 source files to be analyzed
+12:42:50.787  INFO: SCM Publisher 54/54 source files have been analyzed (done) | time=400ms
+12:42:50.79  INFO: CPD Executor 23 files had no CPD blocks
+12:42:50.79  INFO: CPD Executor Calculating CPD for 31 files
+12:42:50.798  INFO: CPD Executor CPD calculation finished (done) | time=8ms
+12:42:50.8  INFO: SCM revision ID 'bcb6a2c690c5d23aba2bbd0b89f8ff264a790b66'
+12:42:50.838  INFO: Analysis report generated in 35ms, dir size=407.4 kB
+12:42:50.916  INFO: Analysis report compressed in 77ms, zip size=142.9 kB
+12:42:50.935  INFO: Analysis report uploaded in 19ms
+12:42:50.936  INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=lcp-uml-6
+12:42:50.936  INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:42:50.936  INFO: More about the report processing at http://localhost:9000/api/ce/task?id=866a0c6b-f196-4f43-aff8-10e5541c0783
+12:42:50.964  INFO: Analysis total time: 1.573 s
+12:42:50.964  INFO: SonarScanner Engine completed successfully
+12:42:50.987  The scanner engine has finished successfully
+12:42:50.987  Post-processing succeeded.

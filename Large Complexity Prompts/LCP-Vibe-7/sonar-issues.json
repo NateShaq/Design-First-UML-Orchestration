@@ -1,0 +1,219 @@
+{
+  "total": 4,
+  "issues": [
+    {
+      "key": "8bb001a2-a4b4-4164-b298-193e1eb7f820",
+      "rule": "external_roslyn:CA1860",
+      "severity": "INFO",
+      "component": "lcp-vibe-7:GlobalEduERP/Controllers/AdmissionsController.cs",
+      "project": "lcp-vibe-7",
+      "line": 24,
+      "hash": "ba23cd6e523e7644d1395934ea3a35d2",
+      "textRange": {
+        "startLine": 24,
+        "endLine": 24,
+        "startOffset": 25,
+        "endOffset": 49
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+      "effort": "0min",
+      "debt": "0min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:40:39+0000",
+      "type": "CODE_SMELL",
+      "externalRuleEngine": "roslyn",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "INFO"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "972e0270-3067-441c-8e81-0ef2c10af1b7",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-vibe-7:GlobalEduERP/Models/DomainModels.cs",
+      "project": "lcp-vibe-7",
+      "line": 30,
+      "hash": "1038460e056d4a66dbc8c3de22780b2f",
+      "textRange": {
+        "startLine": 30,
+        "endLine": 30,
+        "startOffset": 15,
+        "endOffset": 17
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:40:39+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "30a0cbdd-df3f-4657-9843-eede6f0e0e8b",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-vibe-7:GlobalEduERP/Models/DomainModels.cs",
+      "project": "lcp-vibe-7",
+      "line": 33,
+      "hash": "7012c9efa3b6675a26173cd4e311a731",
+      "textRange": {
+        "startLine": 33,
+        "endLine": 33,
+        "startOffset": 20,
+        "endOffset": 31
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:40:39+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "339327ae-f862-4596-8de1-6a7659a0e29b",
+      "rule": "csharpsquid:S6966",
+      "severity": "MAJOR",
+      "component": "lcp-vibe-7:GlobalEduERP/Program.cs",
+      "project": "lcp-vibe-7",
+      "line": 31,
+      "hash": "2c00f42b764b8134043380893434076b",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 0,
+        "endOffset": 9
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Await RunAsync instead.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "async-await"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:40:39+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 4
+  },
+  "components": [
+    {
+      "key": "lcp-vibe-7",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "LCP-Vibe-7",
+      "longName": "LCP-Vibe-7"
+    },
+    {
+      "key": "lcp-vibe-7:GlobalEduERP/Controllers/AdmissionsController.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "AdmissionsController.cs",
+      "longName": "GlobalEduERP/Controllers/AdmissionsController.cs",
+      "path": "GlobalEduERP/Controllers/AdmissionsController.cs"
+    },
+    {
+      "key": "lcp-vibe-7:GlobalEduERP/Models/DomainModels.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "DomainModels.cs",
+      "longName": "GlobalEduERP/Models/DomainModels.cs",
+      "path": "GlobalEduERP/Models/DomainModels.cs"
+    },
+    {
+      "key": "lcp-vibe-7:GlobalEduERP/Program.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Program.cs",
+      "longName": "GlobalEduERP/Program.cs",
+      "path": "GlobalEduERP/Program.cs"
+    }
+  ],
+  "facets": []
+}

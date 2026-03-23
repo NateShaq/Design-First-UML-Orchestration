@@ -1,0 +1,728 @@
+{
+  "total": 15,
+  "issues": [
+    {
+      "key": "456f277b-9610-4b1f-a12d-98d5a9095943",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Dto/OrderDtos.cs",
+      "project": "lcp-uml-2",
+      "line": 13,
+      "hash": "7bb404c60f115c21a4b2d16e31a355c2",
+      "textRange": {
+        "startLine": 13,
+        "endLine": 13,
+        "startOffset": 30,
+        "endOffset": 40
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "42809709-40ad-4f1d-a75b-2ffb8cf23e69",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Dto/OrderDtos.cs",
+      "project": "lcp-uml-2",
+      "line": 20,
+      "hash": "b15439d8f3d119b9ad143ddcf2908b0e",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 30,
+        "endOffset": 46
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "1312f808-b716-4939-86a5-87ff142df500",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Dto/OrderDtos.cs",
+      "project": "lcp-uml-2",
+      "line": 25,
+      "hash": "b15439d8f3d119b9ad143ddcf2908b0e",
+      "textRange": {
+        "startLine": 25,
+        "endLine": 25,
+        "startOffset": 30,
+        "endOffset": 46
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "ea609a14-e992-49fb-88e5-6332c6fc05bd",
+      "rule": "csharpsquid:S101",
+      "severity": "MINOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/DomainServices.cs",
+      "project": "lcp-uml-2",
+      "line": 21,
+      "hash": "edba33c33735b9f91cfd8c1baa1ee9ee",
+      "textRange": {
+        "startLine": 21,
+        "endLine": 21,
+        "startOffset": 13,
+        "endOffset": 22
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Rename class 'POSSystem' to match pascal case naming rules, consider using 'PosSystem'.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "IDENTIFIABLE",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "ae6f7d2f-b86b-4959-92f4-50fade61dc60",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "project": "lcp-uml-2",
+      "line": 10,
+      "hash": "8588b953f6f330b491094d5b0bd66aca",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 16,
+        "endOffset": 26
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "db19447d-0759-4990-80d9-5dc4d5d2e325",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "project": "lcp-uml-2",
+      "line": 40,
+      "hash": "046bc07340977e8575e8ece000808689",
+      "textRange": {
+        "startLine": 40,
+        "endLine": 40,
+        "startOffset": 16,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "17f47d92-7908-4c81-9bd0-645e84c90873",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "project": "lcp-uml-2",
+      "line": 42,
+      "hash": "8588b953f6f330b491094d5b0bd66aca",
+      "textRange": {
+        "startLine": 42,
+        "endLine": 42,
+        "startOffset": 16,
+        "endOffset": 26
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "82f12064-6d85-4a8e-a439-5d60a129a367",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "project": "lcp-uml-2",
+      "line": 45,
+      "hash": "ccbd181b8d25415d68d1688e4affd871",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 15,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "2a58ec2f-652f-494b-a9fe-2d303852abf9",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "project": "lcp-uml-2",
+      "line": 9,
+      "hash": "a52ce7919c8492309d1f035af0dc5cad",
+      "textRange": {
+        "startLine": 9,
+        "endLine": 9,
+        "startOffset": 16,
+        "endOffset": 32
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "323745bf-c7f0-406e-85a5-f8ba49412ace",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "project": "lcp-uml-2",
+      "line": 43,
+      "hash": "df56132869f00c6309ec5a6b56fd5eea",
+      "textRange": {
+        "startLine": 43,
+        "endLine": 43,
+        "startOffset": 16,
+        "endOffset": 24
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "454c81c9-7bf7-448e-9f14-39593355a192",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "project": "lcp-uml-2",
+      "line": 48,
+      "hash": "a52ce7919c8492309d1f035af0dc5cad",
+      "textRange": {
+        "startLine": 48,
+        "endLine": 48,
+        "startOffset": 16,
+        "endOffset": 32
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "b17fd478-061d-4a1a-979f-2ae4500ade7b",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "project": "lcp-uml-2",
+      "line": 51,
+      "hash": "fb034df5bdcedcc061da5cbd888a40f6",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 19,
+        "endOffset": 25
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c1802faa-30b5-4fd0-91af-c149acd8052a",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "project": "lcp-uml-2",
+      "line": 71,
+      "hash": "3a984cb7bf3f22e85968f5f686882c67",
+      "textRange": {
+        "startLine": 71,
+        "endLine": 71,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "5aa053ef-94c1-4e89-97c7-8bba0d091d19",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Product.cs",
+      "project": "lcp-uml-2",
+      "line": 18,
+      "hash": "45c9ae9f136bbfc0871183b1206049ad",
+      "textRange": {
+        "startLine": 18,
+        "endLine": 18,
+        "startOffset": 18,
+        "endOffset": 24
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "2105032e-dc54-4ffd-8350-d7b5e827b8c1",
+      "rule": "csharpsquid:S6966",
+      "severity": "MAJOR",
+      "component": "lcp-uml-2:src/OmnichannelRetail.Api/Program.cs",
+      "project": "lcp-uml-2",
+      "line": 25,
+      "hash": "2c00f42b764b8134043380893434076b",
+      "textRange": {
+        "startLine": 25,
+        "endLine": 25,
+        "startOffset": 0,
+        "endOffset": 9
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Await RunAsync instead.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "async-await"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:16+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 15
+  },
+  "components": [
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Program.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Program.cs",
+      "longName": "src/OmnichannelRetail.Api/Program.cs",
+      "path": "src/OmnichannelRetail.Api/Program.cs"
+    },
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Product.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Product.cs",
+      "longName": "src/OmnichannelRetail.Api/Models/Product.cs",
+      "path": "src/OmnichannelRetail.Api/Models/Product.cs"
+    },
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Dto/OrderDtos.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "OrderDtos.cs",
+      "longName": "src/OmnichannelRetail.Api/Dto/OrderDtos.cs",
+      "path": "src/OmnichannelRetail.Api/Dto/OrderDtos.cs"
+    },
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Payment.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Payment.cs",
+      "longName": "src/OmnichannelRetail.Api/Models/Payment.cs",
+      "path": "src/OmnichannelRetail.Api/Models/Payment.cs"
+    },
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Inventory.cs",
+      "longName": "src/OmnichannelRetail.Api/Models/Inventory.cs",
+      "path": "src/OmnichannelRetail.Api/Models/Inventory.cs"
+    },
+    {
+      "key": "lcp-uml-2:src/OmnichannelRetail.Api/Models/DomainServices.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "DomainServices.cs",
+      "longName": "src/OmnichannelRetail.Api/Models/DomainServices.cs",
+      "path": "src/OmnichannelRetail.Api/Models/DomainServices.cs"
+    },
+    {
+      "key": "lcp-uml-2",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "LCP-UML-2",
+      "longName": "LCP-UML-2"
+    }
+  ],
+  "facets": []
+}

@@ -1,0 +1,29 @@
+# Pattern Evaluation — IdentityPublicServicesScaffoldErr (Mar 23, 2026)
+
+## Design Patterns
+| Pattern | Instances | Classes Involved | Notes |
+| --- | --- | --- | --- |
+| Table-Per-Hierarchy Inheritance | 2 | Person → Citizen/Resident/ForeignNational; Agency → MunicipalService/NationalService | Uses EF TPH discriminators; basic polymorphism but no behaviors. |
+| Repository (DbSet) | 1 | AppDbContext DbSet<T> collections for each entity | Thin repository abstraction provided by EF; no custom repositories. |
+| Unit of Work | 1 | AppDbContext | EF change-tracking aggregates transactions; no explicit service layer on top. |
+
+## Abstract vs. Concrete Types
+| Kind | Count | Examples |
+| --- | --- | --- |
+| Abstract | 1 | Agency |
+| Concrete | 30 | IdentityRegistry, Person, Citizen, … , EducationServices, AppDbContext |
+
+## SOLID & Decoupling Grade
+| Area | Observation | Impact |
+| --- | --- | --- |
+| SRP | Entities mix persistence concerns (EF attributes) with domain shape; no separation between domain models and persistence DTOs. | Higher coupling to EF; harder to swap persistence layer. |
+| OCP/LSP | Simple inheritance respected; no variation points beyond TPH hierarchies. | Low risk today, but little extensibility hooks. |
+| ISP/DIP | No interfaces or service abstractions; consumers must depend directly on EF DbContext and entity classes. | Tight coupling; difficult to unit-test without EF. |
+| Architectural | Only data models and DbContext; missing repositories/services, validation, or domain behaviors. | Application logic would accumulate in controllers or DbContext, risking anemic domain model. |
+| Grade | **C** | Basic modeling is consistent, but lack of interfaces and layered boundaries limits decoupling and SOLID adherence. |
+
+## Metrics
+- Total classes: 31
+- Patterns found: 3
+- Pattern density: 3 / 31 ≈ 0.10
+

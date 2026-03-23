@@ -1,0 +1,189 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-vibe-7 /n:LCP-Vibe-7 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:43:35.837  Updating build integration targets...
+12:43:35.868  Using SonarQube v26.3.0.120487.
+12:43:35.933  Fetching analysis configuration settings...
+12:43:36.1  Provisioning analyzer assemblies for cs...
+12:43:36.1  Installing required Roslyn analyzers...
+12:43:36.1  Processing plugin: csharp version 10.19.0.132793
+12:43:36.161  Provisioning analyzer assemblies for vbnet...
+12:43:36.161  Installing required Roslyn analyzers...
+12:43:36.161  Processing plugin: vbnet version 10.19.0.132793
+12:43:36.164  Incremental PR analysis: Base branch parameter was not provided.
+12:43:36.164  Cache data is empty. A full analysis will be performed.
+12:43:36.181  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj' --no-incremental
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Models/DomainModels.cs(30,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Models/DomainModels.cs(33,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Program.cs(31,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+  GlobalEduERP -> /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/bin/Debug/net8.0/GlobalEduERP.dll
+  Sonar: (GlobalEduERP.csproj) Project processed successfully
+
+Build succeeded.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Models/DomainModels.cs(30,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Models/DomainModels.cs(33,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Program.cs(31,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.csproj]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.64
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:43:37.005  Starting with Scanner for .NET v8 the way the `sonar.projectBaseDir` property is automatically detected has changed and this has an impact on the files that are analyzed and other properties that are resolved relative to it like `sonar.exclusions` and `sonar.test.exclusions`. If you would like to customize the behavior, please set the `sonar.projectBaseDir` property to point to a directory that contains all the source code you want to analyze. The path may be relative (to the directory from which the analysis was started) or absolute.
+12:43:37.033  Using Java found in Analysis Config: /Users/natebrock/.sonar/cache/1f7f6506b598e85d7d8ff8b36563d98657d2d81b16bfca3cd242d7906cfbd11b/OpenJDK21U-jre_aarch64_mac_hotspot_21.0.9_10.tar.gz_extracted/jdk-21.0.9+10-jre/Contents/Home/bin/java
+12:43:37.172  INFO: Starting SonarScanner Engine...
+12:43:37.172  INFO: Java 21.0.9 Eclipse Adoptium (64-bit)
+12:43:37.513  INFO: Load global settings
+12:43:37.551  INFO: Load global settings (done) | time=37ms
+12:43:37.551  INFO: Server id: 147B411E-AZ0bxA18m5poxwSeY8qC
+12:43:37.555  INFO: Loading required plugins
+12:43:37.555  INFO: Load plugins index
+12:43:37.561  INFO: Load plugins index (done) | time=6ms
+12:43:37.561  INFO: Load/download plugins
+12:43:37.57  INFO: Load/download plugins (done) | time=9ms
+12:43:37.66  INFO: Process project properties
+12:43:37.666  INFO: Process project properties (done) | time=5ms
+12:43:37.672  INFO: Project key: lcp-vibe-7
+12:43:37.672  INFO: Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7
+12:43:37.672  INFO: Working dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/.sonar
+12:43:37.675  INFO: Load project settings for component key: 'lcp-vibe-7'
+12:43:37.686  INFO: Load project settings for component key: 'lcp-vibe-7' (done) | time=11ms
+12:43:37.695  INFO: Load quality profiles
+12:43:37.712  INFO: Load quality profiles (done) | time=16ms
+12:43:37.728  INFO: Load active rules
+12:43:37.846  INFO: Load active rules (done) | time=118ms
+12:43:37.848  INFO: Load analysis cache
+12:43:37.856  INFO: Load analysis cache (354 bytes) | time=8ms
+12:43:37.937  INFO: Preprocessing files...
+12:43:37.971  INFO: 2 languages detected in 11 preprocessed files (done) | time=34ms
+12:43:37.971  INFO: 12 files ignored because of inclusion/exclusion patterns
+12:43:37.971  INFO: 0 files ignored because of scm ignore settings
+12:43:37.972  INFO: Loading plugins for detected languages
+12:43:37.972  INFO: Load/download plugins
+12:43:37.974  INFO: Load/download plugins (done) | time=2ms
+12:43:38  INFO: Executing phase 2 project builders
+12:43:38.008  INFO: Executing phase 2 project builders (done) | time=9ms
+12:43:38.01  INFO: Load project repositories
+12:43:38.046  INFO: Load project repositories (done) | time=36ms
+12:43:38.053  INFO: Indexing files...
+12:43:38.053  INFO: Project configuration:
+12:43:38.053  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:38.054  INFO: Indexing files of module 'GlobalEduERP'
+12:43:38.054  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP
+12:43:38.054  INFO:   Source paths: Controllers/AdmissionsController.cs, Controllers/AlumniContro...
+12:43:38.054  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:38.062  INFO: Indexing files of module 'LCP-Vibe-7'
+12:43:38.062  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7
+12:43:38.062  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:38.062  INFO: 11 files indexed (done) | time=9ms
+12:43:38.062  INFO: Quality profile for cs: Sonar way
+12:43:38.062  INFO: Quality profile for json: Sonar way
+12:43:38.062  INFO: ------------- Run sensors on module GlobalEduERP
+12:43:38.072  INFO: Load metrics repository
+12:43:38.089  INFO: Load metrics repository (done) | time=17ms
+12:43:38.178  INFO: Sensor IaC CloudFormation Sensor [iac]
+12:43:38.18  INFO: There are no files to be analyzed for the CloudFormation language
+12:43:38.181  INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=3ms
+12:43:38.181  INFO: Sensor IaC cfn-lint report Sensor [iac]
+12:43:38.181  INFO: Sensor IaC cfn-lint report Sensor [iac] (done) | time=1ms
+12:43:38.181  INFO: Sensor IaC hadolint report Sensor [iac]
+12:43:38.181  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:43:38.181  INFO: Sensor IaC Azure Resource Manager Sensor [iac]
+12:43:38.182  INFO: There are no files to be analyzed for the Azure Resource Manager language
+12:43:38.182  INFO: Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=0ms
+12:43:38.182  INFO: Sensor Java Config Sensor [iac]
+12:43:38.182  INFO: There are no files to be analyzed for the Java language
+12:43:38.182  INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+12:43:38.182  INFO: Sensor IaC Docker Sensor [iac]
+12:43:38.183  INFO: There are no files to be analyzed for the Docker language
+12:43:38.183  INFO: Sensor IaC Docker Sensor [iac] (done) | time=1ms
+12:43:38.183  INFO: Sensor C# Project Type Information [csharp]
+12:43:38.183  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:43:38.183  INFO: Sensor C# Analysis Log [csharp]
+12:43:38.185  INFO: Roslyn version: 4.11.0.0
+12:43:38.185  INFO: Language version: CSharp12
+12:43:38.185  INFO: Concurrent execution: enabled
+12:43:38.185  INFO: Sensor C# Analysis Log [csharp] (done) | time=2ms
+12:43:38.185  INFO: Sensor C# Method Declarations [csharp]
+12:43:38.186  INFO: Sensor C# Method Declarations [csharp] (done) | time=1ms
+12:43:38.186  INFO: Sensor C# Telemetry [csharp]
+12:43:38.186  INFO: Sensor C# Telemetry [csharp] (done) | time=0ms
+12:43:38.186  INFO: Sensor C# Telemetry Json [csharp]
+12:43:38.191  INFO: Sensor C# Telemetry Json [csharp] (done) | time=5ms
+12:43:38.191  INFO: Sensor C# Properties [csharp]
+12:43:38.191  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:43:38.192  INFO: ------------- Run sensors on module LCP-Vibe-7
+12:43:38.202  INFO: Sensor IaC hadolint report Sensor [iac]
+12:43:38.202  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:43:38.202  INFO: Sensor Java Config Sensor [iac]
+12:43:38.203  INFO: There are no files to be analyzed for the Java language
+12:43:38.203  INFO: Sensor Java Config Sensor [iac] (done) | time=1ms
+12:43:38.203  INFO: Sensor IaC Docker Sensor [iac]
+12:43:38.203  INFO: There are no files to be analyzed for the Docker language
+12:43:38.203  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:43:38.203  INFO: Sensor C# Project Type Information [csharp]
+12:43:38.203  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:43:38.203  INFO: Sensor C# Analysis Log [csharp]
+12:43:38.203  INFO: Sensor C# Analysis Log [csharp] (done) | time=0ms
+12:43:38.203  INFO: Sensor C# Method Declarations [csharp]
+12:43:38.203  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:43:38.203  INFO: Sensor C# Properties [csharp]
+12:43:38.203  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:43:38.203  INFO: Sensor TextAndSecretsSensor [text]
+12:43:38.207  INFO: Available processors: 16
+12:43:38.207  INFO: Using 16 threads for analysis.
+12:43:38.289  INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+12:43:38.298  INFO: Start fetching files for the text and secrets analysis
+12:43:38.31  INFO: Using Git CLI to retrieve dirty files
+12:43:38.347  INFO: Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+12:43:38.348  INFO: Starting the text and secrets analysis
+12:43:38.348  INFO: 9 source files to be analyzed for the text and secrets analysis
+12:43:38.354  INFO: 9/9 source files have been analyzed for the text and secrets analysis
+12:43:38.354  INFO: Sensor TextAndSecretsSensor [text] (done) | time=151ms
+12:43:38.355  INFO: ------------- Run sensors on project
+12:43:38.4  INFO: Sensor C# Telemetry processor [csharp]
+12:43:38.401  INFO: Sensor C# Telemetry processor [csharp] (done) | time=0ms
+12:43:38.401  INFO: Sensor C# Telemetry Json processor [csharp]
+12:43:38.403  INFO: Sensor C# Telemetry Json processor [csharp] (done) | time=2ms
+12:43:38.403  INFO: Sensor C# [csharp]
+12:43:38.405  INFO: Importing results from 8 proto files in '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/0/output-cs'
+12:43:38.464  INFO: Importing 1 Roslyn report
+12:43:38.476  INFO: Found 1 MSBuild C# project: 1 MAIN project.
+12:43:38.476  INFO: Sensor C# [csharp] (done) | time=73ms
+12:43:38.476  INFO: Sensor Analysis Warnings import [csharp]
+12:43:38.477  INFO: Sensor Analysis Warnings import [csharp] (done) | time=0ms
+12:43:38.477  INFO: Sensor C# File Caching Sensor [csharp]
+12:43:38.479  INFO: Sensor C# File Caching Sensor [csharp] (done) | time=2ms
+12:43:38.479  INFO: Sensor Zero Coverage Sensor
+12:43:38.482  INFO: Sensor Zero Coverage Sensor (done) | time=3ms
+12:43:38.482  INFO: ------------- Gather SCA dependencies on project
+12:43:38.484  INFO: Dependency analysis skipped
+12:43:38.487  INFO: CPD Executor Calculating CPD for 6 files
+12:43:38.49  INFO: CPD Executor CPD calculation finished (done) | time=3ms
+12:43:38.493  INFO: SCM revision ID 'bcb6a2c690c5d23aba2bbd0b89f8ff264a790b66'
+12:43:38.518  INFO: Analysis report generated in 25ms, dir size=299.7 kB
+12:43:38.533  INFO: Analysis report compressed in 15ms, zip size=46.4 kB
+12:43:38.548  INFO: Analysis report uploaded in 15ms
+12:43:38.548  INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=lcp-vibe-7
+12:43:38.548  INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:43:38.548  INFO: More about the report processing at http://localhost:9000/api/ce/task?id=99b94037-031d-4674-9c47-fb31c64e8f5f
+12:43:38.554  INFO: Analysis total time: 0.970 s
+12:43:38.555  INFO: SonarScanner Engine completed successfully
+12:43:38.577  The scanner engine has finished successfully
+12:43:38.577  Post-processing succeeded.

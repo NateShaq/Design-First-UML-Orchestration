@@ -1,0 +1,424 @@
+OpenAI Codex v0.116.0 (research preview)
+--------
+workdir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts
+model: gpt-5.1-codex-max
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/natebrock/.codex/memories]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019d1bb2-c359-7a32-aa9c-ac849958c5ed
+--------
+user
+
+        Act as a Senior Software Architect. 
+        Navigate the source code in ./LCP-UML-7.
+        
+        1. Identify Software Design Patterns (Strategy, Factory, Repository, Observer, etc.).
+        2. Identify Abstract/Interface types vs. Concrete implementations.
+        3. Grade the implementation (A-F) based on Decoupling and SOLID principles.
+        4. Document findings in a markdown table.
+        5. Calculate 'Pattern Density' (Patterns Found / Total Classes).
+        
+        Output results to: ./LCP-UML-7/pattern_evaluation.log
+    
+mcp startup: no servers
+
+thinking
+**Preparing plan for repo scan**
+
+I'm considering creating a plan to scan the repo and identify code patterns since the task is moderate and involves multiple steps, so I'll use the plan tool to break it down.
+Plan update
+  → Scan repository structure and count classes/interfaces/abstracts
+  • Identify design patterns and map interfaces to concretes
+  • Assess decoupling/SOLID and compute pattern density, prepare table and log output
+exec
+/bin/zsh -lc ls in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+IdentityPublicServicesScaffoldErr
+LCP-UML-1
+LCP-UML-2
+LCP-UML-3
+LCP-UML-4
+LCP-UML-5
+LCP-UML-6
+LCP-UML-7
+LCP-UML-8
+LCP-UML-9
+LCP-Vibe-1
+LCP-Vibe-2
+LCP-Vibe-3
+LCP-Vibe-4
+LCP-Vibe-5
+LCP-Vibe-6
+LCP-Vibe-7
+LCP-Vibe-8
+LCP-Vibe-9
+evaluate_patterns.sh
+exec
+/bin/zsh -lc 'cd LCP-UML-7 && ls' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+LCP-UML-7.puml
+build_audit.log
+evaluation_audit.log
+experiment_metadata.log
+src
+exec
+/bin/zsh -lc 'cd LCP-UML-7/src && ls' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+LCP.Uml7.Api
+README.md
+exec
+/bin/zsh -lc 'cd LCP-UML-7/src/LCP.Uml7.Api && find . -maxdepth 3 -type f' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+./obj/LCP.Uml7.Api.csproj.nuget.g.props
+./obj/project.nuget.cache
+./obj/LCP.Uml7.Api.csproj.nuget.dgspec.json
+./obj/project.assets.json
+./obj/LCP.Uml7.Api.csproj.nuget.g.targets
+./LCP.Uml7.Api.csproj
+./appsettings.json
+./Controllers/BillingController.cs
+./Controllers/StudentsController.cs
+./Controllers/EnrollmentsController.cs
+./Controllers/CourseOfferingsController.cs
+./Data/UniversityDbContext.cs
+./Entities/DomainModels.cs
+./Program.cs
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Entities/DomainModels.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LCP.Uml7.Api.Entities;
+
+public abstract class Student
+{
+    [Key]
+    public Guid StudentId { get; set; }
+    [MaxLength(200)]
+    public string LegalName { get; set; } = string.Empty;
+    [MaxLength(320)]
+    public string Email { get; set; } = string.Empty;
+    public int Revision { get; set; }
+    [Timestamp]
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
+    public ICollection<Transcript> Transcripts { get; set; } = new List<Transcript>();
+    public ICollection<FinancialAidPackage> AidPackages { get; set; } = new List<FinancialAidPackage>();
+    public ICollection<BillingAccount> BillingAccounts { get; set; } = new List<BillingAccount>();
+    public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '200,400p' Entities/DomainModels.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal Amount { get; set; }
+}
+
+public class LoanAid : FinancialAidPackage
+{
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal Principal { get; set; }
+}
+
+public class PaymentPlan
+{
+    [Key]
+    public Guid PlanId { get; set; }
+    public int Installments { get; set; }
+    public Guid AidPackageId { get; set; }
+    public FinancialAidPackage AidPackage { get; set; } = null!;
+}
+
+public class BillingAccount
+
+thinking
+**Noting presence of POCO classes**
+
+The codebase contains many plain old CLR objects (POCOs), indicating a need to implement controllers or similar logic layers on top.
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Data/UniversityDbContext.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using LCP.Uml7.Api.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace LCP.Uml7.Api.Data;
+
+public class UniversityDbContext : DbContext
+{
+    public UniversityDbContext(DbContextOptions<UniversityDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<Student> Students => Set<Student>();
+    public DbSet<Undergraduate> Undergraduates => Set<Undergraduate>();
+    public DbSet<Postgraduate> Postgraduates => Set<Postgraduate>();
+    public DbSet<AcademicStaff> AcademicStaff => Set<AcademicStaff>();
+    public DbSet<Faculty> FacultyMembers => Set<Faculty>();
+    public DbSet<ResearchFellow> ResearchFellows => Set<ResearchFellow>();
+    public DbSet<AdmissionsOfficer> AdmissionsOfficers => Set<AdmissionsOfficer>();
+    public DbSet<Registrar> Registrars => Set<Registrar>();
+    public DbSet<Alumni> Alumni => Set<Alumni>();
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '200,400p' Data/UniversityDbContext.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+            .HasOne(x => x.Offering)
+            .WithMany(o => o.StudentCourseOfferings)
+            .HasForeignKey(x => x.OfferingId);
+
+        modelBuilder.Entity<ResearchProjectCourseOffering>()
+            .HasKey(x => new { x.ResearchProjectId, x.OfferingId });
+        modelBuilder.Entity<ResearchProjectCourseOffering>()
+            .HasOne(x => x.ResearchProject)
+            .WithMany(p => p.CourseOfferings)
+            .HasForeignKey(x => x.ResearchProjectId);
+        modelBuilder.Entity<ResearchProjectCourseOffering>()
+            .HasOne(x => x.Offering)
+            .WithMany(o => o.ResearchProjectLinks)
+            .HasForeignKey(x => x.OfferingId);
+
+        modelBuilder.Entity<AlumniEvent>()
+            .HasKey(x => new { x.AlumniId, x.EventId });
+        modelBuilder.Entity<AlumniEvent>()
+            .HasOne(x => x.Alumni)
+            .WithMany(a => a.Events)
+
+thinking
+**Identifying controllers**
+
+I'm focusing on locating controller modules or classes to understand how the application handles incoming requests and routes.
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Controllers/StudentsController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using LCP.Uml7.Api.Data;
+using LCP.Uml7.Api.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace LCP.Uml7.Api.Controllers;
+
+[ApiController]
+[Route("api/students")]
+public class StudentsController : ControllerBase
+{
+    private readonly UniversityDbContext _context;
+
+    public StudentsController(UniversityDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<Student>> Get(Guid id)
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Controllers/CourseOfferingsController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.Data;
+using LCP.Uml7.Api.Data;
+using LCP.Uml7.Api.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace LCP.Uml7.Api.Controllers;
+
+[ApiController]
+[Route("api/course-offerings")]
+public class CourseOfferingsController : ControllerBase
+{
+    private readonly UniversityDbContext _context;
+
+    public CourseOfferingsController(UniversityDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost]
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Controllers/EnrollmentsController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.Data;
+using LCP.Uml7.Api.Data;
+using LCP.Uml7.Api.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace LCP.Uml7.Api.Controllers;
+
+[ApiController]
+[Route("api/enrollments")]
+public class EnrollmentsController : ControllerBase
+{
+    private readonly UniversityDbContext _context;
+
+    public EnrollmentsController(UniversityDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost]
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Controllers/BillingController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.Data;
+using LCP.Uml7.Api.Data;
+using LCP.Uml7.Api.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace LCP.Uml7.Api.Controllers;
+
+[ApiController]
+[Route("api/billing")]
+public class BillingController : ControllerBase
+{
+    private readonly UniversityDbContext _context;
+
+    public BillingController(UniversityDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost("accounts")]
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && sed -n '1,200p' Program.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using LCP.Uml7.Api.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<UniversityDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+
+thinking
+**Considering class count methods**
+
+I’m checking the number of controllers versus entities and planning to count class definitions using ripgrep with patterns like "^public class" or C# tools for accurate class counts.
+exec
+/bin/zsh -lc "cd LCP-UML-7/src/LCP.Uml7.Api && rg '"'^public (abstract class|class)'"' --no-heading -n" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+Entities/DomainModels.cs:6:public abstract class Student
+Entities/DomainModels.cs:24:public class Undergraduate : Student { }
+Entities/DomainModels.cs:26:public class Postgraduate : Student { }
+Entities/DomainModels.cs:28:public abstract class AcademicStaff
+Entities/DomainModels.cs:35:public class Faculty : AcademicStaff
+Entities/DomainModels.cs:42:public class ResearchFellow : AcademicStaff
+Entities/DomainModels.cs:51:public class AdmissionsOfficer
+Entities/DomainModels.cs:58:public class Registrar
+Entities/DomainModels.cs:65:public class Alumni
+Entities/DomainModels.cs:74:public class CourseCurriculum
+Entities/DomainModels.cs:85:public class CourseModule
+Entities/DomainModels.cs:96:public class CourseOffering
+Entities/DomainModels.cs:111:public class Enrollment
+Entities/DomainModels.cs:124:public class Transcript
+Entities/DomainModels.cs:137:public class GradeEntry
+Entities/DomainModels.cs:149:public class LearningManagementSystem
+Entities/DomainModels.cs:157:public class OnlineCourse
+Entities/DomainModels.cs:167:public class Assignment
+Entities/DomainModels.cs:177:public class Submission
+Entities/DomainModels.cs:186:public abstract class FinancialAidPackage
+
+thinking
+**Assessing design patterns and class count**
+
+The codebase has 41 classes total, including 3 abstract base classes, with no interfaces or explicit design patterns like factory or observer; it mainly uses inheritance and a DbContext as Unit of Work/Repository. Pattern usage is low, with tight coupling between controllers and DbContext, suggesting mediocre adherence to SOLID principles and a rough grade around C-.
+
+thinking
+**Summarizing design pattern inventory**
+
+Identified 3 core patterns—Repository/Unit of Work, DTO, and non-polymorphic inheritance—across 41 classes yielding a 7.3% pattern density. Preparing to document pattern types with abstract/concrete classification and evaluation in a markdown table.
+
+thinking
+**Planning detailed pattern evaluation table**
+
+I'm outlining a single markdown table capturing each pattern's abstractions, concrete implementations, SOLID impact notes, related files, plus summary rows for pattern density, decoupling grade, and abstract vs. concrete listings to write to the log next.
+Plan update
+Class count=41 (3 abstract). No interfaces found. Patterns: EF DbContext (Unit of Work/Repository), DTOs, inheritance hierarchies (TPH). Proceed to mapping and grading.
+  ✓ Scan repository structure and count classes/interfaces/abstracts
+  → Identify design patterns and map interfaces to concretes
+  • Assess decoupling/SOLID and compute pattern density, prepare table and log output
+
+thinking
+**Preparing pattern density calculation**
+
+I'm planning to compute pattern density using simple methods, either Python or shell expressions, to finalize the mapping patterns and craft the table content.
+exec
+/bin/zsh -lc "python - <<'PY'
+patterns=3
+classes=41
+density=patterns/classes
+print(patterns, classes, f\"{density:.3f}\")
+PY" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 59ms:
+3 41 0.073
+
+thinking
+**Composing pattern evaluation markdown table**
+
+I'm preparing a markdown table summarizing architectural patterns with columns for abstract/interfaces, concretes, decoupling notes, and files, plus an overall grade row. I'll write the content non-destructively inside the repo root to a pattern evaluation log.
+
+thinking
+**Planning DTO columns consistency**
+
+I'm considering a fill pattern for grade and density to ensure consistent columns, possibly including "Metric" entries. Next, I'll design this structure accordingly.
+exec
+/bin/zsh -lc "cd LCP-UML-7 && cat <<'EOF' > pattern_evaluation.log
+# Pattern Evaluation (LCP-UML-7)
+Date: 2026-03-23 (America/Chicago)
+
+| Pattern / Aspect | Abstract / Interfaces | Concrete Implementations | Decoupling & SOLID Notes | Files |
+| --- | --- | --- | --- | --- |
+| Unit of Work / Repository (EF Core) | "'`DbContext` (framework base) | `UniversityDbContext` | Centralizes persistence but controllers depend directly on EF, limiting DIP and testability. | src/LCP.Uml7.Api/Data/UniversityDbContext.cs |
+| DTO (Data Transfer Object) | — | `StudentCreateDto`, `StudentUpdateDto`, `CourseOfferingCreateDto`, `CapacityUpdateDto`, `EnrollmentCreateDto`, `EnrollmentStatusDto`, `BillingAccountCreateDto`, `InvoiceCreateDto`, `PaymentCreateDto` | Separates API payloads from entities, modestly reduces coupling; still tightly mapped to persistence models. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Inheritance w/ Discriminator (TPH) | `Student`, `AcademicStaff`, `FinancialAidPackage` (abstract) | `Undergraduate`, `Postgraduate`, `Faculty`, `ResearchFellow`, `Scholarship`, `LoanAid` | Provides type variation but no polymorphic behavior; mostly classification, so Strategy benefits unrealized. | src/LCP.Uml7.Api/Entities/DomainModels.cs |
+| Dependency Injection | (Container-provided) | Controllers receive `UniversityDbContext` via ctor injection | DI used, but no service interfaces; controllers tied to infrastructure, partly meeting DIP. | src/LCP.Uml7.Api/Program.cs; Controllers |
+| Transaction Script style | — | Controller actions encapsulate DB logic and transactions | Straightforward flow; mixes orchestration with persistence, limiting reuse and SRP. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Abstract vs. Concrete Summary | Abstract classes: `Student`, `AcademicStaff`, `FinancialAidPackage`; Interfaces: none | Concrete classes: 33 domain entities + 4 controllers + `UniversityDbContext` | Limited abstraction; absence of interfaces constrains substitution and testing flexibility. | Entities/DomainModels.cs; Data/UniversityDbContext.cs; Controllers |
+| Grade (Decoupling & SOLID) | — | — | **C** – Clear domain model and DTOs, but controllers directly use DbContext (high coupling), no repository/service interfaces, minimal polymorphism use, limited SRP/DIP adherence. | — |
+| Pattern Density | — | — | Patterns counted: 3 (UoW/Repository, DTO, Inheritance/TPH); Total classes: 41 → Density = 3/41 ≈ 7.3% | — |
+EOF' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+
+thinking
+**Checking quote escaping issues**
+
+I noticed a possible stray quote in the second row around "Unit of Work / Repository" that may cause formatting problems, so I'll review the file to confirm correct quote usage.
+exec
+/bin/zsh -lc 'cd LCP-UML-7 && cat pattern_evaluation.log' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+# Pattern Evaluation (LCP-UML-7)
+Date: 2026-03-23 (America/Chicago)
+
+| Pattern / Aspect | Abstract / Interfaces | Concrete Implementations | Decoupling & SOLID Notes | Files |
+| --- | --- | --- | --- | --- |
+| Unit of Work / Repository (EF Core) | `DbContext` (framework base) | `UniversityDbContext` | Centralizes persistence but controllers depend directly on EF, limiting DIP and testability. | src/LCP.Uml7.Api/Data/UniversityDbContext.cs |
+| DTO (Data Transfer Object) | — | `StudentCreateDto`, `StudentUpdateDto`, `CourseOfferingCreateDto`, `CapacityUpdateDto`, `EnrollmentCreateDto`, `EnrollmentStatusDto`, `BillingAccountCreateDto`, `InvoiceCreateDto`, `PaymentCreateDto` | Separates API payloads from entities, modestly reduces coupling; still tightly mapped to persistence models. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Inheritance w/ Discriminator (TPH) | `Student`, `AcademicStaff`, `FinancialAidPackage` (abstract) | `Undergraduate`, `Postgraduate`, `Faculty`, `ResearchFellow`, `Scholarship`, `LoanAid` | Provides type variation but no polymorphic behavior; mostly classification, so Strategy benefits unrealized. | src/LCP.Uml7.Api/Entities/DomainModels.cs |
+| Dependency Injection | (Container-provided) | Controllers receive `UniversityDbContext` via ctor injection | DI used, but no service interfaces; controllers tied to infrastructure, partly meeting DIP. | src/LCP.Uml7.Api/Program.cs; Controllers |
+| Transaction Script style | — | Controller actions encapsulate DB logic and transactions | Straightforward flow; mixes orchestration with persistence, limiting reuse and SRP. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Abstract vs. Concrete Summary | Abstract classes: `Student`, `AcademicStaff`, `FinancialAidPackage`; Interfaces: none | Concrete classes: 33 domain entities + 4 controllers + `UniversityDbContext` | Limited abstraction; absence of interfaces constrains substitution and testing flexibility. | Entities/DomainModels.cs; Data/UniversityDbContext.cs; Controllers |
+| Grade (Decoupling & SOLID) | — | — | **C** – Clear domain model and DTOs, but controllers directly use DbContext (high coupling), no repository/service interfaces, minimal polymorphism use, limited SRP/DIP adherence. | — |
+| Pattern Density | — | — | Patterns counted: 3 (UoW/Repository, DTO, Inheritance/TPH); Total classes: 41 → Density = 3/41 ≈ 7.3% | — |
+Plan update
+Findings logged to pattern_evaluation.log with patterns, abstraction summary, grade C, and density 3/41 (7.3%).
+  ✓ Scan repository structure and count classes/interfaces/abstracts
+  ✓ Identify design patterns and map interfaces to concretes
+  ✓ Assess decoupling/SOLID and compute pattern density, prepare table and log output
+codex
+Pattern evaluation written to `LCP-UML-7/pattern_evaluation.log`.
+
+Key points:
+- Patterns identified: EF Core Unit of Work/Repository (DbContext), DTOs for API inputs, inheritance with TPH discriminators; noted DI usage and transaction-script style controllers.
+- Abstractions: 3 abstract classes (`Student`, `AcademicStaff`, `FinancialAidPackage`); no interfaces. 38 concretes (33 entities + 4 controllers + `UniversityDbContext`).
+- Grade: C for decoupling/SOLID (controllers tightly coupled to EF, no service/repo interfaces, limited polymorphism).
+- Pattern density: 3 patterns / 41 classes ≈ 7.3%.
+
+Next steps (if you want): 1) Introduce repository/service interfaces to decouple controllers from EF. 2) Add polymorphic behaviors or strategies for student/aid variants. 3) Extract transactional workflows into services to reduce controller responsibilities.
+tokens used
+53,474
+Pattern evaluation written to `LCP-UML-7/pattern_evaluation.log`.
+
+Key points:
+- Patterns identified: EF Core Unit of Work/Repository (DbContext), DTOs for API inputs, inheritance with TPH discriminators; noted DI usage and transaction-script style controllers.
+- Abstractions: 3 abstract classes (`Student`, `AcademicStaff`, `FinancialAidPackage`); no interfaces. 38 concretes (33 entities + 4 controllers + `UniversityDbContext`).
+- Grade: C for decoupling/SOLID (controllers tightly coupled to EF, no service/repo interfaces, limited polymorphism).
+- Pattern density: 3 patterns / 41 classes ≈ 7.3%.
+
+Next steps (if you want): 1) Introduce repository/service interfaces to decouple controllers from EF. 2) Add polymorphic behaviors or strategies for student/aid variants. 3) Extract transactional workflows into services to reduce controller responsibilities.

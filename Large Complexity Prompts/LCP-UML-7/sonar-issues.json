@@ -1,0 +1,544 @@
+{
+  "total": 11,
+  "issues": [
+    {
+      "key": "60e2b8ad-a13c-424d-906c-c82b391be2dd",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/BillingController.cs",
+      "project": "lcp-uml-7",
+      "line": 108,
+      "hash": "c12433e8f3ac39bb33cfc7d90734a04b",
+      "textRange": {
+        "startLine": 108,
+        "endLine": 108,
+        "startOffset": 43,
+        "endOffset": 52
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "a989c2c6-ce25-48e8-aa62-3c250353b59e",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/BillingController.cs",
+      "project": "lcp-uml-7",
+      "line": 109,
+      "hash": "574cb4c87bc3510e396095bffc773521",
+      "textRange": {
+        "startLine": 109,
+        "endLine": 109,
+        "startOffset": 39,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "d2763129-d57a-4913-8932-21a49c83b143",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/BillingController.cs",
+      "project": "lcp-uml-7",
+      "line": 110,
+      "hash": "ecdf75067a1b25c2f6c5c01982fb324a",
+      "textRange": {
+        "startLine": 110,
+        "endLine": 110,
+        "startOffset": 39,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "0d8fe7d2-8ad3-4a93-9b01-c4ff021d344b",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs",
+      "project": "lcp-uml-7",
+      "line": 78,
+      "hash": "cfa809068aacf3ffc97dc0427de1ecda",
+      "textRange": {
+        "startLine": 78,
+        "endLine": 78,
+        "startOffset": 70,
+        "endOffset": 78
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "8b853460-6376-42d3-873c-72c83c792507",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs",
+      "project": "lcp-uml-7",
+      "line": 78,
+      "hash": "cfa809068aacf3ffc97dc0427de1ecda",
+      "textRange": {
+        "startLine": 78,
+        "endLine": 78,
+        "startOffset": 43,
+        "endOffset": 51
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e1c2593f-2af8-430c-8278-8c08e99c689e",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs",
+      "project": "lcp-uml-7",
+      "line": 79,
+      "hash": "0ce4dd6e9c1dc7e928fecbeb869f06a1",
+      "textRange": {
+        "startLine": 79,
+        "endLine": 79,
+        "startOffset": 36,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "0ff6f9a0-7bda-4437-a40e-25902ef4f304",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs",
+      "project": "lcp-uml-7",
+      "line": 84,
+      "hash": "0ec97ccf20e70f82fd1096c719348172",
+      "textRange": {
+        "startLine": 84,
+        "endLine": 84,
+        "startOffset": 39,
+        "endOffset": 48
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "b91c1798-ec60-4bc6-a09b-1838a8d461ae",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs",
+      "project": "lcp-uml-7",
+      "line": 84,
+      "hash": "0ec97ccf20e70f82fd1096c719348172",
+      "textRange": {
+        "startLine": 84,
+        "endLine": 84,
+        "startOffset": 55,
+        "endOffset": 65
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "bd0a31ac-7d76-40db-9501-b627056f280f",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/StudentsController.cs",
+      "project": "lcp-uml-7",
+      "line": 80,
+      "hash": "60a021e122bd31bd82c8abb1ba9ebec6",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 67,
+        "endOffset": 75
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "86105a1a-51d5-4bf0-a541-ffce652573c9",
+      "rule": "csharpsquid:S6964",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/StudentsController.cs",
+      "project": "lcp-uml-7",
+      "line": 82,
+      "hash": "a7da841c494b4bdd6c00e77b5f5822d9",
+      "textRange": {
+        "startLine": 82,
+        "endLine": 82,
+        "startOffset": 67,
+        "endOffset": 75
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "asp.net"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e765df7c-a0a1-40f5-b15b-dfda51686958",
+      "rule": "csharpsquid:S6966",
+      "severity": "MAJOR",
+      "component": "lcp-uml-7:src/LCP.Uml7.Api/Program.cs",
+      "project": "lcp-uml-7",
+      "line": 25,
+      "hash": "2c00f42b764b8134043380893434076b",
+      "textRange": {
+        "startLine": 25,
+        "endLine": 25,
+        "startOffset": 0,
+        "endOffset": 9
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Await RunAsync instead.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "natebrock@gamingcapitalgroup.com",
+      "tags": [
+        "async-await"
+      ],
+      "creationDate": "2026-03-23T12:59:39+0000",
+      "updateDate": "2026-03-23T17:42:59+0000",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 11
+  },
+  "components": [
+    {
+      "key": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/BillingController.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "BillingController.cs",
+      "longName": "src/LCP.Uml7.Api/Controllers/BillingController.cs",
+      "path": "src/LCP.Uml7.Api/Controllers/BillingController.cs"
+    },
+    {
+      "key": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "CourseOfferingsController.cs",
+      "longName": "src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs",
+      "path": "src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs"
+    },
+    {
+      "key": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/StudentsController.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "StudentsController.cs",
+      "longName": "src/LCP.Uml7.Api/Controllers/StudentsController.cs",
+      "path": "src/LCP.Uml7.Api/Controllers/StudentsController.cs"
+    },
+    {
+      "key": "lcp-uml-7:src/LCP.Uml7.Api/Program.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Program.cs",
+      "longName": "src/LCP.Uml7.Api/Program.cs",
+      "path": "src/LCP.Uml7.Api/Program.cs"
+    },
+    {
+      "key": "lcp-uml-7",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "LCP-UML-7",
+      "longName": "LCP-UML-7"
+    },
+    {
+      "key": "lcp-uml-7:src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "EnrollmentsController.cs",
+      "longName": "src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs",
+      "path": "src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs"
+    }
+  ],
+  "facets": []
+}

@@ -1,0 +1,6 @@
+projectKey=lcp-vibe-4
+serverUrl=http://localhost:9000
+serverVersion=26.3.0.120487
+dashboardUrl=http://localhost:9000/dashboard?id=lcp-vibe-4
+ceTaskId=e34ba9d8-c21f-4b97-bb8f-b796a3012596
+ceTaskUrl=http://localhost:9000/api/ce/task?id=e34ba9d8-c21f-4b97-bb8f-b796a3012596

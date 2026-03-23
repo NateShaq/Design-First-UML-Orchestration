@@ -1,0 +1,20 @@
+Project: LCP-Vibe-3
+Quality Gate: OK
+
+Key Measures:
+  Cyclomatic Complexity: 284
+  Cognitive Complexity: 4
+  Technical Debt (sqale_index): 65
+  Code Smells: 13
+  Bugs: 0
+  Vulnerabilities: 0
+  Security Hotspots: 0
+  Duplicated Lines %: 0.0
+  Lines of Code: 401
+
+Open Issues:
+  BUG: 0
+  VULNERABILITY: 0
+  CODE_SMELL: 13
+
+Quality Gate Conditions:

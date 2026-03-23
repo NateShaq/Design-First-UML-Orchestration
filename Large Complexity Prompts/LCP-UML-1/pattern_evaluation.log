@@ -1,0 +1,7 @@
+| Aspect | Findings |
+| --- | --- |
+| Patterns identified | MVC/Web API controllers (`*Controller`), Dependency Injection via constructor (SmartCityContext injected), Unit of Work via `SmartCityContext` (EF Core transaction boundary), Optimistic Concurrency (RowVersion timestamps on entities). |
+| Missing patterns | Repository/Service layer abstraction; Factory/Strategy/Observer not present; no domain events. Controllers couple directly to EF `DbSet`s. |
+| Abstract vs Concrete | Abstract/framework bases: `DbContext`, `ControllerBase`, `DbSet`, `DbUpdateConcurrencyException`. All project types are concrete: 8 controllers, `SmartCityContext`, 12 entity classes; no custom interfaces/abstract classes. |
+| Decoupling/SOLID grade | C+. Pros: SRP mostly held (controllers handle CRUD); DI configured; transactions used. Cons: Controllers tightly coupled to EF Core and SQL schema; no interfaces for testing; concurrency/conflict handling repeated per controller; no separation between API and data models. |
+| Pattern density | 4 patterns / 21 classes = 0.19 |

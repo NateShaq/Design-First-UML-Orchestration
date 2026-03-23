@@ -3,3 +3,4 @@
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2/src/obj/Debug/net8.0/LcpVibe2.AssemblyInfo.cs
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2/src/obj/Debug/net8.0/LcpVibe2.csproj.CoreCompileInputs.cache
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2/src/obj/Debug/net8.0/LcpVibe2.MvcApplicationPartsAssemblyInfo.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-2/src/obj/Debug/net8.0/LcpVibe2.sourcelink.json

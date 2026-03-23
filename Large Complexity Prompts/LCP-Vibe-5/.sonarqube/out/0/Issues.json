@@ -1,0 +1,285 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24510.3 (cfe3bd0a)",
+        "semanticVersion": "4.11.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'IServiceCollection' does not contain a definition for 'AddSwaggerGen' and no accessible extension method 'AddSwaggerGen' accepting a first argument of type 'IServiceCollection' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 18,
+                  "endLine": 12,
+                  "endColumn": 31
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'WebApplication' does not contain a definition for 'UseSwagger' and no accessible extension method 'UseSwagger' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 9,
+                  "endLine": 18,
+                  "endColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS1061",
+          "level": "error",
+          "message": "'WebApplication' does not contain a definition for 'UseSwaggerUI' and no accessible extension method 'UseSwaggerUI' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 9,
+                  "endLine": 19,
+                  "endColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'AMLAlert' to match pascal case naming rules, consider using 'AmlAlert'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 14,
+                  "endLine": 22,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at 0 should be used instead of the \"Enumerable\" extension method \"First\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 78,
+                  "endLine": 67,
+                  "endColumn": 83
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at Count-1 should be used instead of the \"Enumerable\" extension method \"Last\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 78,
+                  "endLine": 68,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'KYCVerification' to match pascal case naming rules, consider using 'KycVerification'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 14,
+                  "endLine": 14,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at 0 should be used instead of the \"Enumerable\" extension method \"First\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 77,
+                  "endLine": 61,
+                  "endColumn": 82
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6608",
+          "level": "warning",
+          "message": "Indexing at Count-1 should be used instead of the \"Enumerable\" extension method \"Last\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 77,
+                  "endLine": 62,
+                  "endColumn": 81
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await RunAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-5/Api/Program.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 1,
+                  "endLine": 40,
+                  "endColumn": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS1061": {
+          "id": "CS1061",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1061)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        },
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6608": {
+          "id": "S6608",
+          "shortDescription": "Prefer indexing instead of \"Enumerable\" methods on types implementing \"IList\"",
+          "fullDescription": "Indexes in C# provide direct access to an element at a specific position within an array or collection. When compared to Enumerable methods, indexing can be more efficient for certain scenarios, such as iterating over a large collection, due to avoiding the overhead of checking the underlying collection type before accessing it.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6608",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

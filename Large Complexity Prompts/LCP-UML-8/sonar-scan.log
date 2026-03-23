@@ -1,0 +1,56 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-uml-8 /n:LCP-UML-8 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:43:05.712  Updating build integration targets...
+12:43:05.738  Using SonarQube v26.3.0.120487.
+12:43:05.799  Fetching analysis configuration settings...
+12:43:05.951  Provisioning analyzer assemblies for cs...
+12:43:05.951  Installing required Roslyn analyzers...
+12:43:05.951  Processing plugin: csharp version 10.19.0.132793
+12:43:06.016  Provisioning analyzer assemblies for vbnet...
+12:43:06.016  Installing required Roslyn analyzers...
+12:43:06.016  Processing plugin: vbnet version 10.19.0.132793
+12:43:06.019  Incremental PR analysis: Base branch parameter was not provided.
+12:43:06.019  Cache data is empty. A full analysis will be performed.
+12:43:06.037  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj' --no-incremental
+  Determining projects to restore...
+  Restored /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj (in 149 ms).
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(29,56): error CS8506: No best type was found for the switch expression. [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Domain/Entities/EngineeringDesign.cs(21,14): warning S101: Rename class 'CADModel' to match pascal case naming rules, consider using 'CadModel'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Program.cs(25,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/WorkOrdersController.cs(78,36): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/WorkOrdersController.cs(76,47): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(91,59): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(89,73): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+
+Build FAILED.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Domain/Entities/EngineeringDesign.cs(21,14): warning S101: Rename class 'CADModel' to match pascal case naming rules, consider using 'CadModel'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Program.cs(25,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/WorkOrdersController.cs(78,36): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/WorkOrdersController.cs(76,47): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(91,59): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(89,73): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/Controllers/ProductsController.cs(29,56): error CS8506: No best type was found for the switch expression. [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/LcpUml8.Api.csproj]
+    6 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:00.74
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:43:06.938  The SonarScanner for .NET integration failed: SonarQube was unable to collect the required information about your projects.
+Possible causes:
+  1. The project has not been built - the project must be built in between the begin and end steps.
+  2. An unsupported version of MSBuild has been used to build the project. Supported versions: MSBuild 16 and higher.
+  3. The begin, build and end steps have not all been launched from the same folder.
+  4. None of the analyzed projects have a valid ProjectGuid and you have not used a solution (.sln).
+12:43:06.939  Generation of the sonar-properties file failed. Unable to complete the analysis.
+12:43:06.94  Post-processing failed. Exit code: 1

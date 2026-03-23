@@ -1,0 +1,19 @@
+# Pattern Evaluation – LCP-UML-3 (run: 2026-03-23)
+
+- Total classes scanned: 42 (30 entity models, 11 controllers, 1 DbContext).
+- Patterns identified: 5 (Dependency Injection, Repository via `DbSet`, Unit of Work via `DbContext`, Transaction Script controllers, Optimistic Concurrency via `[Timestamp]` + `OriginalValue`).
+- Pattern density: 5 / 42 = 0.12.
+- Abstract/interface types: none present; all classes are concrete data or controller types.
+- Overall decoupling / SOLID grade: C (controllers depend on concrete `HospitalContext` and EF entities; no interface abstraction or service layer; good SRP inside entities; optimistic concurrency is implemented correctly).
+
+| Area / Classes | Patterns Observed | Abstract vs Concrete | Key Notes |
+| --- | --- | --- | --- |
+| DbContext (`LcpUml3.Api/Data/HospitalContext.cs`) | Unit of Work; Repository via `DbSet`; Dependency Injection | Abstract: 0; Concrete: 1 | Centralizes persistence; no repository interfaces; configuration tightly coupled to SQL Server provider. |
+| Controllers (11 classes under `LcpUml3.Api/Controllers`) | Transaction Script per endpoint; Dependency Injection | Abstract: 0; Concrete: 11 | Each endpoint performs EF operations directly; no service layer; concurrency handling only on aggregates with rowversion; DTOs absent so HTTP models = EF entities. |
+| Entities (30 classes in `LcpUml3.Api/Entities/Domain.cs`) | Optimistic Concurrency on selected aggregates; inheritance (TPT: `Physician`/`Surgeon`) | Abstract: 0; Concrete: 30 | Pure data carriers with navigation props; no domain behavior; equals null methods; TPT adds flexibility but increases joins. |
+| Cross-cutting (transactions & concurrency) | Serializable transactions on aggregate writes; `[Timestamp]` rowversion checks | Abstract: 0; Concrete: applies in `Inpatients`, `Outpatients`, `EmergencyCases`, `LabResults`, `RadiologyImages`, `InsuranceClaims`, `BillingInvoices` | Improves integrity; handled in controllers not in a dedicated service or decorator, limiting reuse/testability. |
+
+## Grade rationale
+- **Strengths:** Clear aggregate boundaries; optimistic concurrency applied; transactions use `IsolationLevel.Serializable` for ghost-write protection; controllers are small and readable. 
+- **Weaknesses:** No abstraction over persistence (violates DIP); controllers mix transport and domain/persistence concerns; lack of interfaces/abstract base types makes substitution and testing difficult; entities doubled as API contracts (tight coupling). 
+- **Opportunities:** Introduce repository/service interfaces per aggregate, add DTOs to decouple API from EF, and move transaction/concurrency orchestration into application services or pipeline behaviors.

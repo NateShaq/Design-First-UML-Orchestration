@@ -22,3 +22,4 @@
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/obj/Debug/net8.0/SmartGrid.Api.pdb
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/obj/Debug/net8.0/SmartGrid.Api.genruntimeconfig.cache
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/obj/Debug/net8.0/ref/SmartGrid.Api.dll
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/obj/Debug/net8.0/SmartGrid.Api.sourcelink.json

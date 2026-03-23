@@ -1,0 +1,15 @@
+﻿/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/DriversLicensesController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/VotingRegistriesController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Program.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.GlobalUsings.g.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.MvcApplicationPartsAssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/appsettings.Development.json
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/appsettings.json
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/IdentityPublicServices.http
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/Properties/launchSettings.json
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/apphost

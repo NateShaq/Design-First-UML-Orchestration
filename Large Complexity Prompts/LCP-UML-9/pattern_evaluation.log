@@ -1,0 +1,34 @@
+# Pattern Evaluation - LCP-UML-9 (2026-03-23)
+
+- Total classes/records inspected: 13 (5 controllers, 8 request/DTO records)
+- Patterns found (unique): 5 — Dependency Injection, Transaction Script, Unit of Work (EF DbContext), Optimistic Concurrency (row version tokens), Data Transfer Object
+- Pattern density: 5 / 13 = 0.38
+- Overall grade: D+ (controllers are thin wrappers over EF Core with DI and concurrency safeguards, but they bypass domain/services, expose persistence concerns, and lack interface-driven abstraction; SRP/ISP/ DIP mostly unmet).
+
+| Component | Kind | Patterns Observed | Abstract/Concrete | Notes on SOLID & Coupling |
+| --- | --- | --- | --- | --- |
+| IdentityRegistriesController | Controller | DI; Transaction Script; Unit of Work (DbContext transaction) | Concrete | Direct EF queries/transactions inside controller couples API to persistence; no interface or domain service; SRP/DIP weak. |
+| PassportServicesController | Controller | DI; Transaction Script; Unit of Work; Optimistic Concurrency | Concrete | Handles transactions and concurrency in controller; lacks service/repository abstraction; logic mixed with transport layer. |
+| DriversLicensesController | Controller | DI; Transaction Script; Optimistic Concurrency | Concrete | Update logic and EF tracking in controller; no validation/service boundary; tightly coupled to DbContext. |
+| VotingRegistriesController | Controller | DI; Transaction Script; Optimistic Concurrency | Concrete | Persistence and business rules embedded; no separation of concerns; concurrency handled correctly. |
+| AuditTrailsController | Controller | DI; Transaction Script; Unit of Work | Concrete | Creates audit entries in controller; transaction started directly; no domain encapsulation. |
+| PersonDto | Record (DTO) | Data Transfer Object | Concrete | Simple DTO; no validation; used directly by controller; fine for boundary. |
+| CreateIdentityRegistryRequest | Record (DTO) | Data Transfer Object | Concrete | Request model; no mapping layer; controllers mutate domain directly. |
+| UpdateIdentityRegistryRequest | Record (DTO) | Data Transfer Object | Concrete | Same as above; thin contract. |
+| CreatePassportServiceRequest | Record (DTO) | Data Transfer Object | Concrete | DTO without validation; coupled to entity fields. |
+| UpdatePassportServiceRequest | Record (DTO) | Data Transfer Object | Concrete | DTO; concurrency token enforced by controller. |
+| UpdateDriversLicenseRequest | Record (DTO) | Data Transfer Object | Concrete | DTO; mapped manually in controller. |
+| UpdateVotingRegistryRequest | Record (DTO) | Data Transfer Object | Concrete | DTO; mapped manually in controller. |
+| CreateAuditTrailRequest | Record (DTO) | Data Transfer Object | Concrete | DTO used directly inside controller transaction. |
+
+## Gaps & Risks
+- No domain entity implementations or repository/service layers present; controllers talk directly to `AppDbContext`, making persistence concerns leak across the API.
+- No abstractions/interfaces for data access or domain policies; Dependency Inversion violated and unit testing difficult without heavy mocks of EF Core.
+- Validation and business rules are minimal; transactions are started per action but without domain invariants, risking inconsistent state.
+- Missing implementations for Domain/Infrastructure folders (only empty directories), suggesting incomplete architecture and broken layering.
+
+## Improvement Suggestions
+1) Introduce application services and repositories (interfaces + implementations) to move transaction/EF logic out of controllers and satisfy DIP/ISP.
+2) Add domain entities/value objects with behavior plus validators; controllers should map DTOs to commands handled by the application layer.
+3) Centralize concurrency and transaction handling in a unit-of-work service/decorator rather than per-controller code to reduce duplication.
+4) Add automated tests around transaction boundaries and concurrency conflicts once the abstractions exist.

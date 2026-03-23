@@ -1,0 +1,232 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-vibe-6 /n:LCP-Vibe-6 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:43:28.191  Updating build integration targets...
+12:43:28.223  Using SonarQube v26.3.0.120487.
+12:43:28.286  Fetching analysis configuration settings...
+12:43:28.451  Provisioning analyzer assemblies for cs...
+12:43:28.452  Installing required Roslyn analyzers...
+12:43:28.452  Processing plugin: csharp version 10.19.0.132793
+12:43:28.512  Provisioning analyzer assemblies for vbnet...
+12:43:28.512  Installing required Roslyn analyzers...
+12:43:28.512  Processing plugin: vbnet version 10.19.0.132793
+12:43:28.515  Incremental PR analysis: Base branch parameter was not provided.
+12:43:28.515  Cache data is empty. A full analysis will be performed.
+12:43:28.532  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj' --no-incremental
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/appsettings.json(9,19): warning S2068: "password" detected here, make sure this is not a hard-coded credential. (https://rules.sonarsource.com/csharp/RSPEC-2068) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Program.cs(12,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(149,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(140,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(142,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(143,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(144,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(131,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(133,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(134,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(135,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(189,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(190,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(191,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(192,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(89,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(90,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(91,19): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(165,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(166,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(167,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(168,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(105,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(107,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+  SmartGrid.Api -> /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/bin/Debug/net8.0/SmartGrid.Api.dll
+  Sonar: (SmartGrid.Api.csproj) Project processed successfully
+
+Build succeeded.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/appsettings.json(9,19): warning S2068: "password" detected here, make sure this is not a hard-coded credential. (https://rules.sonarsource.com/csharp/RSPEC-2068) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Program.cs(12,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(149,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(140,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(142,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(143,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(144,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(131,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(133,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(134,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(135,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(189,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(190,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(191,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(192,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(89,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(90,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(91,19): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(165,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(166,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(167,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(168,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(105,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs(107,21): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api/SmartGrid.Api.csproj]
+    24 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.66
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:43:29.372  Starting with Scanner for .NET v8 the way the `sonar.projectBaseDir` property is automatically detected has changed and this has an impact on the files that are analyzed and other properties that are resolved relative to it like `sonar.exclusions` and `sonar.test.exclusions`. If you would like to customize the behavior, please set the `sonar.projectBaseDir` property to point to a directory that contains all the source code you want to analyze. The path may be relative (to the directory from which the analysis was started) or absolute.
+12:43:29.4  Using Java found in Analysis Config: /Users/natebrock/.sonar/cache/1f7f6506b598e85d7d8ff8b36563d98657d2d81b16bfca3cd242d7906cfbd11b/OpenJDK21U-jre_aarch64_mac_hotspot_21.0.9_10.tar.gz_extracted/jdk-21.0.9+10-jre/Contents/Home/bin/java
+12:43:29.529  INFO: Starting SonarScanner Engine...
+12:43:29.53  INFO: Java 21.0.9 Eclipse Adoptium (64-bit)
+12:43:29.876  INFO: Load global settings
+12:43:29.913  INFO: Load global settings (done) | time=36ms
+12:43:29.914  INFO: Server id: 147B411E-AZ0bxA18m5poxwSeY8qC
+12:43:29.917  INFO: Loading required plugins
+12:43:29.917  INFO: Load plugins index
+12:43:29.926  INFO: Load plugins index (done) | time=9ms
+12:43:29.926  INFO: Load/download plugins
+12:43:29.935  INFO: Load/download plugins (done) | time=9ms
+12:43:30.023  INFO: Process project properties
+12:43:30.028  INFO: Process project properties (done) | time=5ms
+12:43:30.034  INFO: Project key: lcp-vibe-6
+12:43:30.034  INFO: Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6
+12:43:30.034  INFO: Working dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/.sonarqube/out/.sonar
+12:43:30.038  INFO: Load project settings for component key: 'lcp-vibe-6'
+12:43:30.049  INFO: Load project settings for component key: 'lcp-vibe-6' (done) | time=11ms
+12:43:30.059  INFO: Load quality profiles
+12:43:30.083  INFO: Load quality profiles (done) | time=24ms
+12:43:30.101  INFO: Load active rules
+12:43:30.209  INFO: Load active rules (done) | time=109ms
+12:43:30.211  INFO: Load analysis cache
+12:43:30.218  INFO: Load analysis cache (377 bytes) | time=7ms
+12:43:30.302  INFO: Preprocessing files...
+12:43:30.334  INFO: 2 languages detected in 8 preprocessed files (done) | time=32ms
+12:43:30.335  INFO: 10 files ignored because of inclusion/exclusion patterns
+12:43:30.335  INFO: 0 files ignored because of scm ignore settings
+12:43:30.335  INFO: Loading plugins for detected languages
+12:43:30.335  INFO: Load/download plugins
+12:43:30.336  INFO: Load/download plugins (done) | time=1ms
+12:43:30.362  INFO: Executing phase 2 project builders
+12:43:30.37  INFO: Executing phase 2 project builders (done) | time=8ms
+12:43:30.372  INFO: Load project repositories
+12:43:30.404  INFO: Load project repositories (done) | time=32ms
+12:43:30.411  INFO: Indexing files...
+12:43:30.411  INFO: Project configuration:
+12:43:30.411  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:30.411  INFO: Indexing files of module 'SmartGrid.Api'
+12:43:30.411  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/SmartGrid.Api
+12:43:30.412  INFO:   Source paths: Controllers/CustomerMeteringController.cs, Controllers/GridSt...
+12:43:30.412  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:30.42  INFO: Indexing files of module 'LCP-Vibe-6'
+12:43:30.42  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6
+12:43:30.42  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:43:30.421  INFO: 8 files indexed (done) | time=9ms
+12:43:30.421  INFO: Quality profile for cs: Sonar way
+12:43:30.421  INFO: Quality profile for json: Sonar way
+12:43:30.421  INFO: ------------- Run sensors on module SmartGrid.Api
+12:43:30.431  INFO: Load metrics repository
+12:43:30.438  INFO: Load metrics repository (done) | time=7ms
+12:43:30.523  INFO: Sensor IaC CloudFormation Sensor [iac]
+12:43:30.525  INFO: There are no files to be analyzed for the CloudFormation language
+12:43:30.526  INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=2ms
+12:43:30.526  INFO: Sensor IaC cfn-lint report Sensor [iac]
+12:43:30.526  INFO: Sensor IaC cfn-lint report Sensor [iac] (done) | time=1ms
+12:43:30.526  INFO: Sensor IaC hadolint report Sensor [iac]
+12:43:30.526  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:43:30.526  INFO: Sensor IaC Azure Resource Manager Sensor [iac]
+12:43:30.526  INFO: There are no files to be analyzed for the Azure Resource Manager language
+12:43:30.526  INFO: Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=0ms
+12:43:30.526  INFO: Sensor Java Config Sensor [iac]
+12:43:30.527  INFO: There are no files to be analyzed for the Java language
+12:43:30.527  INFO: Sensor Java Config Sensor [iac] (done) | time=1ms
+12:43:30.527  INFO: Sensor IaC Docker Sensor [iac]
+12:43:30.527  INFO: There are no files to be analyzed for the Docker language
+12:43:30.527  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:43:30.527  INFO: Sensor C# Project Type Information [csharp]
+12:43:30.528  INFO: Sensor C# Project Type Information [csharp] (done) | time=1ms
+12:43:30.528  INFO: Sensor C# Analysis Log [csharp]
+12:43:30.53  INFO: Roslyn version: 4.11.0.0
+12:43:30.53  INFO: Language version: CSharp12
+12:43:30.53  INFO: Concurrent execution: enabled
+12:43:30.53  INFO: Sensor C# Analysis Log [csharp] (done) | time=2ms
+12:43:30.53  INFO: Sensor C# Method Declarations [csharp]
+12:43:30.53  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:43:30.53  INFO: Sensor C# Telemetry [csharp]
+12:43:30.531  INFO: Sensor C# Telemetry [csharp] (done) | time=1ms
+12:43:30.531  INFO: Sensor C# Telemetry Json [csharp]
+12:43:30.536  INFO: Sensor C# Telemetry Json [csharp] (done) | time=4ms
+12:43:30.536  INFO: Sensor C# Properties [csharp]
+12:43:30.536  INFO: Sensor C# Properties [csharp] (done) | time=1ms
+12:43:30.537  INFO: ------------- Run sensors on module LCP-Vibe-6
+12:43:30.548  INFO: Sensor IaC hadolint report Sensor [iac]
+12:43:30.548  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:43:30.548  INFO: Sensor Java Config Sensor [iac]
+12:43:30.548  INFO: There are no files to be analyzed for the Java language
+12:43:30.548  INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+12:43:30.548  INFO: Sensor IaC Docker Sensor [iac]
+12:43:30.548  INFO: There are no files to be analyzed for the Docker language
+12:43:30.548  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:43:30.548  INFO: Sensor C# Project Type Information [csharp]
+12:43:30.548  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:43:30.548  INFO: Sensor C# Analysis Log [csharp]
+12:43:30.548  INFO: Sensor C# Analysis Log [csharp] (done) | time=0ms
+12:43:30.548  INFO: Sensor C# Method Declarations [csharp]
+12:43:30.548  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:43:30.548  INFO: Sensor C# Properties [csharp]
+12:43:30.548  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:43:30.548  INFO: Sensor TextAndSecretsSensor [text]
+12:43:30.553  INFO: Available processors: 16
+12:43:30.553  INFO: Using 16 threads for analysis.
+12:43:30.637  INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+12:43:30.646  INFO: Start fetching files for the text and secrets analysis
+12:43:30.659  INFO: Using Git CLI to retrieve dirty files
+12:43:30.694  INFO: Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+12:43:30.694  INFO: Starting the text and secrets analysis
+12:43:30.695  INFO: 7 source files to be analyzed for the text and secrets analysis
+12:43:30.704  INFO: 7/7 source files have been analyzed for the text and secrets analysis
+12:43:30.705  INFO: Sensor TextAndSecretsSensor [text] (done) | time=156ms
+12:43:30.705  INFO: ------------- Run sensors on project
+12:43:30.754  INFO: Sensor C# Telemetry processor [csharp]
+12:43:30.755  INFO: Sensor C# Telemetry processor [csharp] (done) | time=1ms
+12:43:30.755  INFO: Sensor C# Telemetry Json processor [csharp]
+12:43:30.757  INFO: Sensor C# Telemetry Json processor [csharp] (done) | time=2ms
+12:43:30.757  INFO: Sensor C# [csharp]
+12:43:30.76  INFO: Importing results from 8 proto files in '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-6/.sonarqube/out/0/output-cs'
+12:43:30.819  INFO: Importing 1 Roslyn report
+12:43:30.828  INFO: Found 1 MSBuild C# project: 1 MAIN project.
+12:43:30.828  INFO: Sensor C# [csharp] (done) | time=71ms
+12:43:30.828  INFO: Sensor Analysis Warnings import [csharp]
+12:43:30.828  INFO: Sensor Analysis Warnings import [csharp] (done) | time=0ms
+12:43:30.828  INFO: Sensor C# File Caching Sensor [csharp]
+12:43:30.831  INFO: Sensor C# File Caching Sensor [csharp] (done) | time=3ms
+12:43:30.831  INFO: Sensor Zero Coverage Sensor
+12:43:30.834  INFO: Sensor Zero Coverage Sensor (done) | time=3ms
+12:43:30.834  INFO: ------------- Gather SCA dependencies on project
+12:43:30.835  INFO: Dependency analysis skipped
+12:43:30.838  INFO: CPD Executor 1 file had no CPD blocks
+12:43:30.838  INFO: CPD Executor Calculating CPD for 5 files
+12:43:30.841  INFO: CPD Executor CPD calculation finished (done) | time=3ms
+12:43:30.844  INFO: SCM revision ID 'bcb6a2c690c5d23aba2bbd0b89f8ff264a790b66'
+12:43:30.871  INFO: Analysis report generated in 27ms, dir size=315.3 kB
+12:43:30.887  INFO: Analysis report compressed in 16ms, zip size=50.4 kB
+12:43:30.907  INFO: Analysis report uploaded in 20ms
+12:43:30.908  INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=lcp-vibe-6
+12:43:30.908  INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:43:30.908  INFO: More about the report processing at http://localhost:9000/api/ce/task?id=38c7ce5f-12f6-478d-a489-3ae9b70186f9
+12:43:30.914  INFO: Analysis total time: 0.965 s
+12:43:30.914  INFO: SonarScanner Engine completed successfully
+12:43:30.938  The scanner engine has finished successfully
+12:43:30.938  Post-processing succeeded.

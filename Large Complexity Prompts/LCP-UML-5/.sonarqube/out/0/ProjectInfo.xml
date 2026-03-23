@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>LcpUml5.Api</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>ea5381a5-12ce-4ecd-b5db-e3043ab7e869</ProjectGuid>
+  <FullPath>/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/src/LcpUml5.Api/LcpUml5.Api.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResultFiles>
+    <AnalysisResultFile Id="FilesToAnalyze" Location="/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/conf/0/FilesToAnalyze.txt" />
+  </AnalysisResultFiles>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0/Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0</Property>
+    <Property Name="sonar.cs.scanner.telemetry">/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-5/.sonarqube/out/0/Telemetry.json</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net8.0</TargetFramework>
+</ProjectInfo>

@@ -1,0 +1,26 @@
+# Pattern Evaluation (LCP-UML-4)
+
+| Pattern | Participants (classes/records) | Abstract vs. Concrete | Notes |
+| --- | --- | --- | --- |
+| MVC Controller | Controllers/*Controller | Concrete controllers | Attribute-routed WebAPI controllers orchestrate requests and return DTO/entity results. |
+| Dependency Injection / IoC | Program.cs, FleetDbContext injected into controllers | N/A (framework service) | ASP.NET Core DI container wires DbContext into controllers; promotes ctor injection. |
+| DTO (Data Transfer Object) | DTOs/*Dto records | Concrete records | Request/response contracts separate from EF entities, limiting over-posting. |
+| Unit of Work + Repository (via EF Core DbContext/DbSet) | FleetDbContext, DbSet<T> sets | Concrete DbContext; DbSet<T> repositories | SaveChanges/transactions wrap multiple changes; DbSet<T> provides repository-like access without custom abstraction. |
+| Optimistic Concurrency Token | BaseEntity.RowVersion; checks in Vehicles/RoutePlans/ChargingStations controllers | Abstract base + concrete controllers | RowVersion bytes compared before updates; prevents ghost writes and stale updates. |
+| Abstract Base Entity | BaseEntity | Abstract | Centralizes Id, RowVersion, LockToken for all domain entities. |
+
+Totals & Metrics
+- Total classes scanned: 18 (controllers, models, DbContext, BaseEntity).
+- Patterns found: 6
+- Pattern density: 6 / 18 = **0.33**
+
+Abstract / Interface Types
+- Abstract: BaseEntity
+- Interfaces: none
+- Concrete classes: FleetDbContext; 8 controllers; 8 domain/entity models.
+- Concrete records (DTOs): 13 request/response shapes.
+
+Decoupling & SOLID Grade: **B-**
+- 👍 Separation of API contracts (DTOs) from EF entities; use of DI and concurrency tokens improves SRP and correctness.
+- 👎 Controllers contain business logic and data access directly; no repository/service interfaces, so high coupling to EF Core and poor testability (hurts D/I and O/C). No domain services to encapsulate transactions or policies.
+- 🔧 Suggested improvements: introduce application services or repositories behind interfaces; move transaction/concurrency workflows out of controllers; add interface-based abstractions for DbContext to aid testing; consider domain events/observers for side effects.

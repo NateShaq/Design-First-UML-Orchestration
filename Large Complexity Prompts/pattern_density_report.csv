@@ -1,0 +1,19 @@
+Project_ID,Architecture_Path,Pattern_Density,Implementation_Grade,Abstraction_Ratio,Primary_Patterns
+LCP-UML-1,UML-Anchored,0.19,C+,0/21,"MVC/Web API controllers; Dependency Injection; Unit of Work"
+LCP-UML-2,UML-Anchored,0.09,C,0/44,"DTO; EF Core Unit of Work; TPH Inheritance"
+LCP-UML-3,UML-Anchored,0.12,C,0/42,"Dependency Injection; Repository via DbSet; Unit of Work"
+LCP-UML-4,UML-Anchored,0.33,B,1/18,"MVC Controller; Dependency Injection/IoC; DTO"
+LCP-UML-5,UML-Anchored,0.63,C,3/19,"Transaction Script|MVC Controller|Abstract Base Class"
+LCP-UML-6,UML-Anchored,0.113,C,1/53,Unit of Work + Repository; Optimistic Concurrency Base; Registry + TTL Cache
+LCP-UML-7,UML-Anchored,0.073,C,3/41,"Unit of Work/Repository; DTO; Inheritance/TPH"
+LCP-UML-8,UML-Anchored,0.053,C,1/38,"Unit of Work; Simple Factory"
+LCP-UML-9,UML-Anchored,0.38,D+,0/13,Dependency Injection;Transaction Script;Unit of Work
+LCP-Vibe-1,Vibe-SingleShot,0.024,D,0/42,DTO
+LCP-Vibe-2,Vibe-SingleShot,0.09,B,0.09,"Dependency Injection;Repository/Service;Strategy"
+LCP-Vibe-3,Vibe-SingleShot,0.19,C,0/37,"Repository;Service Layer;Controller/MVC"
+LCP-Vibe-4,Vibe-SingleShot,0.00,D,0/30,"DTO style; Ad-hoc Repository"
+LCP-Vibe-5,Vibe-SingleShot,0.00,D,0/31,None
+LCP-Vibe-6,Vibe-SingleShot,0.088,C,0/34,"Dependency Injection / IoC; MVC Controllers; Singleton"
+LCP-Vibe-7,Vibe-SingleShot,0.15,C,0/34,"Dependency Injection; Repository; MVC"
+LCP-Vibe-8,Vibe-SingleShot,0.065,D,0/31,"Repository; Dependency Injection; DTO/Anemic Model"
+LCP-Vibe-9,Vibe-SingleShot,0.11,C,1/37,Repository/Data Store; Dependency Injection/IoC; Factory Method

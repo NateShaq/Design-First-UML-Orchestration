@@ -1,0 +1,108 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1774287768000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "lcp-uml-6"
+    },
+    {
+      "key": "sonar.projectName",
+      "value": "LCP-UML-6"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "FC41433A-9342-4762-A54B-876F1124EF2E"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.projectKey",
+      "value": "lcp-uml-6:FC41433A-9342-4762-A54B-876F1124EF2E"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.projectName",
+      "value": "LcpUml6.Api"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.sources",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CommitTransactionRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CommitUpdateRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateBatteryStorageRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateForecastServiceRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateGridConnectionRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateHydroPlantRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateInverterRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateLoadBalancerRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateMaintenanceScheduleRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSettlementRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSmartMeterRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSolarFarmRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateSubstationMonitorRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateTariffPlanRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateUsageBillingRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateWeatherStationRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Requests/CreateWindTurbineRequest.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Responses/BeginUpdateResponse.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Contracts/Responses/TransactionTokenResponse.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/BatteryStoragesController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/ForecastServicesController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/GridConnectionsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/HydroPlantsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/InvertersController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/LoadBalancersController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/MaintenanceSchedulesController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/SettlementsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/SmartMetersController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/SolarFarmsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/SubstationMonitorsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/TariffPlansController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/UsageBillingsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/WeatherStationsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Controllers/WindTurbinesController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Data/GridDbContext.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/BatteryStorage.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/ForecastService.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/GridConnection.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/HydroPlant.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/Inverter.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/LoadBalancer.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/MaintenanceSchedule.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/SettlementEngine.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/SmartMeter.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/SolarFarm.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/SubstationMonitor.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/TariffPlan.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/ThreadSafeEntity.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/UsageBilling.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/WeatherStation.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Domain/Entities/WindTurbine.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Program.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Services/Concurrency/ConcurrencyToken.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Services/Transactions/TransactionRegistry.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/LcpUml6.Api.GlobalUsings.g.cs,\"/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/LcpUml6.Api.AssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/LcpUml6.Api.MvcApplicationPartsAssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/appsettings.Development.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/LcpUml6.Api.http,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/Properties/launchSettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/apphost,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/project.assets.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/LcpUml6.Api.csproj.nuget.dgspec.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/staticwebassets.build.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/obj/Debug/net8.0/LcpUml6.Api.sourcelink.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/bin/Debug/net8.0/LcpUml6.Api.runtimeconfig.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/bin/Debug/net8.0/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/bin/Debug/net8.0/LcpUml6.Api.deps.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/src/LcpUml6.Api/bin/Debug/net8.0/appsettings.Development.json"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/0"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "FC41433A-9342-4762-A54B-876F1124EF2E.sonar.cs.scanner.telemetry",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.scanner.metadataFilePath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-6/sonar-report-task.txt"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

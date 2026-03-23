@@ -1,0 +1,13 @@
+﻿/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Controllers/BillingController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Controllers/CourseOfferingsController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Controllers/EnrollmentsController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Controllers/StudentsController.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Data/UniversityDbContext.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Entities/DomainModels.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/Program.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/obj/Debug/net8.0/LCP.Uml7.Api.GlobalUsings.g.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/obj/Debug/net8.0/LCP.Uml7.Api.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/obj/Debug/net8.0/LCP.Uml7.Api.MvcApplicationPartsAssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/appsettings.json
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-7/src/LCP.Uml7.Api/obj/Debug/net8.0/apphost

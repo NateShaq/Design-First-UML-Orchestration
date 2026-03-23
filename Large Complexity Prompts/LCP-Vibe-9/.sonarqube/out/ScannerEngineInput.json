@@ -1,0 +1,108 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1774287824000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "lcp-vibe-9"
+    },
+    {
+      "key": "sonar.projectName",
+      "value": "LCP-Vibe-9"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.projectKey",
+      "value": "lcp-vibe-9:FFD66BF8-620C-47F0-B2CF-7CDD13B50677"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.projectName",
+      "value": "Api"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.sources",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/BenefitsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/CredentialsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/IdentityController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/OperationsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/TaxController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Controllers/VotingController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Domain/GovernmentModels.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Program.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Services/InMemoryGovernmentDataStore.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/Api.GlobalUsings.g.cs,\"/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/Api.MvcApplicationPartsAssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/appsettings.Development.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Api.http,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Database/schema.sql,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/Properties/launchSettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Api.csproj.nuget.dgspec.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/project.assets.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/staticwebassets.build.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/obj/Debug/net8.0/Api.sourcelink.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/bin/Debug/net8.0/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/bin/Debug/net8.0/Api.runtimeconfig.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/bin/Debug/net8.0/Api.deps.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/Api/bin/Debug/net8.0/appsettings.Development.json"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/.sonarqube/out/0"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "FFD66BF8-620C-47F0-B2CF-7CDD13B50677.sonar.cs.scanner.telemetry",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.scanner.metadataFilePath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-9/sonar-report-task.txt"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

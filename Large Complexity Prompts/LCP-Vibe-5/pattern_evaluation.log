@@ -1,0 +1,50 @@
+# Pattern Evaluation
+
+- Evaluation date: 2026-03-23 (America/Chicago)
+- Total classes counted: 31 (30 domain POCOs + 1 static seed container)
+- Patterns identified: 0
+- Pattern density: 0 / 31 = 0.00
+- Overall grade (decoupling & SOLID): D
+  - Rationale: In-memory data wired directly in API endpoints; no interfaces or abstractions around data access; domain types are anemic DTOs; no inversion of control for persistence/validation/authorization; single `Program.cs` hosts everything; no SRP/ISP enforcement. Small scope mitigates risk slightly, preventing an F.
+
+| Component | Abstract/Interface? | Concrete Implementation | Detected Pattern | Notes |
+|-----------|---------------------|-------------------------|------------------|-------|
+| Api/Program.cs (endpoints) | No | Minimal API endpoints | None | Endpoints call static `SampleData`; no controllers or services; no DI abstractions. |
+| SampleData | No | Static in-memory lists | None | Acts like hard-coded repository substitute; tight coupling to API. |
+| Domain/SavingsAccount | No | POCO | None | Data-only model. |
+| Domain/CurrentAccount | No | POCO | None | Data-only model. |
+| Domain/LoanAccount | No | POCO | None | Data-only model. |
+| Domain/TransactionLedger | No | POCO | None | Data-only model. |
+| Domain/PaymentInstruction | No | POCO | None | Data-only model. |
+| Domain/Card | No | POCO | None | Data-only model. |
+| Domain/Branch | No | POCO | None | Data-only model. |
+| Domain/CustomerProfile | No | POCO | None | Data-only model. |
+| Domain/ContactInfo | No | POCO | None | Data-only model. |
+| Domain/Beneficiary | No | POCO | None | Data-only model. |
+| Domain/StockPortfolio | No | POCO | None | Data-only model. |
+| Domain/BondPortfolio | No | POCO | None | Data-only model. |
+| Domain/MutualFund | No | POCO | None | Data-only model. |
+| Domain/CryptoWallet | No | POCO | None | Data-only model. |
+| Domain/InvestmentAllocation | No | POCO | None | Data-only model. |
+| Domain/TradeOrder | No | POCO | None | Data-only model. |
+| Domain/CorporateAction | No | POCO | None | Data-only model. |
+| Domain/PerformanceMetric | No | POCO | None | Data-only model. |
+| Domain/FeeSchedule | No | POCO | None | Data-only model. |
+| Domain/RebalancingPolicy | No | POCO | None | Data-only model. |
+| Domain/RiskAssessment | No | POCO | None | Data-only model. |
+| Domain/KYCVerification | No | POCO | None | Data-only model. |
+| Domain/AMLAlert | No | POCO | None | Data-only model. |
+| Domain/TransactionMonitoringRule | No | POCO | None | Data-only model. |
+| Domain/AuditTrail | No | POCO | None | Data-only model. |
+| Domain/TaxDocument | No | POCO | None | Data-only model. |
+| Domain/RegulatoryReport | No | POCO | None | Data-only model. |
+| Domain/SanctionListEntry | No | POCO | None | Data-only model. |
+| Domain/ConsentRecord | No | POCO | None | Data-only model. |
+| Domain/DataRetentionPolicy | No | POCO | None | Data-only model. |
+
+## Improvement opportunities
+- Introduce repository pattern (interfaces + implementations) for accounts, portfolios, and transactions; inject via DI.
+- Add services/use-cases (e.g., `ITransactionService`) to separate HTTP transport from domain logic and enable testing.
+- Define interfaces for compliance checks/alerting (Strategy for risk scoring, Observer for audit trail).
+- Apply DTOs/validators and map to domain entities to enforce SRP and validate inputs.
+- Split API composition into controllers or endpoint classes; move sample data to seed scripts or in-memory provider registered in DI.

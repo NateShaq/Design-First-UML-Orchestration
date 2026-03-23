@@ -21,3 +21,4 @@
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-3/src/HospitalApi/obj/Debug/net8.0/HospitalApi.pdb
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-3/src/HospitalApi/obj/Debug/net8.0/HospitalApi.genruntimeconfig.cache
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-3/src/HospitalApi/obj/Debug/net8.0/ref/HospitalApi.dll
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-3/src/HospitalApi/obj/Debug/net8.0/HospitalApi.sourcelink.json

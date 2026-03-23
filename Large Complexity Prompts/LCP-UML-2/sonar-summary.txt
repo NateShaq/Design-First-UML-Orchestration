@@ -1,0 +1,20 @@
+Project: LCP-UML-2
+Quality Gate: OK
+
+Key Measures:
+  Cyclomatic Complexity: 430
+  Cognitive Complexity: 18
+  Technical Debt (sqale_index): 75
+  Code Smells: 15
+  Bugs: 0
+  Vulnerabilities: 0
+  Security Hotspots: 0
+  Duplicated Lines %: 0.0
+  Lines of Code: 837
+
+Open Issues:
+  BUG: 0
+  VULNERABILITY: 0
+  CODE_SMELL: 15
+
+Quality Gate Conditions:

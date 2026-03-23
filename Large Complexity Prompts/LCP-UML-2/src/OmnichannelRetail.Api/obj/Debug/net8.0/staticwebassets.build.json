@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "xYMFvM1SW+SemJdcMkEsWHHvdQs1QGKxeVJuG7QeLLE=",
+  "Source": "OmnichannelRetail.Api",
+  "BasePath": "_content/OmnichannelRetail.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

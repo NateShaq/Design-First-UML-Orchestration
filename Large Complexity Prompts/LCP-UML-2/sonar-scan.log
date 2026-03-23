@@ -1,0 +1,216 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-uml-2 /n:LCP-UML-2 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:42:14.201  Updating build integration targets...
+12:42:14.226  Using SonarQube v26.3.0.120487.
+12:42:14.288  Fetching analysis configuration settings...
+12:42:14.435  Provisioning analyzer assemblies for cs...
+12:42:14.435  Installing required Roslyn analyzers...
+12:42:14.436  Processing plugin: csharp version 10.19.0.132793
+12:42:14.506  Provisioning analyzer assemblies for vbnet...
+12:42:14.506  Installing required Roslyn analyzers...
+12:42:14.506  Processing plugin: vbnet version 10.19.0.132793
+12:42:14.509  Incremental PR analysis: Base branch parameter was not provided.
+12:42:14.509  Cache data is empty. A full analysis will be performed.
+12:42:14.527  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj' --no-incremental
+  Determining projects to restore...
+  Restored /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj (in 707 ms).
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/DomainServices.cs(21,14): warning S101: Rename class 'POSSystem' to match pascal case naming rules, consider using 'PosSystem'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Product.cs(18,19): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(40,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(42,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(10,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(45,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(71,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(43,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(48,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(9,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(51,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(25,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(20,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(13,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Program.cs(25,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+  OmnichannelRetail.Api -> /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/bin/Debug/net8.0/OmnichannelRetail.Api.dll
+  Sonar: (OmnichannelRetail.Api.csproj) Project processed successfully
+
+Build succeeded.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/DomainServices.cs(21,14): warning S101: Rename class 'POSSystem' to match pascal case naming rules, consider using 'PosSystem'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Product.cs(18,19): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(40,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(42,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(10,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Inventory.cs(45,16): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(71,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(43,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(48,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(9,17): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Models/Payment.cs(51,20): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(25,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(20,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Dto/OrderDtos.cs(13,31): warning S6964: Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting. (https://rules.sonarsource.com/csharp/RSPEC-6964) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/Program.cs(25,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api/OmnichannelRetail.Api.csproj]
+    15 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.43
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:42:16.143  Starting with Scanner for .NET v8 the way the `sonar.projectBaseDir` property is automatically detected has changed and this has an impact on the files that are analyzed and other properties that are resolved relative to it like `sonar.exclusions` and `sonar.test.exclusions`. If you would like to customize the behavior, please set the `sonar.projectBaseDir` property to point to a directory that contains all the source code you want to analyze. The path may be relative (to the directory from which the analysis was started) or absolute.
+12:42:16.18  Using Java found in Analysis Config: /Users/natebrock/.sonar/cache/1f7f6506b598e85d7d8ff8b36563d98657d2d81b16bfca3cd242d7906cfbd11b/OpenJDK21U-jre_aarch64_mac_hotspot_21.0.9_10.tar.gz_extracted/jdk-21.0.9+10-jre/Contents/Home/bin/java
+12:42:16.323  INFO: Starting SonarScanner Engine...
+12:42:16.323  INFO: Java 21.0.9 Eclipse Adoptium (64-bit)
+12:42:16.674  INFO: Load global settings
+12:42:16.71  INFO: Load global settings (done) | time=36ms
+12:42:16.711  INFO: Server id: 147B411E-AZ0bxA18m5poxwSeY8qC
+12:42:16.714  INFO: Loading required plugins
+12:42:16.714  INFO: Load plugins index
+12:42:16.723  INFO: Load plugins index (done) | time=9ms
+12:42:16.724  INFO: Load/download plugins
+12:42:16.732  INFO: Load/download plugins (done) | time=9ms
+12:42:16.822  INFO: Process project properties
+12:42:16.828  INFO: Process project properties (done) | time=6ms
+12:42:16.834  INFO: Project key: lcp-uml-2
+12:42:16.834  INFO: Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2
+12:42:16.834  INFO: Working dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/.sonarqube/out/.sonar
+12:42:16.837  INFO: Load project settings for component key: 'lcp-uml-2'
+12:42:16.85  INFO: Load project settings for component key: 'lcp-uml-2' (done) | time=12ms
+12:42:16.86  INFO: Load quality profiles
+12:42:16.877  INFO: Load quality profiles (done) | time=18ms
+12:42:16.894  INFO: Load active rules
+12:42:17.012  INFO: Load active rules (done) | time=118ms
+12:42:17.014  INFO: Load analysis cache
+12:42:17.018  INFO: Load analysis cache (404) | time=4ms
+12:42:17.102  INFO: Preprocessing files...
+12:42:17.147  INFO: 2 languages detected in 19 preprocessed files (done) | time=46ms
+12:42:17.147  INFO: 12 files ignored because of inclusion/exclusion patterns
+12:42:17.147  INFO: 0 files ignored because of scm ignore settings
+12:42:17.148  INFO: Loading plugins for detected languages
+12:42:17.148  INFO: Load/download plugins
+12:42:17.149  INFO: Load/download plugins (done) | time=1ms
+12:42:17.175  INFO: Executing phase 2 project builders
+12:42:17.183  INFO: Executing phase 2 project builders (done) | time=8ms
+12:42:17.185  INFO: Load project repositories
+12:42:17.217  INFO: Load project repositories (done) | time=32ms
+12:42:17.225  INFO: Indexing files...
+12:42:17.225  INFO: Project configuration:
+12:42:17.225  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:17.226  INFO: Indexing files of module 'OmnichannelRetail.Api'
+12:42:17.226  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/src/OmnichannelRetail.Api
+12:42:17.226  INFO:   Source paths: Controllers/InventoryController.cs, Controllers/OrdersControl...
+12:42:17.226  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:17.238  INFO: Indexing files of module 'LCP-UML-2'
+12:42:17.238  INFO:   Base dir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2
+12:42:17.238  INFO:   Excluded sources: **/bin/**, **/obj/**, **/node_modules/**, **/*.min.js, **/*.Designer.cs, **/Migrations/**
+12:42:17.238  INFO: 19 files indexed (done) | time=13ms
+12:42:17.238  INFO: Quality profile for cs: Sonar way
+12:42:17.239  INFO: Quality profile for json: Sonar way
+12:42:17.239  INFO: ------------- Run sensors on module OmnichannelRetail.Api
+12:42:17.249  INFO: Load metrics repository
+12:42:17.262  INFO: Load metrics repository (done) | time=13ms
+12:42:17.354  INFO: Sensor IaC CloudFormation Sensor [iac]
+12:42:17.356  INFO: There are no files to be analyzed for the CloudFormation language
+12:42:17.356  INFO: Sensor IaC CloudFormation Sensor [iac] (done) | time=2ms
+12:42:17.356  INFO: Sensor IaC cfn-lint report Sensor [iac]
+12:42:17.356  INFO: Sensor IaC cfn-lint report Sensor [iac] (done) | time=0ms
+12:42:17.356  INFO: Sensor IaC hadolint report Sensor [iac]
+12:42:17.356  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:42:17.356  INFO: Sensor IaC Azure Resource Manager Sensor [iac]
+12:42:17.357  INFO: There are no files to be analyzed for the Azure Resource Manager language
+12:42:17.357  INFO: Sensor IaC Azure Resource Manager Sensor [iac] (done) | time=1ms
+12:42:17.357  INFO: Sensor Java Config Sensor [iac]
+12:42:17.358  INFO: There are no files to be analyzed for the Java language
+12:42:17.358  INFO: Sensor Java Config Sensor [iac] (done) | time=1ms
+12:42:17.358  INFO: Sensor IaC Docker Sensor [iac]
+12:42:17.358  INFO: There are no files to be analyzed for the Docker language
+12:42:17.358  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:42:17.358  INFO: Sensor C# Project Type Information [csharp]
+12:42:17.359  INFO: Sensor C# Project Type Information [csharp] (done) | time=1ms
+12:42:17.359  INFO: Sensor C# Analysis Log [csharp]
+12:42:17.361  INFO: Roslyn version: 4.11.0.0
+12:42:17.361  INFO: Language version: CSharp12
+12:42:17.361  INFO: Concurrent execution: enabled
+12:42:17.361  INFO: Sensor C# Analysis Log [csharp] (done) | time=2ms
+12:42:17.361  INFO: Sensor C# Method Declarations [csharp]
+12:42:17.361  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:42:17.361  INFO: Sensor C# Telemetry [csharp]
+12:42:17.362  INFO: Sensor C# Telemetry [csharp] (done) | time=0ms
+12:42:17.362  INFO: Sensor C# Telemetry Json [csharp]
+12:42:17.366  INFO: Sensor C# Telemetry Json [csharp] (done) | time=5ms
+12:42:17.366  INFO: Sensor C# Properties [csharp]
+12:42:17.367  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:42:17.368  INFO: ------------- Run sensors on module LCP-UML-2
+12:42:17.378  INFO: Sensor IaC hadolint report Sensor [iac]
+12:42:17.378  INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+12:42:17.378  INFO: Sensor Java Config Sensor [iac]
+12:42:17.378  INFO: There are no files to be analyzed for the Java language
+12:42:17.378  INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+12:42:17.378  INFO: Sensor IaC Docker Sensor [iac]
+12:42:17.378  INFO: There are no files to be analyzed for the Docker language
+12:42:17.378  INFO: Sensor IaC Docker Sensor [iac] (done) | time=0ms
+12:42:17.378  INFO: Sensor C# Project Type Information [csharp]
+12:42:17.378  INFO: Sensor C# Project Type Information [csharp] (done) | time=0ms
+12:42:17.378  INFO: Sensor C# Analysis Log [csharp]
+12:42:17.378  INFO: Sensor C# Analysis Log [csharp] (done) | time=0ms
+12:42:17.378  INFO: Sensor C# Method Declarations [csharp]
+12:42:17.378  INFO: Sensor C# Method Declarations [csharp] (done) | time=0ms
+12:42:17.378  INFO: Sensor C# Properties [csharp]
+12:42:17.378  INFO: Sensor C# Properties [csharp] (done) | time=0ms
+12:42:17.378  INFO: Sensor TextAndSecretsSensor [text]
+12:42:17.382  INFO: Available processors: 16
+12:42:17.382  INFO: Using 16 threads for analysis.
+12:42:17.466  INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+12:42:17.476  INFO: Start fetching files for the text and secrets analysis
+12:42:17.489  INFO: Using Git CLI to retrieve dirty files
+12:42:17.516  INFO: Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+12:42:17.516  INFO: Starting the text and secrets analysis
+12:42:17.517  INFO: 19 source files to be analyzed for the text and secrets analysis
+12:42:17.529  INFO: 19/19 source files have been analyzed for the text and secrets analysis
+12:42:17.529  INFO: Sensor TextAndSecretsSensor [text] (done) | time=151ms
+12:42:17.529  INFO: ------------- Run sensors on project
+12:42:17.575  INFO: Sensor C# Telemetry processor [csharp]
+12:42:17.576  INFO: Sensor C# Telemetry processor [csharp] (done) | time=1ms
+12:42:17.576  INFO: Sensor C# Telemetry Json processor [csharp]
+12:42:17.578  INFO: Sensor C# Telemetry Json processor [csharp] (done) | time=2ms
+12:42:17.578  INFO: Sensor C# [csharp]
+12:42:17.58  INFO: Importing results from 8 proto files in '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-2/.sonarqube/out/0/output-cs'
+12:42:17.649  INFO: Importing 1 Roslyn report
+12:42:17.657  INFO: Found 1 MSBuild C# project: 1 MAIN project.
+12:42:17.657  INFO: Sensor C# [csharp] (done) | time=79ms
+12:42:17.657  INFO: Sensor Analysis Warnings import [csharp]
+12:42:17.658  INFO: Sensor Analysis Warnings import [csharp] (done) | time=1ms
+12:42:17.658  INFO: Sensor C# File Caching Sensor [csharp]
+12:42:17.661  INFO: Sensor C# File Caching Sensor [csharp] (done) | time=3ms
+12:42:17.661  INFO: Sensor Zero Coverage Sensor
+12:42:17.666  INFO: Sensor Zero Coverage Sensor (done) | time=5ms
+12:42:17.666  INFO: ------------- Gather SCA dependencies on project
+12:42:17.667  INFO: Dependency analysis skipped
+12:42:17.667  INFO: SCM Publisher SCM provider for this project is: git
+12:42:17.668  INFO: SCM Publisher 18 source files to be analyzed
+12:42:17.961  INFO: SCM Publisher 18/18 source files have been analyzed (done) | time=293ms
+12:42:17.963  INFO: CPD Executor Calculating CPD for 18 files
+12:42:17.967  INFO: CPD Executor CPD calculation finished (done) | time=4ms
+12:42:17.969  INFO: SCM revision ID 'bcb6a2c690c5d23aba2bbd0b89f8ff264a790b66'
+12:42:18  INFO: Analysis report generated in 29ms, dir size=343.1 kB
+12:42:18.032  INFO: Analysis report compressed in 32ms, zip size=76.9 kB
+12:42:18.09  INFO: Analysis report uploaded in 58ms
+12:42:18.091  INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=lcp-uml-2
+12:42:18.091  INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+12:42:18.091  INFO: More about the report processing at http://localhost:9000/api/ce/task?id=df4b71ae-88ac-4648-ab42-0a4ab7b043ec
+12:42:18.103  INFO: Analysis total time: 1.357 s
+12:42:18.104  INFO: SonarScanner Engine completed successfully
+12:42:18.127  The scanner engine has finished successfully
+12:42:18.127  Post-processing succeeded.

@@ -1,0 +1,572 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24510.3 (cfe3bd0a)",
+        "semanticVersion": "4.11.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/appsettings.json",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 19,
+                  "endLine": 9,
+                  "endColumn": 120
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await RunAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Program.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 1,
+                  "endLine": 12,
+                  "endColumn": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 16,
+                  "endLine": 149,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 16,
+                  "endLine": 140,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 20,
+                  "endLine": 142,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 20,
+                  "endLine": 143,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 144,
+                  "startColumn": 21,
+                  "endLine": 144,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 16,
+                  "endLine": 131,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 16,
+                  "endLine": 133,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 134,
+                  "startColumn": 21,
+                  "endLine": 134,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 20,
+                  "endLine": 135,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 16,
+                  "endLine": 189,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 16,
+                  "endLine": 190,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 191,
+                  "startColumn": 20,
+                  "endLine": 191,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 20,
+                  "endLine": 192,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 16,
+                  "endLine": 89,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 21,
+                  "endLine": 90,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 19,
+                  "endLine": 91,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 16,
+                  "endLine": 165,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 166,
+                  "startColumn": 16,
+                  "endLine": 166,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 21,
+                  "endLine": 167,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 168,
+                  "startColumn": 20,
+                  "endLine": 168,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 16,
+                  "endLine": 105,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6964",
+          "level": "warning",
+          "message": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-Vibe-6/SmartGrid.Api/Models/Entities.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 21,
+                  "endLine": 107,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6964": {
+          "id": "S6964",
+          "shortDescription": "Value type property used as input in a controller action should be nullable, required or annotated with the JsonRequiredAttribute to avoid under-posting.",
+          "fullDescription": "\"Under-posting\" refers to a situation where a client sends less data than expected to the server during an HTTP request, for example when the client omits some properties from the request body that the server expects to receive.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6964",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

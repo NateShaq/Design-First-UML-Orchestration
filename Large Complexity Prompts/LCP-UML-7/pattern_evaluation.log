@@ -1,0 +1,13 @@
+# Pattern Evaluation (LCP-UML-7)
+Date: 2026-03-23 (America/Chicago)
+
+| Pattern / Aspect | Abstract / Interfaces | Concrete Implementations | Decoupling & SOLID Notes | Files |
+| --- | --- | --- | --- | --- |
+| Unit of Work / Repository (EF Core) | `DbContext` (framework base) | `UniversityDbContext` | Centralizes persistence but controllers depend directly on EF, limiting DIP and testability. | src/LCP.Uml7.Api/Data/UniversityDbContext.cs |
+| DTO (Data Transfer Object) | — | `StudentCreateDto`, `StudentUpdateDto`, `CourseOfferingCreateDto`, `CapacityUpdateDto`, `EnrollmentCreateDto`, `EnrollmentStatusDto`, `BillingAccountCreateDto`, `InvoiceCreateDto`, `PaymentCreateDto` | Separates API payloads from entities, modestly reduces coupling; still tightly mapped to persistence models. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Inheritance w/ Discriminator (TPH) | `Student`, `AcademicStaff`, `FinancialAidPackage` (abstract) | `Undergraduate`, `Postgraduate`, `Faculty`, `ResearchFellow`, `Scholarship`, `LoanAid` | Provides type variation but no polymorphic behavior; mostly classification, so Strategy benefits unrealized. | src/LCP.Uml7.Api/Entities/DomainModels.cs |
+| Dependency Injection | (Container-provided) | Controllers receive `UniversityDbContext` via ctor injection | DI used, but no service interfaces; controllers tied to infrastructure, partly meeting DIP. | src/LCP.Uml7.Api/Program.cs; Controllers |
+| Transaction Script style | — | Controller actions encapsulate DB logic and transactions | Straightforward flow; mixes orchestration with persistence, limiting reuse and SRP. | src/LCP.Uml7.Api/Controllers/*.cs |
+| Abstract vs. Concrete Summary | Abstract classes: `Student`, `AcademicStaff`, `FinancialAidPackage`; Interfaces: none | Concrete classes: 33 domain entities + 4 controllers + `UniversityDbContext` | Limited abstraction; absence of interfaces constrains substitution and testing flexibility. | Entities/DomainModels.cs; Data/UniversityDbContext.cs; Controllers |
+| Grade (Decoupling & SOLID) | — | — | **C** – Clear domain model and DTOs, but controllers directly use DbContext (high coupling), no repository/service interfaces, minimal polymorphism use, limited SRP/DIP adherence. | — |
+| Pattern Density | — | — | Patterns counted: 3 (UoW/Repository, DTO, Inheritance/TPH); Total classes: 41 → Density = 3/41 ≈ 7.3% | — |

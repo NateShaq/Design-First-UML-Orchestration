@@ -1,0 +1,26 @@
+# Pattern Evaluation (HospitalApi) — 2026-03-23
+
+## Summary
+- Total classes analyzed: 37 (domain POCOs: 30, services: 3, controllers: 3, repository: 1).
+- Patterns observed: Repository (HospitalRepository), Service Layer (PatientService, PharmacyService, SurgeryService), Controller/MVC (3 controllers) — 7 classes total.
+- Pattern density: 7 / 37 ≈ 0.19.
+- Abstractions: 0 interfaces / 0 abstract classes; all types are concrete, leading to tight coupling to the in-memory repository and ASP.NET controllers.
+- Grade (decoupling & SOLID): **C** — clear layering, but dependencies use concrete types, singletons couple state, no interfaces for repositories/services, minimal validation and SRP breaches are low but present.
+
+## Findings Table
+| Component | Type (Abstract vs Concrete) | Pattern(s) | Decoupling / SOLID Notes |
+| --- | --- | --- | --- |
+| HospitalRepository | Concrete | Repository | Central in-memory store; no interface, so services are tightly coupled and untestable without real repo. |
+| PatientService | Concrete | Service Layer | Depends on concrete HospitalRepository; no interface, so DIP violated; only adds/reads records. |
+| PharmacyService | Concrete | Service Layer | Same coupling to HospitalRepository; stateful singleton may create concurrency issues. |
+| SurgeryService | Concrete | Service Layer | Same concrete dependency; schedules cases without validation; mutates shared list. |
+| PatientRecordsController | Concrete | Controller (MVC) | Thin API layer; ok SRP, but action returns repository entities directly (no DTO/validation). |
+| PharmacyInventoryController | Concrete | Controller (MVC) | Same coupling; business logic lives in service but service not abstracted. |
+| SurgicalSchedulingController | Concrete | Controller (MVC) | Same as above; relies on mutable singleton service. |
+| Domain POCOs (30 types) | Concrete | Data Transfer Object | Pure data holders; fine SRP, but no invariants/validation enforced. |
+
+## Improvement Suggestions
+1) Introduce interfaces for repositories and services; register via DI to satisfy DIP and enable testing/mocking.
+2) Split read/write concerns or use a generic repository to reduce duplication; consider factory for seeding test data.
+3) Avoid singleton lifetime for mutable collections; prefer scoped services or thread-safe stores.
+4) Add DTOs/validators between controllers and domain to protect invariants and follow SRP.

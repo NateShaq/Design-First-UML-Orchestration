@@ -1,0 +1,512 @@
+OpenAI Codex v0.116.0 (research preview)
+--------
+workdir: /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts
+model: gpt-5.1-codex-max
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/natebrock/.codex/memories]
+reasoning effort: medium
+reasoning summaries: none
+session id: 019d1bae-b41a-7ad2-8522-94c0c040dc47
+--------
+user
+
+        Act as a Senior Software Architect. 
+        Navigate the source code in ./LCP-UML-4.
+        
+        1. Identify Software Design Patterns (Strategy, Factory, Repository, Observer, etc.).
+        2. Identify Abstract/Interface types vs. Concrete implementations.
+        3. Grade the implementation (A-F) based on Decoupling and SOLID principles.
+        4. Document findings in a markdown table.
+        5. Calculate 'Pattern Density' (Patterns Found / Total Classes).
+        
+        Output results to: ./LCP-UML-4/pattern_evaluation.log
+    
+mcp startup: no servers
+
+thinking
+**Planning repo inspection**
+
+I'm preparing to list files with rg and write logs to analyze class definitions, counts, and pattern density while mapping the project structure for a multi-step inspection.
+exec
+/bin/zsh -lc ls in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+IdentityPublicServicesScaffoldErr
+LCP-UML-1
+LCP-UML-2
+LCP-UML-3
+LCP-UML-4
+LCP-UML-5
+LCP-UML-6
+LCP-UML-7
+LCP-UML-8
+LCP-UML-9
+LCP-Vibe-1
+LCP-Vibe-2
+LCP-Vibe-3
+LCP-Vibe-4
+LCP-Vibe-5
+LCP-Vibe-6
+LCP-Vibe-7
+LCP-Vibe-8
+LCP-Vibe-9
+evaluate_patterns.sh
+exec
+/bin/zsh -lc 'cd LCP-UML-4 && ls' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+LCP-UML-4.puml
+build_audit.log
+evaluation_audit.log
+experiment_metadata.log
+src
+exec
+/bin/zsh -lc 'cd LCP-UML-4 && ls src' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+Controllers
+DTOs
+Data
+FleetNetworkApi.csproj
+FleetNetworkApi.http
+Models
+Program.cs
+Properties
+appsettings.Development.json
+appsettings.json
+obj
+
+thinking
+**Preparing to count C# classes**
+
+Planning to list C# files using a glob search before counting class definitions to determine overall patterns in the codebase.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && rg --files -g '*.cs'" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+Program.cs
+Data/FleetDbContext.cs
+Controllers/ChargingStationsController.cs
+Controllers/RoutePlansController.cs
+Controllers/VehiclesController.cs
+Controllers/MaintenanceController.cs
+Controllers/IncidentReportsController.cs
+Controllers/BookingsController.cs
+Controllers/TripAssignmentsController.cs
+DTOs/VehicleDtos.cs
+DTOs/ChargingDtos.cs
+DTOs/RoutePlanDtos.cs
+DTOs/VersionedDto.cs
+DTOs/TripAssignmentDtos.cs
+DTOs/BookingDtos.cs
+DTOs/MaintenanceDtos.cs
+DTOs/IncidentDtos.cs
+Models/RoutePlan.cs
+Models/TripAssignment.cs
+Models/PaymentAccount.cs
+
+thinking
+**Inspecting key files**
+
+I'm opening important files to analyze content and identify any relevant design patterns for better understanding.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Program.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using FleetNetworkApi.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<FleetDbContext>(options =>
+{
+    var conn = builder.Configuration.GetConnectionString("FleetDatabase")
+               ?? "Server=localhost;Database=FleetNetworkDb;User Id=sa;Password=Your_password123;TrustServerCertificate=True;";
+    options.UseSqlServer(conn);
+});
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+
+thinking
+**Exploring DbContext patterns**
+
+I'm investigating how DbContext and related patterns are currently implemented to determine the best approach for managing database contexts. Next, I'll review the relevant code to understand usage and lifecycle.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Data/FleetDbContext.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using FleetNetworkApi.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace FleetNetworkApi.Data;
+
+public class FleetDbContext : DbContext
+{
+    public FleetDbContext(DbContextOptions<FleetDbContext> options) : base(options) { }
+
+    public DbSet<Vehicle> Vehicles => Set<Vehicle>();
+    public DbSet<RoutePlan> RoutePlans => Set<RoutePlan>();
+    public DbSet<PassengerProfile> Passengers => Set<PassengerProfile>();
+    public DbSet<PaymentAccount> PaymentAccounts => Set<PaymentAccount>();
+    public DbSet<Booking> Bookings => Set<Booking>();
+    public DbSet<TripAssignment> TripAssignments => Set<TripAssignment>();
+    public DbSet<MaintenanceSchedule> MaintenanceSchedules => Set<MaintenanceSchedule>();
+    public DbSet<IncidentReport> IncidentReports => Set<IncidentReport>();
+    public DbSet<ChargingStation> ChargingStations => Set<ChargingStation>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+thinking
+**Checking controller data access**
+
+I'm verifying if controllers use repositories or inject DbContext directly by examining one controller's data access approach.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Controllers/ChargingStationsController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.Data;
+using FleetNetworkApi.Data;
+using FleetNetworkApi.DTOs;
+using FleetNetworkApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace FleetNetworkApi.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ChargingStationsController : ControllerBase
+{
+    private readonly FleetDbContext _db;
+    public ChargingStationsController(FleetDbContext db) => _db = db;
+
+    [HttpPost]
+    public async Task<ActionResult<ChargingStation>> Create([FromBody] ChargingStation station)
+    {
+        _db.ChargingStations.Add(station);
+
+thinking
+**Reviewing controller patterns**
+
+I'm opening another controller to get a better sense of coding style and architectural patterns used across similar files.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Controllers/VehiclesController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using FleetNetworkApi.Data;
+using FleetNetworkApi.DTOs;
+using FleetNetworkApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace FleetNetworkApi.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class VehiclesController : ControllerBase
+{
+    private readonly FleetDbContext _db;
+    public VehiclesController(FleetDbContext db) => _db = db;
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehicles()
+        => Ok(await _db.Vehicles.AsNoTracking().ToListAsync());
+
+    [HttpPost]
+
+thinking
+**Reviewing model requirements**
+
+Models are needed to complement similar controllers, so I'm opening BaseEntity to understand its structure and how to build the models.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/BaseEntity.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.Models;
+
+public abstract class BaseEntity
+{
+    [Key]
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    /// <summary>
+    /// Optimistic concurrency token to prevent ghost writes.
+    /// </summary>
+    [Timestamp]
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
+
+    /// <summary>
+    /// Optional logical lock token mirroring UML lockToken notes.
+    /// </summary>
+    [MaxLength(64)]
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/Vehicle.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.Models;
+
+public enum VehicleKind
+{
+    Sedan,
+    Van,
+    DeliveryDrone
+}
+
+public class Vehicle : BaseEntity
+{
+    [Required, MaxLength(64)]
+    public string Vin { get; set; } = string.Empty;
+
+    [MaxLength(32)]
+    public string Status { get; set; } = "idle";
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/RoutePlan.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FleetNetworkApi.Models;
+
+public class RoutePlan : BaseEntity
+{
+    [Required]
+    public Guid VehicleId { get; set; }
+    public Vehicle? Vehicle { get; set; }
+
+    [MaxLength(128)]
+    public string MapRef { get; set; } = string.Empty;
+
+    [MaxLength(128)]
+    public string TrafficRef { get; set; } = string.Empty;
+
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+
+thinking
+**Reviewing DTO usage**
+
+I'm checking the data transfer objects to confirm their structure and see if concurrency concerns apply.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' DTOs/VersionedDto.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.DTOs;
+
+public record VersionedDto(
+    [Required] Guid Id,
+    [Required] string RowVersionBase64,
+    string? LockToken
+)
+{
+    public byte[] RowVersionBytes => Convert.FromBase64String(RowVersionBase64);
+}
+
+thinking
+**Reviewing controllers for concurrency patterns**
+
+I'm scanning other controllers to quickly grasp the overall architecture and identify any concurrency or pattern usage across them.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Controllers/RoutePlansController.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System.Data;
+using FleetNetworkApi.Data;
+using FleetNetworkApi.DTOs;
+using FleetNetworkApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace FleetNetworkApi.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class RoutePlansController : ControllerBase
+{
+    private readonly FleetDbContext _db;
+    public RoutePlansController(FleetDbContext db) => _db = db;
+
+    [HttpPost]
+    public async Task<ActionResult<RoutePlan>> Create(RoutePlanCreateDto dto)
+    {
+        await using var tx = await _db.Database.BeginTransactionAsync(IsolationLevel.Serializable);
+
+thinking
+**Identifying architectural patterns and preparing class count**
+
+I confirmed the use of dependency injection, EF DbContext as repository and unit of work, DTOs as records, optimistic concurrency, and MVC controller patterns; no factory, strategy, or template method observed. Next, I'll quantify classes and records in the code with regex searches to support further structural analysis.
+exec
+/bin/zsh -lc 'cd LCP-UML-4/src && rg -n "class " *.cs Controllers Data DTOs Models' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+Models/RoutePlan.cs:7:public class RoutePlan : BaseEntity
+Data/FleetDbContext.cs:6:public class FleetDbContext : DbContext
+Controllers/ChargingStationsController.cs:12:public class ChargingStationsController : ControllerBase
+Controllers/RoutePlansController.cs:12:public class RoutePlansController : ControllerBase
+Controllers/VehiclesController.cs:11:public class VehiclesController : ControllerBase
+Models/Vehicle.cs:14:public class Vehicle : BaseEntity
+Models/BaseEntity.cs:6:public abstract class BaseEntity
+Controllers/MaintenanceController.cs:12:public class MaintenanceController : ControllerBase
+Controllers/IncidentReportsController.cs:12:public class IncidentReportsController : ControllerBase
+Models/MaintenanceSchedule.cs:6:public class MaintenanceSchedule : BaseEntity
+Models/TripAssignment.cs:6:public class TripAssignment : BaseEntity
+Controllers/BookingsController.cs:12:public class BookingsController : ControllerBase
+Models/Booking.cs:6:public class Booking : BaseEntity
+Models/IncidentReport.cs:6:public class IncidentReport : BaseEntity
+Controllers/TripAssignmentsController.cs:12:public class TripAssignmentsController : ControllerBase
+Models/ChargingStation.cs:6:public class ChargingStation : BaseEntity
+Models/PassengerProfile.cs:6:public class PassengerProfile : BaseEntity
+Models/PaymentAccount.cs:6:public class PaymentAccount : BaseEntity
+exec
+/bin/zsh -lc 'cd LCP-UML-4/src && rg -n "record " DTOs' in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+DTOs/VehicleDtos.cs:6:public record VehicleCreateDto(
+DTOs/VehicleDtos.cs:13:public record VehicleUpdateDto(
+DTOs/ChargingDtos.cs:6:public record SlotReserveDto(
+DTOs/RoutePlanDtos.cs:6:public record RoutePlanCreateDto(
+DTOs/RoutePlanDtos.cs:13:public record RoutePlanCommitDto(
+DTOs/VersionedDto.cs:6:public record VersionedDto(
+DTOs/TripAssignmentDtos.cs:6:public record TripAssignDto(
+DTOs/TripAssignmentDtos.cs:11:public record TripCommitDto(
+DTOs/BookingDtos.cs:6:public record BookingCreateDto(
+DTOs/BookingDtos.cs:11:public record BookingCancelDto(
+DTOs/MaintenanceDtos.cs:6:public record MaintenanceCreateDto(
+DTOs/MaintenanceDtos.cs:12:public record MaintenanceUpdateDto(
+DTOs/IncidentDtos.cs:6:public record IncidentCreateDto(
+DTOs/IncidentDtos.cs:13:public record IncidentAppendEvidenceDto(
+
+thinking
+**Assessing class count and design patterns**
+
+I've counted 18 classes including controllers and models, excluding enums and top-level program code, and will treat records separately. Key patterns include inheritance via BaseEntity, optimistic concurrency, and built-in DI usage, but repository or factory patterns are absent. Next, I'll organize these into a markdown evaluation table highlighting pattern presence, evidence, related classes, and notes, plus grade and pattern density.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/MaintenanceSchedule.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.Models;
+
+public class MaintenanceSchedule : BaseEntity
+{
+    [Required]
+    public Guid VehicleId { get; set; }
+    public Vehicle? Vehicle { get; set; }
+
+    [MaxLength(256)]
+    public string Description { get; set; } = string.Empty;
+
+    public DateTimeOffset ScheduledAt { get; set; }
+
+    [MaxLength(32)]
+    public string Status { get; set; } = "scheduled";
+}
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/TripAssignment.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.Models;
+
+public class TripAssignment : BaseEntity
+{
+    [Required]
+    public Guid BookingId { get; set; }
+    public Booking? Booking { get; set; }
+
+    [Required]
+    public Guid VehicleId { get; set; }
+    public Vehicle? Vehicle { get; set; }
+
+    [MaxLength(32)]
+    public string Status { get; set; } = "pending";
+
+    public DateTimeOffset AssignedAt { get; set; } = DateTimeOffset.UtcNow;
+}
+
+thinking
+**Checking related account models**
+
+I'm planning to review related models like PaymentAccount to gather more context for understanding or extending the account-related functionality.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && sed -n '1,200p' Models/IncidentReport.cs" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace FleetNetworkApi.Models;
+
+public class IncidentReport : BaseEntity
+{
+    [Required]
+    public Guid VehicleId { get; set; }
+    public Vehicle? Vehicle { get; set; }
+
+    public Guid? RoutePlanId { get; set; }
+    public RoutePlan? RoutePlan { get; set; }
+
+    [MaxLength(512)]
+    public string Summary { get; set; } = string.Empty;
+
+    [MaxLength(512)]
+    public string? EvidenceUri { get; set; }
+
+
+thinking
+**Assessing patterns and SOLID compliance**
+
+I identified six patterns across 18 classes, yielding a pattern density of 0.33; controllers violate SRP by mixing logic and transformations without a service layer, and tight EF coupling breaks Dependency Inversion, resulting in an overall C+ SOLID grade.
+
+thinking
+**Planning pattern evaluation log**
+
+I'm preparing to create a markdown log file with pattern density and grading, including counts of total classes, abstract types, and records (DTOs). I'll verify interface count to confirm none exist before compiling the summary.
+exec
+/bin/zsh -lc "cd LCP-UML-4/src && rg -n \"interface \" -g '*.cs'" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts exited 1 in 0ms:
+
+
+thinking
+**Composing pattern evaluation content**
+
+I'm crafting a markdown table listing six patterns found, with associated classes, abstraction status, notes, and an implementation grade of B-. I'll include a summary with total classes, pattern density, and note BaseEntity as the only abstract type before preparing the file content for output to pattern_evaluation.log.
+
+thinking
+**Summarizing architecture assessment**
+
+The codebase includes 18 classes with 6 design patterns, notably a BaseEntity abstract type but no interfaces or repository layers. The architecture shows EF coupling and business logic in controllers, grading B- with some SOLID principle concerns; next is writing the file summarizing these findings.
+exec
+/bin/zsh -lc "cd LCP-UML-4 && cat <<'EOF' > pattern_evaluation.log
+# Pattern Evaluation (LCP-UML-4)
+
+| Pattern | Participants (classes/records) | Abstract vs. Concrete | Notes |
+| --- | --- | --- | --- |
+| MVC Controller | Controllers/*Controller | Concrete controllers | Attribute-routed WebAPI controllers orchestrate requests and return DTO/entity results. |
+| Dependency Injection / IoC | Program.cs, FleetDbContext injected into controllers | N/A (framework service) | ASP.NET Core DI container wires DbContext into controllers; promotes ctor injection. |
+| DTO (Data Transfer Object) | DTOs/*Dto records | Concrete records | Request/response contracts separate from EF entities, limiting over-posting. |
+| Unit of Work + Repository (via EF Core DbContext/DbSet) | FleetDbContext, DbSet<T> sets | Concrete DbContext; DbSet<T> repositories | SaveChanges/transactions wrap multiple changes; DbSet<T> provides repository-like access without custom abstraction. |
+| Optimistic Concurrency Token | BaseEntity.RowVersion; checks in Vehicles/RoutePlans/ChargingStations controllers | Abstract base + concrete controllers | RowVersion bytes compared before updates; prevents ghost writes and stale updates. |
+| Abstract Base Entity | BaseEntity | Abstract | Centralizes Id, RowVersion, LockToken for all domain entities. |
+
+Totals & Metrics
+- Total classes scanned: 18 (controllers, models, DbContext, BaseEntity).
+- Patterns found: 6
+- Pattern density: 6 / 18 = **0.33**
+
+Abstract / Interface Types
+- Abstract: BaseEntity
+- Interfaces: none
+- Concrete classes: FleetDbContext; 8 controllers; 8 domain/entity models.
+- Concrete records (DTOs): 13 request/response shapes.
+
+Decoupling & SOLID Grade: **B-**
+- 👍 Separation of API contracts (DTOs) from EF entities; use of DI and concurrency tokens improves SRP and correctness.
+- 👎 Controllers contain business logic and data access directly; no repository/service interfaces, so high coupling to EF Core and poor testability (hurts D/I and O/C). No domain services to encapsulate transactions or policies.
+- 🔧 Suggested improvements: introduce application services or repositories behind interfaces; move transaction/concurrency workflows out of controllers; add interface-based abstractions for DbContext to aid testing; consider domain events/observers for side effects.
+EOF" in /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts succeeded in 0ms:
+
+
+thinking
+**Summarizing final changes and next steps**
+
+The changes impacted the `pattern_evaluation.log` file, covering a total of 8 controller classes. The update improved code clarity and structure around pattern evaluation. Next steps could include optionally running tests to confirm stability, though not strictly required.
+codex
+Pattern review logged to `pattern_evaluation.log` with identified patterns (MVC Controller, DI, DTO, EF Unit of Work/Repository, Optimistic Concurrency, Abstract Base Entity), abstract vs. concrete types, pattern density (6/18 = 0.33), and SOLID grade (B-). Controllers are thin but still embed data access; EF dependency is unabstracted.
+
+- File: `LCP-UML-4/pattern_evaluation.log`
+- Grade rationale: good DTO separation and DI; main weakness is tight coupling of controllers to EF Core, no service/repository interfaces, and business logic in controllers.
+- Natural next steps: 1) Introduce interfaces for repositories/services to decouple EF and improve testability. 2) Move transaction/concurrency workflows into application services. 3) Add domain events/observers for side effects if needed.
+tokens used
+46,979
+Pattern review logged to `pattern_evaluation.log` with identified patterns (MVC Controller, DI, DTO, EF Unit of Work/Repository, Optimistic Concurrency, Abstract Base Entity), abstract vs. concrete types, pattern density (6/18 = 0.33), and SOLID grade (B-). Controllers are thin but still embed data access; EF dependency is unabstracted.
+
+- File: `LCP-UML-4/pattern_evaluation.log`
+- Grade rationale: good DTO separation and DI; main weakness is tight coupling of controllers to EF Core, no service/repository interfaces, and business logic in controllers.
+- Natural next steps: 1) Introduce interfaces for repositories/services to decouple EF and improve testability. 2) Move transaction/concurrency workflows into application services. 3) Add domain events/observers for side effects if needed.

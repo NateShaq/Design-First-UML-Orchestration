@@ -1,0 +1,19 @@
+# Pattern Evaluation (LCP-UML-6)
+
+| Component | Type | Pattern | Notes |
+| --- | --- | --- | --- |
+| GridDbContext | Concrete | Unit of Work + Repository (via EF DbContext) | Aggregates DbSets and manages SaveChanges, centralizing persistence concerns. |
+| ThreadSafeEntity | Abstract | Optimistic Concurrency Base | Provides RowVersion/Revision so derived aggregates share concurrency enforcement hook. |
+| TransactionRegistry | Concrete | Registry + TTL Cache | Keeps in-memory map of transaction tokens with expiry to coordinate multi-step updates. |
+| ConcurrencyToken | Concrete | Utility / Facade | Encodes/decodes row-version tokens, hiding Base64 details from callers. |
+| *Controllers (12 classes)* | Concrete | MVC Controller / Transaction Script | Each controller handles HTTP + persistence directly, orchestrating CRUD logic per aggregate. |
+| UsageBillingsController | Concrete | Optimistic Concurrency Workflow | Adds begin/commit/rollback endpoints using RowVersion + TransactionRegistry to avoid ghost writes. |
+
+**Abstract vs. Concrete count**: 1 abstract (ThreadSafeEntity); 52 concrete classes/records.
+
+**Pattern density**: 6 patterns / 53 total classes = 0.113 (~11.3%).
+
+**Design grade (Decoupling & SOLID)**: C
+- Positives: DI used for DbContext/registry/logging; DTOs separate API payloads from entities; optimistic concurrency enforced for billing.
+- Issues: Controllers couple transport and persistence (violates SRP, transaction scripts instead of domain services); no repository/service interfaces (weak DIP); duplicated CRUD code across controllers; domain logic mostly absent leaving anemic model; only one abstraction shared across entities.
+- Opportunities: Introduce domain services + repository interfaces, apply strategies for asset-specific behaviors, add observer/eventing for grid updates, extract shared CRUD into generic controller or application service layer.

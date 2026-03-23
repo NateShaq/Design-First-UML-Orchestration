@@ -1,0 +1,8 @@
+﻿/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/BankingModels.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/InvestmentModels.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/obj/Debug/net8.0/LcpVibe5.Api.GlobalUsings.g.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/obj/Debug/net8.0/LcpVibe5.Api.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/obj/Debug/net8.0/apphost

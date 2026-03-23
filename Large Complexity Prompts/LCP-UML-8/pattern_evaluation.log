@@ -1,0 +1,50 @@
+| Type | Abstract/Concrete | Pattern(s) Detected | Notes |
+| --- | --- | --- | --- |
+| Product | Abstract | Inheritance base | Polymorphic root for product variants; no behaviors. |
+| RawMaterial | Concrete | – | POCO derived from Product. |
+| SubAssembly | Concrete | – | POCO derived from Product. |
+| FinishedProduct | Concrete | – | POCO derived from Product. |
+| ManufacturingProcess | Concrete | – | Data holder for process with Operations collection. |
+| WorkCenter | Concrete | – | Holds Machines; no behavior. |
+| Machine | Concrete | – | Linked to WorkCenter. |
+| Operator | Concrete | – | Linked via OperationOperator join. |
+| WorkOrder | Concrete | – | Aggregate-like root for Operations/Traceability; no domain services. |
+| Operation | Concrete | – | Step with refs to process/work center/work order. |
+| OperationOperator | Concrete | – | Join entity (many-to-many). |
+| ShopFloorExecution | Concrete | – | Container for WorkOrders. |
+| ComplianceCert | Concrete | – | Uses rowversion for concurrency. |
+| InventoryLot | Concrete | – | Traceability relationships. |
+| Warehouse | Concrete | – | Collection of InventoryLots. |
+| CustomerOrder | Concrete | – | Links to FinishedProduct and Shipments. |
+| Shipment | Concrete | – | Links to CustomerOrder; traceability records. |
+| TraceabilityRecord | Concrete | – | Event record linked to multiple entities. |
+| SupplierContract | Concrete | – | Rowversion concurrency, ties to RawMaterial. |
+| BillOfMaterials | Concrete | – | Aggregate root with Items; uses TPT inheritance via Product. |
+| BillOfMaterialsItem | Concrete | – | Join entity to Product. |
+| EngineeringDesign | Concrete | – | Root with CADModel/Drawing/Revision collections. |
+| CADModel | Concrete | – | Linked to EngineeringDesign. |
+| Drawing | Concrete | – | Linked to EngineeringDesign. |
+| Revision | Concrete | – | Linked to EngineeringDesign. |
+| Engineer | Concrete | – | Many-to-many with EngineeringDesign. |
+| LcpUml8Context | Concrete | Unit of Work (EF DbContext) | Coordinates EF change tracking and SaveChanges/transactions. |
+| QualityAssurance | Concrete | – | Root for InspectionPlans; product associations. |
+| InspectionPlan | Concrete | – | Child of QualityAssurance; change orders collection. |
+| InspectionResult | Concrete | – | Child of InspectionPlan; traceability records. |
+| NonConformance | Concrete | – | Child of InspectionResult. |
+| CorrectiveAction | Concrete | – | Child of NonConformance. |
+| WorkOrdersController | Concrete | – | Transaction script over DbContext; no abstraction. |
+| ProductsController | Concrete | Simple Factory | Switch on `Type` to instantiate correct Product subtype; also uses optimistic concurrency token. |
+| ChangeOrder | Concrete | – | Links to Product, EngineeringDesign, WorkOrder, InspectionPlan. |
+| QualityAssuranceController | Concrete | – | Transaction script with explicit DB transactions. |
+| ShopFloorExecutionsController | Concrete | – | Transaction script managing WorkOrder links. |
+| EngineeringDesignsController | Concrete | – | Transaction script with lifecycle state changes. |
+
+Total classes counted: 38
+Patterns found: 2 (Unit of Work via DbContext; Simple Factory in ProductsController)
+Pattern density: 2 / 38 = 0.053 (5.3%)
+
+SOLID/Decoupling grade: C-
+- Controllers depend directly on EF DbContext and entities (no Repository/Service abstractions), reducing dependency inversion.
+- Business rules live in controllers (transaction scripts), so SRP and Open/Closed are weak; changes to workflows require controller edits.
+- Entities are anemic data carriers; behavior is not co-located with data, risking violations of encapsulation.
+- Some positives: DbContext scopes transactions/unit-of-work; optimistic concurrency token on products; clear aggregate boundaries in entities.

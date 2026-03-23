@@ -1,0 +1,108 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1774287816000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "lcp-vibe-7"
+    },
+    {
+      "key": "sonar.projectName",
+      "value": "LCP-Vibe-7"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.projectKey",
+      "value": "lcp-vibe-7:E1828D15-9BD8-41F9-887D-17BD4DEDED4E"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.projectName",
+      "value": "GlobalEduERP"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.sources",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Controllers/AdmissionsController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Controllers/AlumniController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Controllers/LearningController.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Data/InMemoryData.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Models/DomainModels.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Program.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/GlobalEduERP.GlobalUsings.g.cs,\"/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/GlobalEduERP.AssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/GlobalEduERP.MvcApplicationPartsAssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/appsettings.Development.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/GlobalEduERP.http,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/SQL/schema.sql,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/Properties/launchSettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/GlobalEduERP.csproj.nuget.dgspec.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/project.assets.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/staticwebassets.build.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/obj/Debug/net8.0/GlobalEduERP.sourcelink.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/bin/Debug/net8.0/appsettings.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/bin/Debug/net8.0/appsettings.Development.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/bin/Debug/net8.0/GlobalEduERP.deps.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/GlobalEduERP/bin/Debug/net8.0/GlobalEduERP.runtimeconfig.json"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/0"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "E1828D15-9BD8-41F9-887D-17BD4DEDED4E.sonar.cs.scanner.telemetry",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.scanner.metadataFilePath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-7/sonar-report-task.txt"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

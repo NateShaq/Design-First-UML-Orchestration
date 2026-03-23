@@ -1,0 +1,9 @@
+# Pattern Evaluation - SmartGrid.Api
+
+| Item | Details |
+| --- | --- |
+| Patterns detected | Dependency Injection / IoC (ASP.NET `AddSingleton` registration for `InMemoryDatabase`), MVC Controllers (attribute-routed controllers inheriting `ControllerBase`), Singleton lifetime for in-memory store. |
+| Missing/risks | No Repository/Service abstractions; controllers directly manipulate data collections and id generation; no domain interfaces; in-memory persistence limits substitutability/testability; no validation or domain services for business rules. |
+| Abstract vs Concrete | Interfaces/abstract types: 0. Concrete classes: 34 (30 POCO entities in `Models/Entities.cs`, 3 controllers, 1 `InMemoryDatabase`). |
+| SOLID/Decoupling Grade | C- (tight coupling to `InMemoryDatabase`; controllers mix transport and data duties; no DI-friendly abstractions for data; Open/Closed and Liskov not exercised; Single Responsibility only partially observed). |
+| Pattern Density | 3 patterns / 34 classes = 0.088 (~8.8%). |

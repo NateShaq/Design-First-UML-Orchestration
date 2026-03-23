@@ -1,0 +1,569 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24510.3 (cfe3bd0a)",
+        "semanticVersion": "4.11.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Domain' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 30,
+                  "endLine": 2,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 30,
+                  "endLine": 3,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Domain' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/DriversLicensesController.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 30,
+                  "endLine": 1,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/DriversLicensesController.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 30,
+                  "endLine": 2,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Domain' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 30,
+                  "endLine": 2,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 30,
+                  "endLine": 3,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Domain' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 30,
+                  "endLine": 2,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 30,
+                  "endLine": 3,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Domain' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/VotingRegistriesController.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 30,
+                  "endLine": 1,
+                  "endColumn": 36
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/VotingRegistriesController.cs",
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 30,
+                  "endLine": 2,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0234",
+          "level": "error",
+          "message": "The type or namespace name 'Infrastructure' does not exist in the namespace 'IdentityPublicServices' (are you missing an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Program.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 30,
+                  "endLine": 1,
+                  "endColumn": 44
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AuditTrail' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 36,
+                  "endLine": 21,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'IdentityRegistry' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 48,
+                  "endLine": 21,
+                  "endColumn": 64
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/VotingRegistriesController.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 22,
+                  "endLine": 12,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'PassportService' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 36,
+                  "endLine": 21,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/DriversLicensesController.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 22,
+                  "endLine": 12,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AuditTrail' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 36,
+                  "endLine": 28,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'IdentityRegistry' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 36,
+                  "endLine": 33,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/VotingRegistriesController.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 39,
+                  "endLine": 14,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'PassportService' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 36,
+                  "endLine": 37,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'IdentityRegistry' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 36,
+                  "endLine": 51,
+                  "endColumn": 52
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 22,
+                  "endLine": 13,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/DriversLicensesController.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 38,
+                  "endLine": 14,
+                  "endColumn": 50
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 22,
+                  "endLine": 13,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/AuditTrailsController.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 34,
+                  "endLine": 15,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'Person' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 24,
+                  "endLine": 93,
+                  "endColumn": 30
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/PassportServicesController.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 39,
+                  "endLine": 15,
+                  "endColumn": 51
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 22,
+                  "endLine": 13,
+                  "endColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CS0246",
+          "level": "error",
+          "message": "The type or namespace name 'AppDbContext' could not be found (are you missing a using directive or an assembly reference?)",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/natebrock/NL2UML_Experiments_Paper/Large%20Complexity%20Prompts/LCP-UML-9/src/IdentityPublicServices/Controllers/IdentityRegistriesController.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 41,
+                  "endLine": 15,
+                  "endColumn": 53
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "rules": {
+        "CS0234": {
+          "id": "CS0234",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0234)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        },
+        "CS0246": {
+          "id": "CS0246",
+          "defaultLevel": "error",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0246)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry",
+              "NotConfigurable"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

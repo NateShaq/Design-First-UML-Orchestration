@@ -1,0 +1,8 @@
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.csproj.AssemblyReference.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.AssemblyInfoInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.csproj.CoreCompileInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.MvcApplicationPartsAssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.MvcApplicationPartsAssemblyInfo.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-8/src/LcpUml8.Api/obj/Debug/net8.0/LcpUml8.Api.sourcelink.json

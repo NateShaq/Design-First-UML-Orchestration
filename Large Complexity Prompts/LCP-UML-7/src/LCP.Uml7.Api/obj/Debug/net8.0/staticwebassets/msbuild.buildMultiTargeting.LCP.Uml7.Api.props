@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/LCP.Uml7.Api.props" />
+</Project>

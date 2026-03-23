@@ -1,0 +1,10 @@
+# Pattern Evaluation - LCP-Vibe-9 (as of 2026-03-23)
+
+| Aspect | Findings |
+| --- | --- |
+| Patterns Identified | **Repository/Data Store**: `IGovernmentDataStore` with `InMemoryGovernmentDataStore` storing domain aggregates.<br>**Dependency Injection/IoC**: `Program.cs` registers `IGovernmentDataStore` and controllers via ASP.NET Core DI container.<br>**Factory Method**: `CreateBenefit` & `CreateTaxAssessment` create domain instances inside the data store.<br>**MVC Controllers**: API surface via `*Controller` classes coordinating requests to the store.<br>**Singleton Lifetime**: In-memory store registered as singleton for app-wide state. |
+| Abstractions vs Concretes | Abstract/Interface: `IGovernmentDataStore` (1).<br>Concrete classes: 37 (`InMemoryGovernmentDataStore`, 30 domain POCOs, 6 controllers). Controllers depend on the interface, keeping web layer decoupled from storage choice. |
+| Decoupling & SOLID Grade | **C+** — positives: controllers depend on an interface and avoid direct data structures; DI enables swapping storage implementation. Gaps: `IGovernmentDataStore` is a “god” interface (violates ISP/SRP), mixing identity, tax, benefits, voting, licensing concerns; no separate repositories or services per bounded context; in-memory store mutates shared lists directly (tight coupling to storage shape); no domain validation or invariants, so controllers handle orchestration and state changes imperatively. |
+| Pattern Density | 4 distinct patterns / 37 classes = **0.11** |
+
+Notes: Class count derived via `rg '^public class'` in `/Api`; interface count via `rg '^public interface'`.

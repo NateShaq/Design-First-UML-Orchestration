@@ -21,3 +21,4 @@
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.pdb
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.genruntimeconfig.cache
 /Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/ref/AutonomousFleet.Api.dll
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.sourcelink.json

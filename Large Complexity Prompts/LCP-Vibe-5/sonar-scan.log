@@ -1,0 +1,62 @@
++ cd '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5'
++ export 'PATH=/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ PATH='/Users/natebrock/.codeium/windsurf/bin:/Users/natebrock/.pyenv/shims:/Users/natebrock/.pyenv/bin:/Users/natebrock/.nvm/versions/node/v18.20.7/bin:/Users/natebrock/homebrew/opt/node@16/bin:/Users/natebrock/.rbenv/bin:/usr/local/opt/node@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/Users/natebrock/Applications/flutter/bin:/sbin:/usr/local/bin/python3:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/natebrock/.dotnet/tools:/Users/natebrock/.dotnet/tools'
++ dotnet-sonarscanner begin /k:lcp-vibe-5 /n:LCP-Vibe-5 /d:sonar.host.url=http://localhost:9000 /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8 '/d:sonar.scanner.metadataFilePath=/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/sonar-report-task.txt' '/d:sonar.exclusions=**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**'
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Pre-processing started.
+Preparing working directories...
+12:43:26.942  Updating build integration targets...
+12:43:26.974  Using SonarQube v26.3.0.120487.
+12:43:27.041  Fetching analysis configuration settings...
+12:43:27.2  Provisioning analyzer assemblies for cs...
+12:43:27.2  Installing required Roslyn analyzers...
+12:43:27.2  Processing plugin: csharp version 10.19.0.132793
+12:43:27.262  Provisioning analyzer assemblies for vbnet...
+12:43:27.262  Installing required Roslyn analyzers...
+12:43:27.262  Processing plugin: vbnet version 10.19.0.132793
+12:43:27.264  Incremental PR analysis: Base branch parameter was not provided.
+12:43:27.264  Cache data is empty. A full analysis will be performed.
+12:43:27.281  Pre-processing succeeded.
++ dotnet build '/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj' --no-incremental
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(12,18): error CS1061: 'IServiceCollection' does not contain a definition for 'AddSwaggerGen' and no accessible extension method 'AddSwaggerGen' accepting a first argument of type 'IServiceCollection' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(18,9): error CS1061: 'WebApplication' does not contain a definition for 'UseSwagger' and no accessible extension method 'UseSwagger' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(19,9): error CS1061: 'WebApplication' does not contain a definition for 'UseSwaggerUI' and no accessible extension method 'UseSwaggerUI' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs(22,14): warning S101: Rename class 'AMLAlert' to match pascal case naming rules, consider using 'AmlAlert'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(67,78): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(68,78): warning S6608: Indexing at Count-1 should be used instead of the "Enumerable" extension method "Last" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs(14,14): warning S101: Rename class 'KYCVerification' to match pascal case naming rules, consider using 'KycVerification'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(61,77): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(62,77): warning S6608: Indexing at Count-1 should be used instead of the "Enumerable" extension method "Last" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(40,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+
+Build FAILED.
+
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs(22,14): warning S101: Rename class 'AMLAlert' to match pascal case naming rules, consider using 'AmlAlert'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(67,78): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(68,78): warning S6608: Indexing at Count-1 should be used instead of the "Enumerable" extension method "Last" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Domain/ComplianceModels.cs(14,14): warning S101: Rename class 'KYCVerification' to match pascal case naming rules, consider using 'KycVerification'. (https://rules.sonarsource.com/csharp/RSPEC-101) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(61,77): warning S6608: Indexing at 0 should be used instead of the "Enumerable" extension method "First" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(62,77): warning S6608: Indexing at Count-1 should be used instead of the "Enumerable" extension method "Last" (https://rules.sonarsource.com/csharp/RSPEC-6608) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(40,1): warning S6966: Await RunAsync instead. (https://rules.sonarsource.com/csharp/RSPEC-6966) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(12,18): error CS1061: 'IServiceCollection' does not contain a definition for 'AddSwaggerGen' and no accessible extension method 'AddSwaggerGen' accepting a first argument of type 'IServiceCollection' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(18,9): error CS1061: 'WebApplication' does not contain a definition for 'UseSwagger' and no accessible extension method 'UseSwagger' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/Program.cs(19,9): error CS1061: 'WebApplication' does not contain a definition for 'UseSwaggerUI' and no accessible extension method 'UseSwaggerUI' accepting a first argument of type 'WebApplication' could be found (are you missing a using directive or an assembly reference?) [/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-5/Api/LcpVibe5.Api.csproj]
+    7 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:00.54
++ dotnet-sonarscanner end /d:sonar.token=squ_c2e42cf686855255a1f68a824727aa112a353aa8
+SonarScanner for .NET 11.2
+Using the .NET Core version of the Scanner for .NET
+Post-processing started.
+12:43:27.977  The SonarScanner for .NET integration failed: SonarQube was unable to collect the required information about your projects.
+Possible causes:
+  1. The project has not been built - the project must be built in between the begin and end steps.
+  2. An unsupported version of MSBuild has been used to build the project. Supported versions: MSBuild 16 and higher.
+  3. The begin, build and end steps have not all been launched from the same folder.
+  4. None of the analyzed projects have a valid ProjectGuid and you have not used a solution (.sln).
+12:43:27.978  Generation of the sonar-properties file failed. Unable to complete the analysis.
+12:43:27.979  Post-processing failed. Exit code: 1

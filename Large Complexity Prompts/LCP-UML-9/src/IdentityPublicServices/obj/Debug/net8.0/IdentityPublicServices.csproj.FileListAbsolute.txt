@@ -1,0 +1,8 @@
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.csproj.AssemblyReference.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.GeneratedMSBuildEditorConfig.editorconfig
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.AssemblyInfoInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.AssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.csproj.CoreCompileInputs.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.MvcApplicationPartsAssemblyInfo.cs
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.MvcApplicationPartsAssemblyInfo.cache
+/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-UML-9/src/IdentityPublicServices/obj/Debug/net8.0/IdentityPublicServices.sourcelink.json

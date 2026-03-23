@@ -1,0 +1,21 @@
+Project: LCP-UML-4
+Quality Gate: OK
+
+Key Measures:
+  Cyclomatic Complexity: 178
+  Cognitive Complexity: 38
+  Technical Debt (sqale_index): 70
+  Code Smells: 14
+  Bugs: 0
+  Vulnerabilities: 0
+  Security Hotspots: 1
+  Duplicated Lines %: 0.0
+  Lines of Code: 724
+
+Open Issues:
+  BUG: 0
+  VULNERABILITY: 0
+  CODE_SMELL: 14
+
+Quality Gate Conditions:
+  new_violations: status=OK, actual=0, threshold=0

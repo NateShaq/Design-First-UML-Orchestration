@@ -1,0 +1,21 @@
+## Pattern Evaluation
+
+| Area | Pattern(s) | Abstract vs. Concrete | Decoupling / SOLID Assessment |
+| --- | --- | --- | --- |
+| Composition root (`src/Program.cs`) | Dependency Injection (built-in container) | Abstract: `IInventoryService`, `ITaxCalculator`, `ILoyaltyEngine`; Concrete registrations: `InMemoryInventoryService`, `TaxCalculator`, `LoyaltyEngine` | Good separation of interface from implementation; composition root centralizes wiring. Adheres to DIP. |
+| Inventory service | Repository / Service | Abstract: `IInventoryService`; Concrete: `InMemoryInventoryService` | Acts as in-memory repository with audit trail. Lacks persistence abstraction, but interface enables swapping. Single responsibility mixed with seeding/auditing in same class. |
+| Tax calculation | Strategy | Abstract: `ITaxCalculator`; Concrete: `TaxCalculator` | Strategy is selectable via DI; currently hard-coded rate (OCP weakness), but interface allows alternative calculators. |
+| Loyalty engine | Domain Service | Abstract: `ILoyaltyEngine`; Concrete: `LoyaltyEngine` | Simple stateful service; encapsulates loyalty rules. Lacks persistence boundary; no observer for account changes. |
+| Domain model (`src/Models/Domain.cs`, 30 POCOs) | Inheritance for product subtypes (Perishable/Luxury/Digital) | Concrete: 30 POCO classes; no interfaces/abstractions | Pure data carriers; no behaviors → low coupling, but validation/business logic dispersed elsewhere; open to extension but no invariants enforced. |
+
+**Total classes:** 33 (30 domain POCOs + 3 service implementations)
+
+**Patterns found (distinct):** 3 — Dependency Injection, Repository/Service, Strategy.
+
+**Pattern density:** 3 / 33 = 0.09
+
+**Overall grade (decoupling & SOLID):** B-
+- Strengths: clear interfaces, DI at composition root, small focused services, product subtype hierarchy respects LSP.
+- Gaps: hard-coded tax rate violates OCP; services mix concerns (inventory service also seeds data and records audits); no interfaces for domain models or persistence; in-memory state limits substitutability; minimal validation may lead to SRP bleed.
+
+**Suggestions:** extract persistence boundary (e.g., repository per aggregate), externalize tax/loyalty rules, move seeding to startup, add tests around strategy replacement.

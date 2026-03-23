@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LcpVibe5.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcb6a2c690c5d23aba2bbd0b89f8ff264a790b66")]
 [assembly: System.Reflection.AssemblyProductAttribute("LcpVibe5.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LcpVibe5.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

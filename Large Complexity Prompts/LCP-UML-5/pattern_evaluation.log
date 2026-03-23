@@ -1,0 +1,46 @@
+# Pattern Evaluation (LCP-UML-5)
+
+Date: 2026-03-23
+
+## Summary
+- Total classes inspected: 19
+- Classes exhibiting recognizable patterns: 12
+- Pattern density: 12 / 19 = 0.63
+- Decoupling & SOLID grade: C (controllers orchestrate persistence directly; no interfaces or domain services; inheritance used but lacks encapsulated behavior; some transactional safeguards present).
+
+## Findings
+| Component | Type | Pattern(s) | Notes on SOLID/Decoupling |
+| --- | --- | --- | --- |
+| BaseEntity | Abstract | Abstract Base Class | Shared identity/rowversion; good DRY but no domain behavior. |
+| Account | Abstract | Abstract Base Class | Defines account contract; no strategy for balance rules; depends on concrete DbContext elsewhere. |
+| SavingsAccount | Concrete | Inheritance (Account hierarchy) | Concrete data holder; business logic kept in controller; violates SRP. |
+| CryptoWallet | Concrete | Inheritance (Account hierarchy) | Same as Savings; blockchain specifics not encapsulated. |
+| Portfolio | Abstract | Abstract Base Class | Defines portfolio contract; no polymorphic behaviors implemented. |
+| StockPortfolio | Concrete | Inheritance (Portfolio hierarchy) | Holds holdings collection only; logic absent. |
+| CustomerProfile | Concrete | — | Aggregates accounts/portfolios; no invariants enforced. |
+| RiskAssessment | Concrete | — | Pure data model; validation deferred to controller/db. |
+| TransactionLedger | Concrete | — | Aggregate root for ledger entries; concurrency handled externally. |
+| LedgerEntry | Concrete | — | Pure data model. |
+| StockHolding | Concrete | — | Pure data model. |
+| TaxDocument | Concrete | — | Pure data model. |
+| KycVerification | Concrete | — | Pure data model. |
+| AccountsController | Concrete | MVC Controller; Transaction Script | Handles validation, transactions, and state changes directly; couples API to EF Core types. |
+| CustomersController | Concrete | MVC Controller; Transaction Script | CRUD directly on DbContext; no service abstraction. |
+| RiskController | Concrete | MVC Controller; Transaction Script | Similar coupling; minimal validation. |
+| TaxDocumentsController | Concrete | MVC Controller; Transaction Script | Same pattern; thin workflow orchestration only. |
+| LedgersController | Concrete | MVC Controller; Transaction Script | Manual transactions; mixes infrastructure with application logic. |
+| BankingDbContext | Concrete | Unit of Work + Repository (DbSet) | Central persistence gateway; EF Core conventions; no repository interfaces. |
+
+## Grading Rationale (C)
+- **Single Responsibility**: Controllers mix API concerns with domain logic and persistence orchestration; entities are anemic.
+- **Open/Closed & Liskov**: Abstract bases exist but expose no virtual behavior, limiting polymorphism benefits.
+- **Interface Segregation & DIP**: No interfaces for domain services/repositories; controllers depend directly on EF Core, reducing testability and substitutability.
+- **Decoupling**: Tight coupling between API layer and data layer; transaction handling embedded in controllers rather than a service/application layer.
+- **Positives**: EF Core concurrency via RowVersion, explicit transactions for money movements, TPT inheritance mapped in DbContext.
+
+## Recommendations
+- Introduce application services with interfaces to decouple controllers from EF Core; inject via DI.
+- Add repository interfaces per aggregate (e.g., `IAccountRepository`, `ILedgerRepository`) backed by DbContext to improve DIP and testability.
+- Move business rules (balance changes, idempotency, ledger versioning) into domain methods on entities or domain services to reduce anemic domain model.
+- Consider Strategy pattern for currency/risk calculations and Factory methods for creating accounts/ledgers with invariants enforced.
+- Add validation and invariants within domain objects to strengthen encapsulation.

@@ -1,0 +1,108 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.2"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1774287800000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "lcp-vibe-4"
+    },
+    {
+      "key": "sonar.projectName",
+      "value": "LCP-Vibe-4"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.projectKey",
+      "value": "lcp-vibe-4:4A718720-4BE6-4FC4-849B-AC42A19C2D4F"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.projectName",
+      "value": "AutonomousFleet.Api"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.projectBaseDir",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.working.directory",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.sources",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/Domain/Entities/Operations.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/Domain/Entities/Support.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/Domain/Entities/Vehicles.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/Program.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.GlobalUsings.g.cs,\"/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.AssemblyInfo.cs,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/AutonomousFleet.Api.csproj.nuget.dgspec.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/project.assets.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/staticwebassets.build.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/obj/Debug/net8.0/AutonomousFleet.Api.sourcelink.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/bin/Debug/net8.0/AutonomousFleet.Api.deps.json,/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/src/AutonomousFleet.Api/bin/Debug/net8.0/AutonomousFleet.Api.runtimeconfig.json"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/.sonarqube/out/0"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "4A718720-4BE6-4FC4-849B-AC42A19C2D4F.sonar.cs.scanner.telemetry",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.scanner.metadataFilePath",
+      "value": "/Users/natebrock/NL2UML_Experiments_Paper/Large Complexity Prompts/LCP-Vibe-4/sonar-report-task.txt"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "**/bin/**,**/obj/**,**/node_modules/**,**/*.min.js,**/*.Designer.cs,**/Migrations/**"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}
